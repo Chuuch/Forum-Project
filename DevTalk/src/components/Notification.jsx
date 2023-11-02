@@ -19,11 +19,11 @@ const Notification = () => {
 				/>
             </div>
             {showNotifications && (
-                <div className="">
-                    <ul className="">
-                        <li>Notification 1</li>
-                        <li>Notification 2</li>
-                        <li>Notification 3</li>
+                <div className="absolute mt-10 z-30">
+                    <ul className="bg-[rgb(30,30,30)] text-gray-400 border border-[#F7AB0A] z-50">
+                        <li className="p-3">CodeAddict replied to your thread.</li>
+                        <li className="p-3">DevMonkey liked your comment.</li>
+                        <li className="p-3">CodeNinja liked your thread.</li>
                     </ul>
                 </div>
             )}
