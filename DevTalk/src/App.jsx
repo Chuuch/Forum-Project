@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 import Trending from "./components/Trending";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Search from "./components/Search";
 // import { useState } from "react";
 
 
@@ -26,7 +25,6 @@ function App() {
         <Route path='/trending' element={<Trending />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<Register />}/>
-        <Route path='/search' element={<Search />}/>
         </Routes>
         <Footer />
       </BrowserRouter >
