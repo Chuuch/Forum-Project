@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import { SocialIcon } from 'react-social-icons';
+// import { SocialIcon } from 'react-social-icons';
+import Notification from './Notification';
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
 	return (
@@ -9,45 +11,35 @@ const Navbar = () => {
 			</div>
 			<div>
 				<NavLink
-					className="text-2xl cursor-pointer p-10 uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
+					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
 					to="/"
 				>
-					Home
+						Home
 				</NavLink>
 				<NavLink
-					className="text-2xl cursor-pointer p-10 uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
+					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
 					to="/trending"
 				>
 					Trending
 				</NavLink>
 				<NavLink
-					className="text-2xl cursor-pointer p-10 uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
-					to="/search"
-				>
-					Search
-				</NavLink>
-				<NavLink
-					className="text-2xl cursor-pointer p-10 uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
+					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
 					to="/contact"
 				>
 					Contact
 				</NavLink>
 				<NavLink
-					className="text-2xl cursor-pointer p-10 uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
+					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
 					to="/about"
 				>
 					About
 				</NavLink>
 			</div>
 			<div className="flex flex-row items-center space-x-2 z-10">
-				<SocialIcon
-					className="cursor-pointer hover:scale-125"
-					network="email"
-					fgColor="#F7AB0A"
-					bgColor="transparent"
-				/>
+				<SearchBar className='text-[#F7AB0A]'/>
+				<Notification />
 				<NavLink to='/login' className='z-20'>
-					<button className="block p-15 h-10 w-32 hover:scale-105 z-20 uppercase outline-none border-none rounded-sm text-1xl font-bold text-[rgb(36,36,36)] bg-[#F7AB0A]">
+					<button className="block p-15 h-10 w-32 hover:scale-105 z-20 uppercase outline-none border-none rounded text-1xl font-bold text-[rgb(36,36,36)] bg-[#F7AB0A]">
 						LOGIN
 					</button>
 				</NavLink>
