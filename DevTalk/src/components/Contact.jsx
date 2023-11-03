@@ -11,15 +11,15 @@ const Contact = () => {
             <h1 className='flex items-center justify-center m-15 text-[#F7AB0A] text-4xl pb-16'>Contact Us</h1>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-2 w-fit mx-auto z-20 mb-32'>
                 <div className='flex space-x-2'>
-                    <input {...register('name')} placeholder='Name' className='bg-[rgb(30,30,30)] p-2 mb-15' type="text" />
-                    <input {...register('email')} placeholder='Email' className='bg-[rgb(30,30,30)] p-2 mb-15' type="email" />
+                    <input {...register('name')} placeholder='Name' className='bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400' type="text" />
+                    <input {...register('email')} placeholder='Email' className='bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400' type="email" />
                 </div>
 
-                <input {...register('subject')} placeholder='Subject' className='bg-[rgb(30,30,30)] p-2 mb-15' type="text" />
+                <input {...register('subject')} placeholder='Subject' className='bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400' type="text" />
 
-                <textarea {...register('message')} placeholder='Message' className='bg-[rgb(30,30,30)] p-2'/>
+                <textarea {...register('message')} placeholder='Message' className='bg-[rgb(30,30,30)] p-2 text-gray-400' />
 
-                <button type='submit' className='bg-[#F7AB0A] py-5 px-10 rounded-md text-[rgb(36,36,36)] font-bold text-lg'>
+                <button type='submit' className='bg-[#F7AB0A] py-5 px-10 rounded-md text-[rgb(36,36,36)] font-bold text-lg hover:scale-105'>
                     Submit
                 </button>
             </form>
