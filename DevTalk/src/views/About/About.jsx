@@ -1,6 +1,6 @@
-import CardJoro from "./CardJoro";
-import CardDani from './CardDani';
-import CardZheko from "./CardZheko";
+import CardJoro from "../../components/Cards/CardJoro";
+import CardDani from '../../components/Cards/CardDani';
+import CardZheko from "../../components/Cards/CardZheko";
 
 const About = () => {
     return (

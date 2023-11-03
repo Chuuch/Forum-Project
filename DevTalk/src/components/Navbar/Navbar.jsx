@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 // import { SocialIcon } from 'react-social-icons';
-import Notification from './Notification';
-import SearchBar from './SearchBar';
+import Notification from '../Notification/Notification';
+import SearchBar from '../SearchBar/SearchBar';
 
 const Navbar = () => {
 	return (
