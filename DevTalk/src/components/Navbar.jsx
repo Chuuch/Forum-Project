@@ -7,11 +7,11 @@ const Navbar = () => {
 	return (
 		<header className="sticky top-0 flex flex-row items-center justify-between p-5 font-space z-20">
 			<div className="flex flex-row items-center justify-center">
-				<img src="logo2.png" alt="logo image" className="w-[80px] h-[80px]" />
+				<img src="logo2.png" alt="logo image" className="w-[80px] h-[80px] hover:scale-110" />
 			</div>
-			<div>
+			<div className='pl-28'>
 				<NavLink
-					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
+					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
 					to="/"
 				>
 						Home
@@ -35,7 +35,7 @@ const Navbar = () => {
 					About
 				</NavLink>
 			</div>
-			<div className="flex flex-row items-center space-x-2 z-10">
+			<div className="flex flex-row items-center space-x-2 z-10 relative">
 				<SearchBar className='text-[#F7AB0A]'/>
 				<Notification />
 				<NavLink to='/login' className='z-20'>
