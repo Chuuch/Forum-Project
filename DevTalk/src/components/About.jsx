@@ -6,7 +6,7 @@ const About = () => {
     return (
     <>
         
-        <div className="bg-[rgb(36,36,36)] h-screen flex flex-col max-w-full px-10 justify-evenly items-center mx-auto">
+        <div className="bg-[rgb(36,36,36)] h-screen flex flex-col max-w-full px-10 justify-evenly items-center mx-auto z-20">
         <h1 className="uppercase flex justify-center items-center text-[#F7AB0A] text-3xl">The Dev Team</h1>
             <div className="w-full flex space-x-5 p-10 justify-evenly z-20 mb-16">
             <CardJoro className='text-gray-400'/>
