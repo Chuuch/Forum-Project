@@ -7,12 +7,22 @@ import Footer from "./components/Footer";
 import Trending from "./components/Trending";
 import Login from "./components/Login";
 import Register from "./components/Register";
-// import { useState } from "react";
+import { useState } from "react";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from "./config/firebase-config.js";
 
 
 
 function App() {
-  // const [count, setCount] = useState(0);
+   const [user] = useAuthState(auth);
+   const [appState, setAppState] = useState({
+    user,
+    userData: false,
+   })
+
+   if(appState.user !== user) {
+    setAppState({user});
+   }
 
   return (
     <div className="bg-[rgb(36,36,36)] z-0">
