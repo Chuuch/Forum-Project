@@ -10,6 +10,12 @@ import Register from "./views/Register/Register";
 import { useState } from "react";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from "./config/firebase-config.js";
+import Csharp from "./views/Categories/Csharp.jsx";
+import Java from "./views/Categories/Java.jsx";
+import C from "./views/Categories/C.jsx";
+import JavaScript from "./views/Categories/JavaScript.jsx";
+import Python from "./views/Categories/Python.jsx";
+import TypeScript from "./views/Categories/Typescript.jsx";
 
 
 
@@ -35,6 +41,13 @@ function App() {
         <Route path='/trending' element={<Trending />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<Register />}/>
+        <Route path="/c" element={<C />}/>
+        <Route path="/csharp" element={<Csharp />}/>
+        <Route path="/java" element={<Java />}/>
+        <Route path="/javascript" element={<JavaScript />}/>
+        <Route path="/python" element={<Python />}/>
+        <Route path="/typescript" element={<TypeScript />}/>
+
         </Routes>
         <Footer />
       </BrowserRouter >
