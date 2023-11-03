@@ -21,7 +21,7 @@ const SearchBar = () => {
                     <input
                         className="bg-[rgb(30,30,30)] text-gray-400" 
                         type="text"
-                        placeholder="Search"
+                        placeholder="Search by tag"
                         onChange={handleSearch} />
                 </div>
             )}
