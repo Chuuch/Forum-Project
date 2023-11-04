@@ -1,20 +1,61 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { get, orderByChild, ref, set } from 'firebase/database';
+import { database } from '../../config/firebase-config';
+import {auth} from '../../config/firebase-config';
 
 const Register = () => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [ password, setPassword ] = useState('');
+	
+	const createUserHandle = (handle, firstName, lastName, username, email, password) => {
+		console.log(auth)
 
+		auth.createUserWithEmailAndPassword(email, password)
+			.then((userCredential) => {
+				// Signed up 
+				console.log(userCredential)
+				const user = userCredential.user;
+				console.log('User created: ', user)
+				// ...
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log(errorCode, errorMessage)
+			});
+		
+		// TODO: add user to database
+		
+		// return set(ref(database, `users/${handle}`), {
+		// 	firstName, lastName, username, email, password,
+		// 	createdOn: Date.now(),
+		// });
+	};
+
+	const getUserData = () => {
+		return get(ref(database, 'users'), orderByChild('uid'));
+	};
+
+	useEffect(()=>{
+		getUserData().then(snapshot=>console.log(snapshot.val()));
+	},[])
+	
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log({ username, email, password });
+		const handle =firstName.toLowerCase()
+		console.log({ handle,firstName, lastName, username, email, password });
+		createUserHandle({ handle,  firstName, lastName, username, email, password, likedPosts: {} })
+        setFirstName('');
+        setLastName('')
+        setUsername('');
 		setEmail('');
-		setUsername('');
 		setPassword('');
 	};
+
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] flex flex-col items-center justify-center z-20 pb-44">
 			<h1 className="text-[#F7AB0A] text-4xl pb-16 ">Create an account</h1>
@@ -34,12 +75,12 @@ const Register = () => {
 					/>
 					<input
 						className="bg-[rgb(30,30,30)] p-2 mb-15 ml-2 w-fit text-gray-400"
-						type="email"
+						type="text"
+						id='lastName'
 						required
 						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
-						id='lastName'
 						placeholder="Last Name"
+						onChange={(e) => setLastName(e.target.value)}
 					/>
 				</div>
 				<input
