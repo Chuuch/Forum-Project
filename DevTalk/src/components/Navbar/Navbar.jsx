@@ -4,7 +4,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../config/firebase-config';
 import Notification from '../Notification/Notification';
 import SearchBar from '../SearchBar/SearchBar';
-import { useEffect } from 'react';
 
 const Navbar = () => {
 	const [ user ] = useAuthState(auth);
