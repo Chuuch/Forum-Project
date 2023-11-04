@@ -1,8 +1,7 @@
-import { createUserWithEmailAndPassword } from '@firebase/auth';
-import { get, ref, set } from 'firebase/database';
+import { registerUser } from '../../services/auth.services';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { auth, database } from '../../config/firebase-config';
+
 
 const Register = () => {
 	const [firstName, setFirstName] = useState('');
@@ -11,29 +10,7 @@ const Register = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword ] = useState('');
 	
-	const registerUser = async (handle, firstName, lastName, username, email, password) => {
-		console.log(auth)
-		
-		await createUserWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				// Signed up 
-				console.log(userCredential)
-				const user = userCredential.user;
-				set(ref(database, `users/${handle}`), {
-				uid: user?.uid, firstName, lastName, username, email, password, likedPosts: {},
-				createdOn: Date.now(),
-				});
-				// TODO: To be removed later
-				console.log('User created: ', get(ref(database, `users/${handle}`)))
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				// TODO: To be removed later or replaced with notification
-				alert(errorCode)
-				console.log(errorCode, errorMessage)
-			});
-	};
+
 	
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -64,6 +41,7 @@ const Register = () => {
 						value={firstName}
 						placeholder="First Name"
 						onChange={(e) => setFirstName(e.target.value)}
+						// pattern='[A-Za-z]{3,}'
 					/>
 					<input
 						className="bg-[rgb(30,30,30)] p-2 mb-15 ml-2 w-fit text-gray-400"
