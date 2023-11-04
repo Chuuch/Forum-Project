@@ -1,54 +1,46 @@
+import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { get, ref, set } from 'firebase/database';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { get, orderByChild, ref, set } from 'firebase/database';
-import { database } from '../../config/firebase-config';
-import {auth} from '../../config/firebase-config';
+import { auth, database } from '../../config/firebase-config';
 
 const Register = () => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
-	const [ password, setPassword ] = useState('');
+	const [password, setPassword ] = useState('');
 	
-	const createUserHandle = (handle, firstName, lastName, username, email, password) => {
+	const registerUser = async (handle, firstName, lastName, username, email, password) => {
 		console.log(auth)
-
-		auth.createUserWithEmailAndPassword(email, password)
+		
+		await createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				// Signed up 
 				console.log(userCredential)
 				const user = userCredential.user;
-				console.log('User created: ', user)
-				// ...
+				set(ref(database, `users/${handle}`), {
+				uid: user?.uid, firstName, lastName, username, email, password, likedPosts: {},
+				createdOn: Date.now(),
+				});
+				// TODO: To be removed later
+				console.log('User created: ', get(ref(database, `users/${handle}`)))
 			})
 			.catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
+				// TODO: To be removed later or replaced with notification
+				alert(errorCode)
 				console.log(errorCode, errorMessage)
 			});
-		
-		// TODO: add user to database
-		
-		// return set(ref(database, `users/${handle}`), {
-		// 	firstName, lastName, username, email, password,
-		// 	createdOn: Date.now(),
-		// });
 	};
-
-	const getUserData = () => {
-		return get(ref(database, 'users'), orderByChild('uid'));
-	};
-
-	useEffect(()=>{
-		getUserData().then(snapshot=>console.log(snapshot.val()));
-	},[])
 	
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const handle =firstName.toLowerCase()
-		console.log({ handle,firstName, lastName, username, email, password });
-		createUserHandle({ handle,  firstName, lastName, username, email, password, likedPosts: {} })
+		const handle = firstName.toLowerCase()
+	
+		registerUser(handle, firstName, lastName, username, email, password)
+	
         setFirstName('');
         setLastName('')
         setUsername('');
