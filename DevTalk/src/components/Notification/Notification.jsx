@@ -21,9 +21,9 @@ const Notification = () => {
             {showNotifications && (
                 <div className="absolute mt-10 z-50 rounded-sm">
                     <ul className="bg-[rgb(30,30,30)] text-gray-400 border border-[#F7AB0A] z-50 rounded-sm">
-                        <li className="p-3 hover:bg-[#F7AB0A] hover:text-[rgb(36,36,36)]">CodeAddict replied to your thread.</li>
-                        <li className="p-3 hover:bg-[#F7AB0A] hover:text-[rgb(36,36,36)]">DevMonkey liked your comment.</li>
-                        <li className="p-3 hover:bg-[#F7AB0A] hover:text-[rgb(36,36,36)]">CodeNinja liked your thread.</li>
+                        <li className="p-3 hover:text-[#F7AB0A] cursor-pointer">CodeAddict replied to your thread.</li>
+                        <li className="p-3 hover:text-[#F7AB0A] cursor-pointer">DevMonkey liked your comment.</li>
+                        <li className="p-3 hover:text-[#F7AB0A] cursor-pointer">CodeNinja liked your thread.</li>
                     </ul>
                 </div>
             )}
