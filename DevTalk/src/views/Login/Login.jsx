@@ -1,34 +1,43 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { get,  ref, orderByChild, set,  } from 'firebase/database';
-import { database } from '../../config/firebase-config';
-
-//  const getUserByHandle = (handle) => {
-//   return get(ref(db, `users/${handle}`));
-// };
-
-// this should be in Register.jsx
- const createUserHandle = (handle, uid, email) => {
-  return set(ref(database, `users/${handle}`), {
-    uid,
-    email,
-    createdOn: Date.now(),
-  });
-};
+import { Link, useNavigate } from 'react-router-dom';
+import { get,  ref, orderByChild } from 'firebase/database';
+import { auth, database } from '../../config/firebase-config';
+import { signInWithEmailAndPassword } from '@firebase/auth';
 
 const getUserData = () => {
   return get(ref(database, 'users'), orderByChild('uid'));
-
 };
 
 const Login = () => {
 	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [ password, setPassword ] = useState('');
+	const navigate = useNavigate()
+	
+	const loginUser = async (email, password) => {
+	console.log(auth)
+	
+	await signInWithEmailAndPassword(auth, email, password)
+		.then((userCredential) => {
+			// Signed up 
+			console.log(userCredential)
+			const user = userCredential.user;
+			navigate('/')
+			// TODO: To be removed later
+			console.log('User login: ', user)
+		})
+		.catch((error) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			// TODO: To be removed later or replaced with notification
+			alert(errorCode)
+			console.log(errorCode, errorMessage)
+		});
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log({ email, password });
-		createUserHandle('georgi','mail','pass');
+		loginUser(email, password);
 		setEmail('');
 		setPassword('');
 	};

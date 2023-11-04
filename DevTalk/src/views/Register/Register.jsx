@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { get, ref, set } from 'firebase/database';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth, database } from '../../config/firebase-config';
 
 const Register = () => {
@@ -10,7 +10,8 @@ const Register = () => {
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword ] = useState('');
-	
+	const navigate = useNavigate()
+
 	const registerUser = async (handle, firstName, lastName, username, email, password) => {
 		console.log(auth)
 		
@@ -23,6 +24,7 @@ const Register = () => {
 				uid: user?.uid, firstName, lastName, username, email, password, likedPosts: {},
 				createdOn: Date.now(),
 				});
+				navigate('/')
 				// TODO: To be removed later
 				console.log('User created: ', get(ref(database, `users/${handle}`)))
 			})
@@ -63,7 +65,8 @@ const Register = () => {
 						required
 						value={firstName}
 						placeholder="First Name"
-						onChange={(e) => setFirstName(e.target.value)}
+						onChange={ (e) => setFirstName(e.target.value) }
+						pattern='[A-Za-z]{3,}'
 					/>
 					<input
 						className="bg-[rgb(30,30,30)] p-2 mb-15 ml-2 w-fit text-gray-400"
