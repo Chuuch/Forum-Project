@@ -24,6 +24,9 @@ const Register = () => {
 				uid: user?.uid, firstName, lastName, username, email, password, likedPosts: {},
 				createdOn: Date.now(),
 				});
+				set(ref(database, `admins/${user?.uid}`), {
+				'isAdmin':false, 
+				});
 				navigate('/')
 				// TODO: To be removed later
 				console.log('User created: ', get(ref(database, `users/${handle}`)))
