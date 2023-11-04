@@ -8,7 +8,7 @@ import Trending from './views/Trending/Trending';
 import Login from './views/Login/Login';
 import Register from './views/Register/Register';
 import NotFound from './views/NotFound/NotFound';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './config/firebase-config.js';
 import Csharp from './views/Categories/Csharp.jsx';
@@ -25,9 +25,12 @@ function App() {
 		userData: false,
 	});
 
+	useEffect(() => { 
 	if (appState.user !== user) {
 		setAppState({ user });
-	}
+		// TODO: To be removed later
+		console.log(`Current user: ${user}`)
+	}	},[appState.user, user])
 
 	return (
 		<div className="bg-[rgb(36,36,36)] z-0">

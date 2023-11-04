@@ -40,8 +40,8 @@ const Register = () => {
 						required
 						value={firstName}
 						placeholder="First Name"
-						onChange={(e) => setFirstName(e.target.value)}
-						// pattern='[A-Za-z]{3,}'
+						onChange={ (e) => setFirstName(e.target.value) }
+						pattern='[A-Za-z]{3,}'
 					/>
 					<input
 						className="bg-[rgb(30,30,30)] p-2 mb-15 ml-2 w-fit text-gray-400"
