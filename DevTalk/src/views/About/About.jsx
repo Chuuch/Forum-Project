@@ -10,7 +10,7 @@ const About = () => {
 					The Dev Team
 				</h1>
 				<div className="w-full flex space-x-5 p-10 justify-evenly z-20 mb-16">
-					<CardJoro className="text-gray-400" />
+					<CardJoro />
 					<CardDani />
 					<CardZheko />
 				</div>
