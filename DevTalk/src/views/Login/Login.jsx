@@ -1,5 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { get,  ref, orderByChild, set,  } from 'firebase/database';
+import { database } from '../../config/firebase-config';
+
+//  const getUserByHandle = (handle) => {
+//   return get(ref(db, `users/${handle}`));
+// };
+
+// this should be in Register.jsx
+ const createUserHandle = (handle, uid, email) => {
+  return set(ref(database, `users/${handle}`), {
+    uid,
+    email,
+    createdOn: Date.now(),
+  });
+};
+
+const getUserData = () => {
+  return get(ref(database, 'users'), orderByChild('uid'));
+
+};
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -8,9 +28,14 @@ const Login = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log({ email, password });
+		createUserHandle('georgi','mail','pass');
 		setEmail('');
 		setPassword('');
 	};
+
+	useEffect(()=>{
+        getUserData().then(snapshot=>console.log(snapshot.val()));
+	},[])
 
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] flex flex-col items-center justify-center z-20 pb-44">
