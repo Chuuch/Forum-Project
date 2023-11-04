@@ -10,7 +10,7 @@ export const createPost = (postId, title, author, content) => {
         title: title,
         author: author,
         content: content,
-        createdOn: Date.now()
+        createdAt: Date.now()
     })
 }
 
