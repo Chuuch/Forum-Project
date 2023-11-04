@@ -65,7 +65,7 @@ const Login = () => {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 				<button className="block p-15 h-10 w-32 hover:scale-105 uppercase outline-none border-none rounded text-1xl font-bold text-[rgb(36,36,36)] bg-[#F7AB0A]">
-					SIGN IN
+					LOG IN
 				</button>
 				<p className="text-gray-400 text-1xl">
 					Don`t have an account?{' '}

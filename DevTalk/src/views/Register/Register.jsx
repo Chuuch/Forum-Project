@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const Register = () => {
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -17,9 +19,29 @@ const Register = () => {
 		<div className="h-screen bg-[rgb(36,36,36)] flex flex-col items-center justify-center z-20 pb-44">
 			<h1 className="text-[#F7AB0A] text-4xl pb-16 ">Create an account</h1>
 			<form
-				className="z-20 flex flex-col w-1/5 space-y-2"
+				className="z-20 flex flex-col w-fit space-y-2"
 				onSubmit={handleSubmit}
 			>
+				<div className="flex space-x-2">
+					<input
+						className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400"
+						type="text"
+						id='firstName'
+						required
+						value={firstName}
+						placeholder="First Name"
+						onChange={(e) => setFirstName(e.target.value)}
+					/>
+					<input
+						className="bg-[rgb(30,30,30)] p-2 mb-15 ml-2 w-fit text-gray-400"
+						type="email"
+						required
+						value={lastName}
+						onChange={(e) => setLastName(e.target.value)}
+						id='lastName'
+						placeholder="Last Name"
+					/>
+				</div>
 				<input
 					className="bg-[rgb(30,30,30)] text-gray-400 p-2 mb-15"
 					type="text"
