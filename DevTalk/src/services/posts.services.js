@@ -1,16 +1,22 @@
-import { get, set, ref } from 'firebase/database';
-import { db } from '../config/firebase-config';
+import { ref, push,  } from 'firebase/database';
+import { auth, database } from '../config/firebase-config';
 
-export const getPostById = (postId) => {
-    return get(ref(db, `posts/${postId}`))
-};
+// export const getPostById = (postId) => {
+//     return get(ref(database, `posts/${postId}`))
+// };
 
-export const createPost = (postId, title, author, content) => {
-    return set(ref(db, `posts/${postId}`), {
-        title: title,
-        author: author,
-        content: content,
-        createdAt: Date.now()
-    })
-}
+   export const createPost = async (title, postContent) => {
+
+    const newPostKey = ref(database, ).key;
+    
+        await push(ref(database, `posts/${newPostKey}`), {
+            title: title,
+            postContent: postContent,
+            author: auth.currentUser.uid,
+            likedBy:'',
+            repliedBy:'',
+            createdAt: Date.now()
+        })
+
+    }
 
