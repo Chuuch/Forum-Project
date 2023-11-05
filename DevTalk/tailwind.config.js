@@ -15,5 +15,6 @@ export default {
     // eslint-disable-next-line no-undef
     require('tailwind-scrollbar'),
   ],
+  darkMode: 'class',
 }
 

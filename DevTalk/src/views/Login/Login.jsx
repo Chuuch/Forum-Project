@@ -54,15 +54,15 @@ const Login = () => {
 	},[])
 
 	return (
-		<div className="h-screen bg-[rgb(36,36,36)] flex flex-col items-center justify-center z-20 pb-44">
-			<h1 className="text-[#F7AB0A] text-4xl pb-16 ">Log into your account</h1>
+		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-20 pb-44">
+			<h1 className="text-[#F7AB0A] text-4xl pb-16 dark:text-[#001440] z-20">Log into your account</h1>
 			{errorMessage && <span className="text-red-500 pb-10">{errorMessage}</span>}
 			<form
 				className="z-20 flex flex-col w-1/5 space-y-2"
 				onSubmit={handleSubmit(onSubmit)}
 			>
 				<input
-					className="bg-[rgb(30,30,30)] text-gray-400 p-2 mb-15"
+					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
 					type="text"
 					name="email"
 					id="email"
@@ -79,7 +79,7 @@ const Login = () => {
 				/>
 				{errors.email && <span className="text-red-500">{errors.email.message}</span>}
 				<input
-					className="bg-[rgb(30,30,30)] text-gray-400 p-2 mb-15"
+					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
 					type="password"
 					name="password"
 					id="password"
@@ -96,17 +96,17 @@ const Login = () => {
 				/>
 				{errors.password && <span className="text-red-500">{errors.password.message}</span>}
 
-				<button className="block p-15 h-10 w-32 hover:scale-105 uppercase outline-none border-none rounded text-1xl font-bold text-[rgb(36,36,36)] bg-[#F7AB0A]" type='submit'>
+				<button className="block p-15 h-10 w-32 hover:scale-105 uppercase outline-none border-none rounded text-1xl font-bold text-[rgb(36,36,36)] bg-[#F7AB0A] dark:bg-teal-200 dark:text-[#001440]" type='submit'>
 					LOG IN
 				</button>
-				<p className="text-gray-400 text-1xl">
+				<p className="text-gray-400 text-1xl dark:text-[#001440]">
 					Don`t have an account?{' '}
-					<Link to="/register" className="text-[#F7AB0A]">
+					<Link to="/register" className="text-[#F7AB0A] dark:text-teal-200 hover:underline">
 						Create one
 					</Link>
 				</p>
 			</form>
-			<div className="w-full absolute -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 z-1"></div>
+			<div className="w-full absolute -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70 z-1"></div>
 		</div>
 	);
 };

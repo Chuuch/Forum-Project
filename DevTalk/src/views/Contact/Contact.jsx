@@ -7,8 +7,8 @@ const Contact = () => {
 	};
 
 	return (
-		<div className="h-screen bg-[rgb(36,36,36)] flex flex-col items-center justify-center z-30">
-			<h1 className="flex items-center justify-center m-15 text-[#F7AB0A] text-4xl pb-16">
+		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-30">
+			<h1 className="flex items-center justify-center m-15 text-[#F7AB0A] dark:text-[#001440] dark:z-40 text-4xl pb-16">
 				Contact Us
 			</h1>
 			<form
@@ -19,13 +19,13 @@ const Contact = () => {
 					<input
 						{...register('name')}
 						placeholder="Name"
-						className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400"
+						className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400 dark:bg-[#001440]"
 						type="text"
 					/>
 					<input
 						{...register('email')}
 						placeholder="Email"
-						className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400"
+						className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400 dark:bg-[#001440]"
 						type="email"
 					/>
 				</div>
@@ -33,24 +33,24 @@ const Contact = () => {
 				<input
 					{...register('subject')}
 					placeholder="Subject"
-					className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400"
+					className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400 dark:bg-[#001440]"
 					type="text"
 				/>
 
 				<textarea
 					{...register('message')}
 					placeholder="Message"
-					className="bg-[rgb(30,30,30)] p-2 text-gray-400"
+					className="bg-[rgb(30,30,30)] p-2 text-gray-400 dark:bg-[#001440]"
 				/>
 
 				<button
 					type="submit"
-					className="bg-[#F7AB0A] py-5 px-10 rounded-md text-[rgb(36,36,36)] font-bold text-lg hover:scale-105"
+					className="bg-[#F7AB0A] dark:bg-teal-200 py-5 px-10 rounded-md text-[rgb(36,36,36)] dark:text-[#001440] font-bold text-lg hover:scale-105"
 				>
 					Submit
 				</button>
 			</form>
-			<div className="w-full absolute -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 z-1"></div>
+			<div className="w-full absolute -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70 z-1"></div>
 		</div>
 	);
 };

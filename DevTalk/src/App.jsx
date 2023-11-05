@@ -33,7 +33,7 @@ function App() {
 	}	},[appState.user, user])
 
 	return (
-		<div className="bg-[rgb(36,36,36)] z-0">
+		<div className="bg-[rgb(36,36,36)] z-0 dark:bg-white">
 			<BrowserRouter>
 				<Navbar />
 				<Routes>
