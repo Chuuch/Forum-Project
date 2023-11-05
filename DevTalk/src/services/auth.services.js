@@ -14,6 +14,9 @@ export const registerUser = async (handle, firstName, lastName, username, email,
             uid: user?.uid, firstName, lastName, username, email, likedPosts: {},
             createdOn: Date.now(),
             });
+            set(ref(database, `admins/${user?.uid}`), {
+			'isAdmin':false, 
+			});
             // TODO: To be removed later
             console.log('User created: ', get(ref(database, `users/${handle}`)))
         })
