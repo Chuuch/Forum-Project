@@ -5,20 +5,10 @@ import { auth } from '../../config/firebase-config';
 import Notification from '../Notification/Notification';
 import SearchBar from '../SearchBar/SearchBar';
 import DarkModeToggle from '../DarkMode/DarkModeToggle';
+import { logoutUser } from '../../services/auth.services';
 
 const Navbar = () => {
 	const [user] = useAuthState(auth);
-
-	const logoutUser = async () => {
-		await auth
-			.signOut()
-			.then((res) => {
-				console.log(res);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
 
 	return (
 		<header className="sticky top-0 flex flex-row items-center justify-between p-5 font-space z-20">
