@@ -51,6 +51,12 @@ const Navbar = () => {
 					Trending
 				</NavLink>
 				<NavLink
+					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-40 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 items-center inline-flex justify-center top-0 hover:scale-110"
+					to="/createpost"
+				>
+					Create post
+				</NavLink>
+				<NavLink
 					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 items-center inline-flex justify-center top-0 hover:scale-110"
 					to="/contact"
 				>

@@ -17,6 +17,7 @@ import C from './views/Categories/C.jsx';
 import JavaScript from './views/Categories/JavaScript.jsx';
 import Python from './views/Categories/Python.jsx';
 import TypeScript from './views/Categories/Typescript.jsx';
+import CreatePost from './views/CreatePost/CreatePost.jsx';
 
 function App() {
 	const [user] = useAuthState(auth);
@@ -41,6 +42,7 @@ function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/trending" element={<Trending />} />
+					<Route path='/createpost' element={<CreatePost />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
 					<Route path='*' element={<NotFound/>}/>
