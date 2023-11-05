@@ -1,57 +1,62 @@
-import { registerUser } from '../../services/auth.services';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { registerUser } from '../../services/auth.services';
+import { emailPattern, namePattern, passwordPattern, usernamePattern } from '../../constants/const';
 
 const Register = () => {
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [username, setUsername] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword ] = useState('');
-	
+	const [ errorMessage, setErrorMessage ] = useState(null)
+	const { register, handleSubmit, formState: { errors }, reset } = useForm();
+	const navigate = useNavigate();
 
-	
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		const handle = firstName.toLowerCase()
-	
-		registerUser(handle, firstName, lastName, username, email, password)
-	
-        setFirstName('');
-        setLastName('')
-        setUsername('');
-		setEmail('');
-		setPassword('');
+	const onSubmit = async ({ firstName, lastName, username, email, password }) => {
+		
+		const data = await registerUser(firstName, lastName, username, email, password/* , role: 'user' */)
+		if (data?.user) {
+			navigate('/')
+		} else if (data.error) {
+			setErrorMessage(data.error)
+		}
+		reset({keepErrors: false})
 	};
 
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-20 pb-44">
 			<h1 className="text-[#F7AB0A] dark:text-[#001440] z-20 text-4xl pb-16 ">Create an account</h1>
+			{errorMessage && <span className="text-red-500 pb-10">{errorMessage}</span>}
 			<form
 				className="z-20 flex flex-col w-fit space-y-2"
-				onSubmit={handleSubmit}
+				onSubmit={handleSubmit(onSubmit)}
 			>
 				<div className="flex space-x-2">
 					<input
 						className="bg-[rgb(30,30,30)] dark:bg-[#001440] p-2 mb-15 text-gray-400"
 						type="text"
 						id='firstName'
-						required
-						value={firstName}
 						placeholder="First Name"
-						onChange={ (e) => setFirstName(e.target.value) }
-						pattern='[A-Za-z]{3,}'
+					{...register('firstName', {
+						required: 'First name is required',
+						pattern: {
+						value: namePattern,
+						message: 'Invalid first name',
+						},
+					}) }
 					/>
+					{errors.firstName && <span className="text-red-500">{errors.firstName.message}</span>}
 					<input
 						className="bg-[rgb(30,30,30)] dark:bg-[#001440] p-2 mb-15 ml-2 w-fit text-gray-400"
 						type="text"
 						id='lastName'
-						required
-						value={lastName}
 						placeholder="Last Name"
-						onChange={(e) => setLastName(e.target.value)}
+						{ ...register('lastName', {
+						required: 'Last name is required',
+						pattern: {
+						value: namePattern,
+						message: 'Invalid last name',
+						},
+					}) }						
 					/>
+					{errors.lastName && <span className="text-red-500">{errors.lastName.message}</span>}
 				</div>
 				<input
 					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
@@ -59,30 +64,45 @@ const Register = () => {
 					name="username"
 					id="username"
 					placeholder="Username"
-					required
-					value={username}
-					onChange={(e) => setUsername(e.target.value)}
+					{ ...register('username', {
+					required: 'Username is required',
+					pattern: {
+					value: usernamePattern,
+					message: 'Invalid username',
+					},
+				}) }
 				/>
+				{errors.username && <span className="text-red-500">{errors.username.message}</span>}
 				<input
 					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
 					type="text"
 					name="email"
 					id="email"
 					placeholder="Email"
-					required
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
+					{ ...register('email', {
+					required: 'Email address is required',
+					pattern: {
+					value: emailPattern,
+					message: 'Invalid email address',
+					},
+				}) }
 				/>
+				{errors.email && <span className="text-red-500">{errors.email.message}</span>}
 				<input
 					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
 					type="password"
 					name="password"
 					id="password"
 					placeholder="Password"
-					required
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
+					{ ...register('password', {
+					required: 'Password is required',
+					pattern: {
+					value: passwordPattern,
+					message: 'Invalid password',
+					},
+				}) }
 				/>
+				{errors.password && <span className="text-red-500">{errors.password.message}</span>}
 				<button className="block p-15 h-10 w-32 hover:scale-105 uppercase outline-none border-none rounded text-1xl font-bold text-[rgb(36,36,36)] bg-[#F7AB0A] dark:bg-teal-200 dark:text-[#001440]">
 					REGISTER
 				</button>
