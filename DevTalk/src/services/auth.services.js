@@ -11,9 +11,10 @@ export const registerUser = async (firstName, lastName, username, email, passwor
             uid: user?.uid, firstName, lastName, username, email, likedPosts: {},
             createdOn: Date.now(),
         });
-        set(ref(database, `admins/${user?.uid}`), {
-            'isAdmin': false,
-        });
+        // Admins will be handled in the DB for now
+        // set(ref(database, `admins/${user?.uid}`), {
+        //     'isAdmin': false,
+        // });
         return { user: user?.uid }
     } catch (error) {
         const errorMessage = error.message;
