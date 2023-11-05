@@ -1,57 +1,30 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { get,  ref, orderByChild } from 'firebase/database';
-import { auth, database } from '../../config/firebase-config';
-import { signInWithEmailAndPassword } from '@firebase/auth';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginUser } from '../../services/auth.services';
+import { emailPattern, passwordPattern } from '../../constants/const';
 
-const getUserData = () => {
-  return get(ref(database, 'users'), orderByChild('uid'));
-};
-const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+// const getUserData = () => {
+//   return get(ref(database, 'users'), orderByChild('uid'));
+// };
 
 const Login = () => {
-	// const [email, setEmail] = useState('');
-	// const [ password, setPassword ] = useState('');
-		const [ errorMessage, setErrorMessage ] = useState(null)
-
+	const [ errorMessage, setErrorMessage ] = useState(null)
 	const navigate = useNavigate();
-	const { register, handleSubmit, formState: { errors }, getValues  } = useForm();
-
-	const loginUser = async (email, password) => {
-	console.log(auth)
+	const { register, handleSubmit, formState: { errors } } = useForm();
 	
-	await signInWithEmailAndPassword(auth, email, password)
-		.then((userCredential) => {
-			// Signed up 
-			console.log(userCredential)
-			const user = userCredential.user;
+	const onSubmit = async ({ email, password }) => {
+		const data = await loginUser(email, password)
+		if (data.user) {
 			navigate('/')
-			// TODO: To be removed later
-			console.log('User login: ', user)
-		})
-		.catch((error) => {
-			const errorCode = error.code;
-			const errorMessage = error.message;
-			if (errorCode === 'auth/invalid-login-credentials') {
-				setErrorMessage('Please check your credentials.')
-			}
-			// TODO: To be removed later or replaced with notification
-			alert(errorCode)
-			console.log(errorCode, errorMessage)
-		});
-	};
-		console.log(getValues('email'), getValues('password'))
+		} else if (data.error) {
+			setErrorMessage(data.error)
+		}
+	}
 
-	const onSubmit = () => {
-		loginUser(getValues('email'), getValues('password'));
-		// setEmail('');
-		// setPassword('');
-	};
-
-	useEffect(()=>{
-        getUserData().then(snapshot=>console.log(snapshot.val()));
-	},[])
+	// useEffect(()=>{
+    //     getUserData().then(snapshot=>console.log(snapshot.val()));
+	// },[])
 
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-20 pb-44">
@@ -74,8 +47,6 @@ const Login = () => {
 						message: 'Invalid email address',
 						},
 					}) }
-					// value={ email }
-					// onChange={(e) => setEmail(e.target.value)}
 				/>
 				{errors.email && <span className="text-red-500">{errors.email.message}</span>}
 				<input
@@ -86,13 +57,11 @@ const Login = () => {
 					placeholder="Password"
 					{ ...register('password', {
 						required: 'Password is required',
-						minLength: {
-							value: 6,
-							message: 'Password must be at least 6 characters',
-							},
+						pattern: {
+						value: passwordPattern,
+						message: 'Invalid password',
+						},
 					}) }
-					// value={ password }
-					// onChange={(e) => setPassword(e.target.value)}
 				/>
 				{errors.password && <span className="text-red-500">{errors.password.message}</span>}
 
