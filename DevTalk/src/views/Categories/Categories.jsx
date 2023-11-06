@@ -18,12 +18,12 @@ const Categories = () => {
 				<div className="absolute mt-24 z-50 pb-10">
 					<ul className="inline-flex bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 border border-[#F7AB0A] dark:border-teal-200 z-50 rounded-md">
 						<NavLink to="/c">
-							<li className="p-4 flex flex-row justify-center items-center hover:bg-[#F7AB0A] dark:hover:bg-teal-200 hover:text-[rgb(36,36,36)]">
+							<li className="p-4 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200 hover:bg-[rgb(30,30,30)] dark:hover:bg-[#001440]">
 								<img src="/icons/c.png" alt="c" className="w-8 h-8 p-1" />C
 							</li>
 						</NavLink>
 						<NavLink to="/csharp">
-							<li className="p-4 flex flex-row justify-center items-center hover:bg-[#F7AB0A] dark:hover:bg-teal-200 hover:text-[rgb(36,36,36)]">
+							<li className="p-4 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200 hover:bg-[rgb(30,30,30)] dark:hover:bg-[#001440]">
 								<img
 									src="/icons/csharp.png"
 									alt="csharp"
@@ -33,7 +33,7 @@ const Categories = () => {
 							</li>
 						</NavLink>
 						<NavLink to="/java">
-							<li className="p-3 flex flex-row justify-center items-center hover:bg-[#F7AB0A] dark:hover:bg-teal-200 hover:text-[rgb(36,36,36)]">
+							<li className="p-3 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200 dark:hover:bg-[#001440] hover:bg-[rgb(30,30,30)]">
 								<img
 									src="/icons/java.png"
 									alt="java"
@@ -43,13 +43,13 @@ const Categories = () => {
 							</li>
 						</NavLink>
 						<NavLink to="javascript">
-							<li className="p-4 flex flex-row justify-center items-center hover:bg-[#F7AB0A] dark:hover:bg-teal-200 hover:text-[rgb(36,36,36)]">
+							<li className="p-4 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200 dark:hover:bg-[#001440] hover:bg-[rgb(30,30,30)]">
 								<img src="/icons/js.png" alt="js" className="w-8 h-8 p-1" />
 								JavaScript
 							</li>
 						</NavLink>
 						<NavLink to="/python">
-							<li className="p-4 flex flex-row justify-center items-center hover:bg-[#F7AB0A] dark:hover:bg-teal-200 hover:text-[rgb(36,36,36)]">
+							<li className="p-4 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200 dark:hover:bg-[#001440] hover:bg-[rgb(30,30,30)]">
 								<img
 									src="/icons/python.png"
 									alt="python"
@@ -59,7 +59,7 @@ const Categories = () => {
 							</li>
 						</NavLink>
 						<NavLink to="/typescript">
-							<li className="p-4 flex flex-row justify-center items-center hover:bg-[#F7AB0A] dark:hover:bg-teal-200 hover:text-[rgb(36,36,36)]">
+							<li className="p-4 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200 dark:hover:bg-[#001440] hover:bg-[rgb(30,30,30)]">
 								<img src="/icons/ts.png" alt="ts" className="w-8 h-8 p-1" />
 								Typescript
 							</li>
