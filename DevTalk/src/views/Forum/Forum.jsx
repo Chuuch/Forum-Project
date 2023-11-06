@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { get, ref } from 'firebase/database';
 import { database } from '../../config/firebase-config';
+import { motion } from 'framer-motion';
 
 const Forum = () => {
 	const [postLists, setPostsLists] = useState([]);
@@ -26,7 +27,12 @@ const Forum = () => {
 			<h1 className="flex items-center justify-center m-15 text-[#F7AB0A] dark:text-[#001440] dark:z-40 text-4xl pb-16">
 				Forum
 			</h1>
-			<div className="flex flex-col z-20 space-y-4">
+			<motion.div
+			initial={{ y: -300, opacity: 0 }}
+			transition={{ duration: 1.5 }}
+			whileInView={{ opacity: 1, y: 0}}
+			viewport={{ once: true }}
+			className="flex flex-col z-20 space-y-4">
 				{postLists.map((post, index) => (
 					<div
 						key={index}
@@ -43,7 +49,7 @@ const Forum = () => {
 						</p>
 					</div>
 				))}
-			</div>
+			</motion.div>
 
 			<div className="w-full fixed -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70 z-1"></div>
 		</div>

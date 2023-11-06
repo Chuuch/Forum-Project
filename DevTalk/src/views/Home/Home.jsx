@@ -1,5 +1,6 @@
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Home = () => {
 	const [text] = useTypewriter({
@@ -18,7 +19,12 @@ const Home = () => {
 				<span className="mr-3">{text}</span>
 				<Cursor />
 			</h1>
-			<h2 className="text-3xl mb-10 text-[#F7AB0A] dark:text-[#001440] z-20">
+			<motion.div
+			className='z-20 flex flex-col justify-center'
+			initial={{ y: -300, opacity: 0 }}
+			transition={{ duration: 1.5 }}
+			whileInView={{ opacity: 1, y: 0}}>
+			<h2 className="text-3xl mb-10 text-[#F7AB0A] dark:text-[#001440] z-20 flex justify-center">
 				Select a category to view threads
 			</h2>
 			<ul className="inline-flex text-gray-400 dark:text-[#001440] z-50 rounded-md text-2xl">
@@ -70,6 +76,7 @@ const Home = () => {
 							</li>
 						</NavLink>
 					</ul>
+					</motion.div>
 			<div className="z-10 text-[#F7AB0A] dark:text-[] mt-10 text-2xl p-15">
 			<div className="flex flex-row justify-center items-start z-40 cursor-pointer">
 				<div className="absolute mt-24 z-50 pb-10">
