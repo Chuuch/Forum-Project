@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import { createPost } from '../../services/posts.services';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [postContent, setPostContent] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
+        try{
         e.preventDefault();
-        await createPost(title, postContent);
-      };
+        await createPost(title, postContent)
+        .then(alert('Post created successfully!'))
+        .then(navigate('/'))
+         } catch(e) {console.log(e.message);
+      }
+    }
 
     return (
         <div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-20">
