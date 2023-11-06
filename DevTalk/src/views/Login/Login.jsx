@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../services/auth.services';
 import { emailPattern, passwordPattern } from '../../constants/const';
 import { toast } from 'react-hot-toast';
+import { motion } from 'framer-motion';
 
 // const getUserData = () => {
 //   return get(ref(database, 'users'), orderByChild('uid'));
@@ -31,6 +32,12 @@ const Login = () => {
 
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-20 pb-44">
+				<motion.div
+				className='z-30 flex flex-col justify-center items-center w-[1800px]'
+				initial={{ y: -300, opacity: 0 }}
+				transition={{ duration: 1.5 }}
+				whileInView={{ opacity: 1, y: 0}}
+				>
 			<h1 className="text-[#F7AB0A] text-4xl pb-16 dark:text-[#001440] z-20">Log into your account</h1>
 			{errorMessage && <span className="text-red-500 pb-10">{errorMessage}</span>}
 			<form
@@ -78,6 +85,7 @@ const Login = () => {
 					</Link>
 				</p>
 			</form>
+			</motion.div>
 			<div className="w-full absolute -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70 z-1"></div>
 		</div>
 	);
