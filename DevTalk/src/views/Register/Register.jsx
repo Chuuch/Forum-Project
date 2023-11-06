@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../../services/auth.services';
 import { emailPattern, namePattern, passwordPattern, usernamePattern } from '../../constants/const';
 import { toast } from 'react-hot-toast';
+import { motion } from 'framer-motion';
 
 const Register = () => {
 	const [ errorMessage, setErrorMessage ] = useState(null)
@@ -26,8 +27,13 @@ const Register = () => {
 	};
 
 	return (
-		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-20 pb-44">
-			<h1 className="text-[#F7AB0A] dark:text-[#001440] z-20 text-4xl pb-16 ">Create an account</h1>
+		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-20 pb-44 mt-16">
+			<motion.div
+			className='z-20' 
+			initial={{ y: -300, opacity: 0 }}
+			transition={{ duration: 1.5 }}
+			whileInView={{ opacity: 1, y: 0}}>
+			<h1 className="flex justify-center text-[#F7AB0A] dark:text-[#001440] z-20 text-4xl pb-16 ">Create an account</h1>
 			{errorMessage && <span className="text-red-500 pb-10">{errorMessage}</span>}
 			<form
 				className="z-20 flex flex-col w-fit space-y-2"
@@ -118,6 +124,7 @@ const Register = () => {
 					</Link>
 				</p>
 			</form>
+			</motion.div>
 			<div className="w-full absolute -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70 z-1"></div>
 		</div>
 	);
