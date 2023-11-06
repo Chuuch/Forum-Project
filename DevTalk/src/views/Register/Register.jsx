@@ -9,6 +9,7 @@ const Register = () => {
 	const { register, handleSubmit, formState: { errors }, reset } = useForm();
 	const navigate = useNavigate();
 
+	//**TODO: Password to be removed */
 	const onSubmit = async ({ firstName, lastName, username, email, password }) => {
 		
 		const data = await registerUser(firstName, lastName, username, email, password/* , role: 'user' */)
