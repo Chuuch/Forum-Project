@@ -17,7 +17,7 @@ const Notification = () => {
 			</div>
 			{showNotifications && (
 				<div className="absolute mt-10 z-50 rounded-sm">
-					<ul className="bg-[rgb(30,30,30)] text-gray-400 border border-[#F7AB0A] dark:bg-[#001440] dark:border-teal-200 z-50 rounded-sm">
+					<ul className="bg-[rgb(30,30,30)] text-gray-400 border border-[#F7AB0A] dark:bg-gray-800 dark:border-teal-200 z-50 rounded-sm">
 						<li className="p-3 hover:text-[#F7AB0A] dark:hover:text-teal-200 cursor-pointer">
 							CodeAddict replied to your thread.
 						</li>

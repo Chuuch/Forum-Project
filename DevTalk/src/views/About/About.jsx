@@ -14,7 +14,7 @@ const About = () => {
 					initial={{ y: -300, opacity: 0 }}
 					transition={{ duration: 1.5 }}
 					whileInView={{ opacity: 1, y: 0}}
-					className="w-full flex space-x-5 p-10 justify-evenly z-20 mb-16"
+					className="w-full flex space-x-5 p-10 justify-evenly z-10 mb-16"
 				>
 					<CardJoro />
 					<CardDani />

@@ -33,7 +33,7 @@ const Login = () => {
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-20 pb-44">
 				<motion.div
-				className='z-30 flex flex-col justify-center items-center w-[1800px]'
+				className='z-30 flex flex-col justify-center items-center w-[1800px] mt-24'
 				initial={{ y: -300, opacity: 0 }}
 				transition={{ duration: 1.5 }}
 				whileInView={{ opacity: 1, y: 0}}

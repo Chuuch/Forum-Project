@@ -23,12 +23,12 @@ const Forum = () => {
 	}, []);
 
 	return (
-		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center">
-			<h1 className="relative top-44 flex justify-center text-[#F7AB0A] dark:text-[#001440] z-1 text-4xl ">
+		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start">
+			<h1 className="fixed flex justify-start text-[#F7AB0A] dark:text-[#001440] z-10 text-4xl mt-10 ">
 				Forum
 			</h1>
 			<div
-			className="flex flex-col z-10 space-y-4 mt-60">
+			className="flex flex-col z-10 space-y-4 mt-32 pb-10">
 				{postLists.map((post, index) => (
 					<motion.div
 					initial={{ y: -300, opacity: 0 }}

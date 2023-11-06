@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createPost } from '../../services/posts.services';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { toast } from 'react-hot-toast';
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
@@ -12,14 +13,14 @@ const CreatePost = () => {
         try{
         e.preventDefault();
         await createPost(title, content)
-        .then(alert('Post created successfully!'))
+        .then(toast.success('Post created successfully!'))
         .then(navigate('/forum'))
          } catch(e) {console.log(e.message);
       }
     }
 
     return (
-        <div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-20">
+        <div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center mt-7 z-20">
             <motion.div
 			className='z-20'
 			initial={{ y: -300, opacity: 0 }}
