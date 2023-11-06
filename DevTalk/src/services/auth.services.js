@@ -8,13 +8,10 @@ export const registerUser = async (firstName, lastName, username, email, passwor
         // Signed up 
         const user = userCredential.user;
         set(ref(database, `users/${user?.uid}`), {
-            uid: user?.uid, firstName, lastName, username, email, likedPosts: {},
+            uid: user?.uid, firstName, lastName, username, email, likedPosts: {}, isAdmin: false,
             createdOn: Date.now(),
         });
-        // Admins will be handled in the DB for now
-        // set(ref(database, `admins/${user?.uid}`), {
-        //     'isAdmin': false,
-        // });
+       
         return { user: user?.uid }
     } catch (error) {
         const errorMessage = error.message;
