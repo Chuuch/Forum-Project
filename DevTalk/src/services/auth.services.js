@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { ref, set } from 'firebase/database';
 import { auth, database } from '../config/firebase-config';
+import { toast } from 'react-hot-toast';
 
 export const registerUser = async (firstName, lastName, username, email, password) => {
     try {
@@ -11,7 +12,7 @@ export const registerUser = async (firstName, lastName, username, email, passwor
             uid: user?.uid, firstName, lastName, username, email, likedPosts: {}, isAdmin: false,
             createdOn: Date.now(),
         });
-       
+        
         return { user: user?.uid }
     } catch (error) {
         const errorMessage = error.message;
@@ -46,8 +47,10 @@ export const loginUser = async (email, password) => {
 export const logoutUser = async () => {
     try {
         await signOut(auth);
+        toast.success('Logout successful!')
         return true
     } catch (error) {
+        toast.error('Something went wrong. Please, try again.')
         return false
     }
 }

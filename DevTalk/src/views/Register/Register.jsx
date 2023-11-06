@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../../services/auth.services';
 import { emailPattern, namePattern, passwordPattern, usernamePattern } from '../../constants/const';
+import { toast } from 'react-hot-toast';
 
 const Register = () => {
 	const [ errorMessage, setErrorMessage ] = useState(null)
@@ -14,8 +15,11 @@ const Register = () => {
 		
 		const data = await registerUser(firstName, lastName, username, email, password/* , role: 'user' */)
 		if (data?.user) {
-			navigate('/')
+			toast.success('Registration successful!')
+            reset()
+            navigate('/')
 		} else if (data.error) {
+			toast.error('Something went wrong! Please try again!')
 			setErrorMessage(data.error)
 		}
 		reset({keepErrors: false})
@@ -31,7 +35,7 @@ const Register = () => {
 			>
 				<div className="flex space-x-2">
 					<input
-						className="bg-[rgb(30,30,30)] dark:bg-[#001440] p-2 mb-15 text-gray-400"
+						className="bg-[rgb(30,30,30)] dark:bg-gray-800 p-2 mb-15 text-gray-400"
 						type="text"
 						id='firstName'
 						placeholder="First Name"
@@ -45,7 +49,7 @@ const Register = () => {
 					/>
 					{errors.firstName && <span className="text-red-500">{errors.firstName.message}</span>}
 					<input
-						className="bg-[rgb(30,30,30)] dark:bg-[#001440] p-2 mb-15 ml-2 w-fit text-gray-400"
+						className="bg-[rgb(30,30,30)] dark:bg-gray-800 p-2 mb-15 ml-2 w-fit text-gray-400"
 						type="text"
 						id='lastName'
 						placeholder="Last Name"
@@ -60,7 +64,7 @@ const Register = () => {
 					{errors.lastName && <span className="text-red-500">{errors.lastName.message}</span>}
 				</div>
 				<input
-					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
+					className="bg-[rgb(30,30,30)] dark:bg-gray-800 text-gray-400 p-2 mb-15"
 					type="text"
 					name="username"
 					id="username"
@@ -75,7 +79,7 @@ const Register = () => {
 				/>
 				{errors.username && <span className="text-red-500">{errors.username.message}</span>}
 				<input
-					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
+					className="bg-[rgb(30,30,30)] dark:bg-gray-800 text-gray-400 p-2 mb-15"
 					type="text"
 					name="email"
 					id="email"
@@ -90,7 +94,7 @@ const Register = () => {
 				/>
 				{errors.email && <span className="text-red-500">{errors.email.message}</span>}
 				<input
-					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
+					className="bg-[rgb(30,30,30)] dark:bg-gray-800 text-gray-400 p-2 mb-15"
 					type="password"
 					name="password"
 					id="password"

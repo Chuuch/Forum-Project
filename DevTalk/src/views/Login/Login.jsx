@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../services/auth.services';
 import { emailPattern, passwordPattern } from '../../constants/const';
+import { toast } from 'react-hot-toast';
 
 // const getUserData = () => {
 //   return get(ref(database, 'users'), orderByChild('uid'));
@@ -15,7 +16,9 @@ const Login = () => {
 	
 	const onSubmit = async ({ email, password }) => {
 		const data = await loginUser(email, password)
+		
 		if (data.user) {
+			toast.success('Login successful!')
 			navigate('/')
 		} else if (data.error) {
 			setErrorMessage(data.error)
@@ -35,7 +38,7 @@ const Login = () => {
 				onSubmit={handleSubmit(onSubmit)}
 			>
 				<input
-					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
+					className="bg-[rgb(30,30,30)] dark:bg-gray-800 text-gray-400 p-2 mb-15"
 					type="text"
 					name="email"
 					id="email"
@@ -50,7 +53,7 @@ const Login = () => {
 				/>
 				{errors.email && <span className="text-red-500">{errors.email.message}</span>}
 				<input
-					className="bg-[rgb(30,30,30)] dark:bg-[#001440] text-gray-400 p-2 mb-15"
+					className="bg-[rgb(30,30,30)] dark:bg-gray-800 text-gray-400 p-2 mb-15"
 					type="password"
 					name="password"
 					id="password"
