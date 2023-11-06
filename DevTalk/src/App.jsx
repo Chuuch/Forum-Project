@@ -18,6 +18,7 @@ import JavaScript from './views/Categories/JavaScript.jsx';
 import Python from './views/Categories/Python.jsx';
 import TypeScript from './views/Categories/Typescript.jsx';
 import CreatePost from './views/CreatePost/CreatePost.jsx';
+import Forum from './views/Forum/Forum.jsx';
 
 function App() {
 	const [user] = useAuthState(auth);
@@ -42,6 +43,7 @@ function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/trending" element={<Trending />} />
+					<Route path="/forum" element={<Forum />} />
 					<Route path='/createpost' element={<CreatePost />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />

@@ -47,6 +47,14 @@ const Navbar = () => {
 				</NavLink>
 				<NavLink
 					className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+						location.pathname === '/forum' ? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]' : ''
+					}`}
+					to="/forum"
+				>
+					Forum
+				</NavLink>
+				<NavLink
+					className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
 						location.pathname === '/createpost' ? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]' : ''
 					}`}
 					to="/createpost"
