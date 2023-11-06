@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 // import { SocialIcon } from 'react-social-icons';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../config/firebase-config';
@@ -9,6 +9,7 @@ import { logoutUser } from '../../services/auth.services';
 
 const Navbar = () => {
 	const [user] = useAuthState(auth);
+	const location = useLocation();
 
 	return (
 		<header className="sticky top-0 flex flex-row items-center justify-between p-5 font-space z-20">
@@ -29,31 +30,41 @@ const Navbar = () => {
 			</div>
 			<div className="pl-28">
 				<NavLink
-					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110"
+					className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+						location.pathname === '/' ? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]' : ''
+					}`}
 					to="/"
 				>
 					Home
 				</NavLink>
 				<NavLink
-					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 items-center inline-flex justify-center top-0 hover:scale-110"
+					className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+						location.pathname === '/trending' ? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]' : ''
+					}`}
 					to="/trending"
 				>
 					Trending
 				</NavLink>
 				<NavLink
-					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-40 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 items-center inline-flex justify-center top-0 hover:scale-110"
+					className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+						location.pathname === '/createpost' ? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]' : ''
+					}`}
 					to="/createpost"
 				>
-					Create post
+					Create Post
 				</NavLink>
 				<NavLink
-					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 items-center inline-flex justify-center top-0 hover:scale-110"
+					className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+						location.pathname === '/contact' ? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]' : ''
+					}`}
 					to="/contact"
 				>
 					Contact
 				</NavLink>
 				<NavLink
-					className="focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 items-center inline-flex justify-center top-0 hover:scale-110"
+					className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+						location.pathname === '/about' ? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]' : ''
+					}`}
 					to="/about"
 				>
 					About
