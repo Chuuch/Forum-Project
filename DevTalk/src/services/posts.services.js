@@ -7,12 +7,12 @@ import { auth, database } from '../config/firebase-config';
 
    export const createPost = async (title, postContent) => {
 
-    const newPostKey = ref(database, ).key;
+    // const newPostKey = ref(database).key;
     
-        await push(ref(database, `posts/${newPostKey}`), {
+        await push(ref(database, `/posts`), {
             title: title,
             postContent: postContent,
-            author: auth.currentUser.uid,
+            author: { name: auth.currentUser, id: auth.currentUser.uid,}, 
             likedBy:'',
             repliedBy:'',
             createdAt: Date.now()
