@@ -8,7 +8,7 @@ const Contact = () => {
 	};
 
 	return (
-		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center z-30">
+		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center mt-7 z-30">
 			<motion.div
 			className='z-20'
 			initial={{ y: -300, opacity: 0 }}
