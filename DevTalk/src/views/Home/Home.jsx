@@ -38,7 +38,7 @@ const Home = () => {
 							</li>
 						</NavLink>
 						<NavLink to="/java">
-							<li className="p-3 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200">
+							<li className="p-4 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200">
 								<img
 									src="/icons/java.png"
 									alt="java"
