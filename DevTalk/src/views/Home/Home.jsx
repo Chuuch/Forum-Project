@@ -14,20 +14,20 @@ const Home = () => {
 	});
 
 	return (
-		<div className="flex flex-col items-center justify-center pb-48 bg-[rgb(36,36,36)] dark:bg-white h-screen font-space space-y-8">
-			<h1 className="text-6xl font-semibold text-[#F7AB0A] p-20 relative dark:text-[#001440] z-20">
+		<div className="flex flex-col items-center justify-center pb-48 bg-[rgb(36,36,36)] dark:bg-white h-screen font-space space-y-4">
+			<h1 className="text-6xl font-semibold text-[#F7AB0A] p-20 mt-24 relative dark:text-[#001440] z-20">
 				<span className="mr-3">{text}</span>
 				<Cursor />
 			</h1>
-			<motion.div
-			className='z-20 flex flex-col justify-center'
-			initial={{ y: -300, opacity: 0 }}
-			transition={{ duration: 1.5 }}
-			whileInView={{ opacity: 1, y: 0}}>
 			<h2 className="text-3xl mb-10 text-[#F7AB0A] dark:text-[#001440] z-20 flex justify-center">
 				Select a category to view threads
 			</h2>
-			<ul className="inline-flex text-gray-400 dark:text-[#001440] z-50 rounded-md text-2xl">
+			<motion.div
+			className='z-20'
+			initial={{ x: -500, opacity: 0, scale: 0.5 }}
+			animate={{ x: 0, opacity: 1, scale: 1 }}
+			transition={{ duration: 1.5 }}>
+			<ul className="inline-flex text-gray-400 dark:text-[#001440] z-20 rounded-md text-2xl">
 						<NavLink to="/c">
 							<li className="p-4 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200">
 								<img src="/icons/c.png" alt="c" className="w-8 h-8 p-1" />C
