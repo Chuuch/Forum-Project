@@ -12,7 +12,7 @@ const Navbar = () => {
 	const location = useLocation();
 
 	return (
-		<header className="sticky top-0 flex flex-row items-center justify-between p-5 font-space z-20">
+		<header className="sticky top-0 flex flex-row items-center justify-between p-5 font-space z-20 ">
 			<div className="flex flex-row items-center justify-center">
 				{/* <img src="/logos/logo2.png" alt="logo image" className="w-[80px] h-[80px] hover:scale-110" /> */}
 				<svg

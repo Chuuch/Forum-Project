@@ -4,15 +4,15 @@ import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
     const [title, setTitle] = useState('');
-    const [postContent, setPostContent] = useState('');
+    const [content, setContent] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         try{
         e.preventDefault();
-        await createPost(title, postContent)
+        await createPost(title, content)
         .then(alert('Post created successfully!'))
-        .then(navigate('/'))
+        .then(navigate('/forum'))
          } catch(e) {console.log(e.message);
       }
     }
@@ -25,7 +25,7 @@ const CreatePost = () => {
             <div className="z-20 flex flex-col w-[400px] text-gray-400 mb-32">
                 <input
                     placeholder="Title"
-                    className="bg-[rgb(30,30,30)] dark:bg-[#001440] p-2"
+                    className="bg-[rgb(30,30,30)] dark:bg-gray-800 p-2"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
@@ -35,9 +35,9 @@ const CreatePost = () => {
                     cols="30"
                     rows="5"
                     placeholder="Post"
-                    className="mt-3 bg-[rgb(30,30,30)] dark:bg-[#001440] p-2"
-                    value={postContent}
-                    onChange={(e) => setPostContent(e.target.value)}
+                    className="mt-3 bg-[rgb(30,30,30)] dark:bg-gray-800 p-2"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                 ></textarea>
                 <button
                     className="bg-[#F7AB0A] dark:bg-teal-200 py-5 px-10 rounded-md text-[rgb(36,36,36)] dark:text-[#001440] font-bold text-lg hover:scale-105 mt-2"

@@ -19,13 +19,13 @@ const Contact = () => {
 					<input
 						{...register('name')}
 						placeholder="Name"
-						className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400 dark:bg-[#001440]"
+						className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400 dark:bg-gray-800"
 						type="text"
 					/>
 					<input
 						{...register('email')}
 						placeholder="Email"
-						className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400 dark:bg-[#001440]"
+						className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400 dark:bg-gray-800"
 						type="email"
 					/>
 				</div>
@@ -33,14 +33,14 @@ const Contact = () => {
 				<input
 					{...register('subject')}
 					placeholder="Subject"
-					className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400 dark:bg-[#001440]"
+					className="bg-[rgb(30,30,30)] p-2 mb-15 text-gray-400 dark:bg-gray-800"
 					type="text"
 				/>
 
 				<textarea
 					{...register('message')}
 					placeholder="Message"
-					className="bg-[rgb(30,30,30)] p-2 text-gray-400 dark:bg-[#001440]"
+					className="bg-[rgb(30,30,30)] p-2 text-gray-400 dark:bg-gray-800"
 				/>
 
 				<button
