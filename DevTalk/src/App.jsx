@@ -19,6 +19,7 @@ import Python from './views/Categories/Python.jsx';
 import TypeScript from './views/Categories/Typescript.jsx';
 import CreatePost from './views/CreatePost/CreatePost.jsx';
 import Forum from './views/Forum/Forum.jsx';
+import Authenticated from './hoc/Authenticated';
 
 function App() {
 	const [user] = useAuthState(auth);
@@ -26,7 +27,7 @@ function App() {
 		user,
 		userData: false,
 	});
-
+	
 	useEffect(() => { 
 	if (appState.user !== user) {
 		setAppState({ user });
@@ -43,17 +44,17 @@ function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/trending" element={<Trending />} />
-					<Route path="/forum" element={<Forum />} />
-					<Route path='/createpost' element={<CreatePost />} />
+					<Route path="/forum" element={<Authenticated><Forum /></Authenticated>} />
+					<Route path='/createpost' element={<Authenticated><CreatePost /></Authenticated>} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
 					<Route path='*' element={<NotFound/>}/>
-					<Route path="/c" element={<C />} />
-					<Route path="/csharp" element={<Csharp />} />
-					<Route path="/java" element={<Java />} />
-					<Route path="/javascript" element={<JavaScript />} />
-					<Route path="/python" element={<Python />} />
-					<Route path="/typescript" element={<TypeScript />} />
+					<Route path="/c" element={<Authenticated><C /></Authenticated>} />
+					<Route path="/csharp" element={<Authenticated><Csharp /></Authenticated>} />
+					<Route path="/java" element={<Authenticated><Java /></Authenticated>} />
+					<Route path="/javascript" element={<Authenticated><JavaScript /></Authenticated>} />
+					<Route path="/python" element={<Authenticated><Python /></Authenticated>} />
+					<Route path="/typescript" element={<Authenticated><TypeScript /></Authenticated>} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>
