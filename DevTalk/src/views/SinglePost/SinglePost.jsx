@@ -20,12 +20,14 @@ export const SinglePost = ({ post }) => {
             </p>
             <p className="text-white dark:text-white flex pl-2">{post.hashtags}</p>
           </div>
+          <div className='inline-flex justify-between space-x-[650px]'>
           <div className="inline-flex pl-2 space-x-2">
             <AiOutlineHeart size={30} className="fill-white cursor-pointer" />
             <AiOutlineComment size={30} className="fill-white cursor-pointer" />
           </div>
           <div className="z-20">
             <BsFillTrash2Fill size={30} className="fill-white cursor-pointer" />
+          </div>
           </div>
           <p className="text-gray-600 dark:text-gray-400 pl-2">No. of likes</p>
         </div>

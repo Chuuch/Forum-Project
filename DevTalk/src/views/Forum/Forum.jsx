@@ -30,6 +30,7 @@ const Forum = () => {
 			</h1>
 			<div className="flex flex-col z-10 space-y-4 mt-32 pb-10">
 				<motion.div
+					className='flex flex-col z-10 space-y-4 mt-32 pb-10'
 					initial={{ y: -300, opacity: 0 }}
 					transition={{ duration: 1.5 }}
 					whileInView={{ opacity: 1, y: 0 }}
