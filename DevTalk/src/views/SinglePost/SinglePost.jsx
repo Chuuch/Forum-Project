@@ -1,9 +1,10 @@
-import { AiOutlineHeart } from 'react-icons/ai';
 import { AiOutlineComment } from 'react-icons/ai';
 import { BsFillTrash2Fill } from 'react-icons/bs';
 import { PropTypes } from 'prop-types';
+import { Likes } from '../../components/Likes/Likes';
 
 export const SinglePost = ({ post }) => {
+
     return (
       <div className="bg-[rgb(30,30,30)] dark:bg-gray-800 p-4 rounded-lg shadow-md w-[800px] dark:w-[800px] h-[300px] flex flex-col justify-between">
         <div className="flex justify-between gap-[250px]">
@@ -22,14 +23,14 @@ export const SinglePost = ({ post }) => {
           </div>
           <div className='inline-flex justify-between space-x-[650px]'>
           <div className="inline-flex pl-2 space-x-2">
-            <AiOutlineHeart size={30} className="fill-white cursor-pointer" />
-            <AiOutlineComment size={30} className="fill-white cursor-pointer" />
+            <Likes />
+            <AiOutlineComment size={30} className="fill-[#F7AB0A] dark:fill-white cursor-pointer" />
           </div>
           <div className="z-20">
-            <BsFillTrash2Fill size={30} className="fill-white cursor-pointer" />
+            <BsFillTrash2Fill size={30} className="fill-[#F7AB0A] dark:fill-white cursor-pointer" />
           </div>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 pl-2">No. of likes</p>
+          <p className="text-gray-600 dark:text-gray-400 pl-2">{post.likes}</p>
         </div>
       </div>
     );
@@ -42,5 +43,6 @@ export const SinglePost = ({ post }) => {
       content: PropTypes.string.isRequired,
       hashtags: PropTypes.string.isRequired,
       createdAt: PropTypes.number.isRequired,
+      likes: PropTypes.number.isRequired,
     }).isRequired,
   };
