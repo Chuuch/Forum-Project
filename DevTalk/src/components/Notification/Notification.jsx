@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BsFillBellFill } from 'react-icons/bs'
 
 const Notification = () => {
 	const [showNotifications, setShowNotifications] = useState(false);
@@ -10,10 +11,7 @@ const Notification = () => {
 	return (
 		<div className="flex flex-row justify-start items-start">
 			<div className="" onClick={handleNotificationClick}>
-				{/* <img src='/icons/bell.svg' alt="notification bell"
-					className="cursor-pointer hover:scale-125 w-5 h-5 fill-[#F7AB0A] dark:fill-[#001440]"
-				/> */}
-			<svg xmlns="http://www.w3.org/2000/svg" className="bi bi-bell-fill cursor-pointer hover:scale-125 fill-[#F7AB0A] dark:fill-[#001440] w-5 h-5 mr-2" viewBox="0 0 16 16"> <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/> </svg>
+				<BsFillBellFill className="w-6 h-6 fill-[#F7AB0A] dark:fill-[#001440] hover:scale-125 mt-1 mr-2 cursor-pointer" />
 			</div>
 			{showNotifications && (
 				<div className="absolute mt-10 z-50 rounded-sm">

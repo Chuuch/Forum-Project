@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BsSearch } from 'react-icons/bs';
 
 const SearchBar = () => {
 	const [showSearchBar, setShowSearchBar] = useState(false);
@@ -14,12 +15,7 @@ const SearchBar = () => {
 	return (
 		<div className="flex flex-row justify-center items-center">
 			<div onClick={handleSearchIconClick}>
-				<svg viewBox="0 0 20 20" className="w-5 h-5 fill-[#F7AB0A] dark:fill-[#001440] cursor-pointer hover:scale-125 mr-2">
-					<path
-						xmlns="http://www.w3.org/2000/svg"
-						d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
-					/>
-				</svg>
+				<BsSearch className='w-6 h-6 fill-[#F7AB0A] dark:fill-[#001440] hover:scale-125 cursor-pointer mt-1 mr-2'/>
 			</div>
 			{showSearchBar && (
 				<div className="search-bar bg-[rgb(30,30,30)] dark:bg-[#001440] p-2">

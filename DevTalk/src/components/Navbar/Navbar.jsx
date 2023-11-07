@@ -119,7 +119,7 @@ const Navbar = () => {
 				<Notification />
 				<DarkModeToggle />
 				<NavLink to='/userprofile' className='z-20'>
-						<CgProfile className='w-6 h-6 hover:scale-125'/>
+						<CgProfile className='w-7 h-7 hover:scale-125 mt-1 mr-2 text-[#F7AB0A] dark:text-[#001440]'/>
 				</NavLink>
 				{!user ? (
 					<NavLink to="/login" className="z-20">
