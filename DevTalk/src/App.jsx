@@ -49,7 +49,7 @@ function App() {
 					<Route path='/createpost' element={<Authenticated><CreatePost /></Authenticated>} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
-					<Route path='/userprofile' element={<UserProfile />} />
+					<Route path='/userprofile' element={<Authenticated><UserProfile /></Authenticated>} />
 					<Route path='*' element={<NotFound/>}/>
 					<Route path="/c" element={<Authenticated><C /></Authenticated>} />
 					<Route path="/csharp" element={<Authenticated><Csharp /></Authenticated>} />
