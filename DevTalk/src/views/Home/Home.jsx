@@ -104,14 +104,14 @@ const Home = () => {
 				</div>
 		</div>
 			</div>
-		 <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-2">
-			<div className="flex flex-col-reverse">
-          		<dt className="text-base leading-7 text-black">Current posts</dt>
-          		<dd className="text-2xl font-bold leading-9 tracking-tight text-black">{postCount}</dd>
+		 <dl className="mt-16 grid grid-cols-1 gap-8 items-center sm:mt-20 sm:grid-cols-2 lg:grid-cols-2 z-20">
+			<div className="flex flex-row items-center justify-center space-x-2">
+          		<dt className="text-base leading-7 text-[#F7AB0A] dark:text-[#001440]">Current posts:</dt>
+          		<dd className="text-2xl font-bold leading-9 tracking-tight text-[#F7AB0A] dark:text-[#001440]">{postCount}</dd>
         	</div>
-        	<div className="flex flex-col-reverse">
-          		<dt className="text-base leading-7 text-black">People using our forum</dt>
-          		<dd className="text-2xl font-bold leading-9 tracking-tight text-black">{usersCount}</dd>
+        	<div className="flex flex-row items-center justify-center space-x-2">
+          		<dt className="text-base leading-7 text-[#F7AB0A] dark:text-[#001440]">Registered users: </dt>
+          		<dd className="text-2xl font-bold leading-9 tracking-tight text-[#F7AB0A] dark:text-[#001440]">{usersCount}</dd>
         	</div>
 		</dl>
 			<div className="w-full absolute -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70"></div>
