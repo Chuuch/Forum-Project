@@ -10,7 +10,7 @@ export const SinglePost = ({ post }) => {
           <h3 className="text-2xl font-semibold text-gray-400 dark:text-[#eee] p-2">
             {post.title}
           </h3>
-          <p className="text-gray-400 p-2">{}</p>
+          <p className="text-gray-400 p-2">{post.createdAt}</p>
         </div>
         <p className="text-lg text-[#ddd] dark:text-[#ccc] pl-2">{post.content}</p>
         <div className="flex flex-col items-start">
@@ -41,5 +41,6 @@ export const SinglePost = ({ post }) => {
       author: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
       hashtags: PropTypes.string.isRequired,
+      createdAt: PropTypes.number.isRequired,
     }).isRequired,
   };

@@ -1,5 +1,6 @@
 import { ref, push, get } from 'firebase/database';
 import { auth, database } from '../config/firebase-config';
+import moment from 'moment';
 
 
 export const createPost = async (title, content) => {
@@ -13,7 +14,7 @@ export const createPost = async (title, content) => {
       uid: auth.currentUser.uid,
       likedBy: '',
       repliedBy: '',
-      createdAt: Date.now(),
+      createdAt: moment().startOf('hour').fromNow(),
     });
   };
 
