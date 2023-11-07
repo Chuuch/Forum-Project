@@ -1,17 +1,40 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, } from 'react-router-dom';
 // import { SocialIcon } from 'react-social-icons';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../../config/firebase-config';
+import { auth, database } from '../../config/firebase-config';
 import Notification from '../Notification/Notification';
 import SearchBar from '../SearchBar/SearchBar';
 import DarkModeToggle from '../DarkMode/DarkModeToggle';
 import { logoutUser } from '../../services/auth.services';
 import { motion } from 'framer-motion';
 import { CgProfile } from 'react-icons/cg';
+import { get, ref } from 'firebase/database';
+import { useEffect, useState } from'react';
 
 const Navbar = () => {
 	const [user] = useAuthState(auth);
 	const location = useLocation();
+	const [currentUser, setCurrentUser] = useState(null);
+
+	const getCurrentUser = async () => {
+		try {
+			const userSnapshot = await get(
+				ref(database, `/users/${auth.currentUser.uid}`)
+			);
+			const userData = userSnapshot.val();
+			if (userData && userData.username) {
+				setCurrentUser(userData.username);
+			}
+		} catch (error) {
+			console.error('Error fetching user data:', error);
+		}
+	};
+
+	useEffect(() => {
+		if (user) {
+			getCurrentUser();
+		}
+	}, [user]);
 
 	return (
 		<header className="sticky top-0 dark:bg-white bg-[rgb(36,36,36)] h-20 flex flex-row items-center justify-between p-5 font-space z-20 ">
@@ -118,12 +141,16 @@ const Navbar = () => {
 				<SearchBar />
 				<Notification />
 				<DarkModeToggle />
-				{!user ? (<NavLink to='/userprofile' className='hidden'>
-						<CgProfile className='w-7 h-7 hover:scale-125 mt-1 mr-2 text-[#F7AB0A] dark:text-[#001440]'/>
-				</NavLink>) : (<NavLink to='/userprofile' className='inline-flex z-20'>
-						<CgProfile className='w-7 h-7 hover:scale-125 mt-1 mr-2 text-[#F7AB0A] dark:text-[#001440]'/>
-				</NavLink>)}
-				
+				{!user ? (
+					<NavLink to="/userprofile" className="hidden">
+						<CgProfile className="w-7 h-7 mt-1 mr-2 text-[#F7AB0A] dark:text-[#001440]" />
+					</NavLink>
+				) : (
+					<NavLink to="/userprofile" className="inline-flex z-20 hover:scale-105">
+						<CgProfile className="w-7 h-7 mt-1 mr-2 text-[#F7AB0A] dark:text-[#001440]" />
+						<p className='mt-2 text-[#F7AB0A] dark:text-[#001440]'>{currentUser}</p>
+					</NavLink>
+				)}
 				{!user ? (
 					<NavLink to="/login" className="z-20">
 						<button className="block p-15 h-10 w-32 hover:scale-105 z-20 uppercase outline-none border-none rounded text-1xl font-bold text-[rgb(36,36,36)] bg-[#F7AB0A] dark:text-[#001440] dark:bg-teal-200">
