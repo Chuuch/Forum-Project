@@ -14,7 +14,7 @@ export const createPost = async (title, content) => {
       uid: auth.currentUser.uid,
       likedBy: '',
       repliedBy: '',
-      createdAt: moment().startOf('hour').fromNow(),
+      createdAt: moment().format('lll'),
     });
   };
 
