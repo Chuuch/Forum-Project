@@ -20,6 +20,7 @@ import TypeScript from './views/Categories/Typescript.jsx';
 import CreatePost from './views/CreatePost/CreatePost.jsx';
 import Forum from './views/Forum/Forum.jsx';
 import Authenticated from './hoc/Authenticated';
+import { UserProfile } from './views/UserProfile/UserProfile.jsx';
 
 function App() {
 	const [user] = useAuthState(auth);
@@ -48,6 +49,7 @@ function App() {
 					<Route path='/createpost' element={<Authenticated><CreatePost /></Authenticated>} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
+					<Route path='/userprofile' element={<UserProfile />} />
 					<Route path='*' element={<NotFound/>}/>
 					<Route path="/c" element={<Authenticated><C /></Authenticated>} />
 					<Route path="/csharp" element={<Authenticated><Csharp /></Authenticated>} />

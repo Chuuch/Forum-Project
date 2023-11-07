@@ -7,6 +7,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import DarkModeToggle from '../DarkMode/DarkModeToggle';
 import { logoutUser } from '../../services/auth.services';
 import { motion } from 'framer-motion';
+import { CgProfile } from 'react-icons/cg';
 
 const Navbar = () => {
 	const [user] = useAuthState(auth);
@@ -117,6 +118,9 @@ const Navbar = () => {
 				<SearchBar />
 				<Notification />
 				<DarkModeToggle />
+				<NavLink to='/userprofile' className='z-20'>
+						<CgProfile className='w-6 h-6 hover:scale-125'/>
+				</NavLink>
 				{!user ? (
 					<NavLink to="/login" className="z-20">
 						<button className="block p-15 h-10 w-32 hover:scale-105 z-20 uppercase outline-none border-none rounded text-1xl font-bold text-[rgb(36,36,36)] bg-[#F7AB0A] dark:text-[#001440] dark:bg-teal-200">
