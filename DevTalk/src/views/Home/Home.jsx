@@ -1,6 +1,10 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { get, ref } from 'firebase/database';
+import { database } from '../../config/firebase-config';
 
 const Home = () => {
 	const [text] = useTypewriter({
@@ -12,6 +16,22 @@ const Home = () => {
 		loop: true,
 		delaySpeed: 2000,
 	});
+
+	const [postCount, setPostsCount] = useState([]);
+	const [usersCount, setUsersCount] = useState([]);
+    //const [user, loading, error] =  useAuthState(auth);
+
+	useEffect(() => {
+		const count = async () => {
+			const postsSnapshot = await get(ref(database, '/posts'));
+			const usersSnapshot = await get(ref(database, '/users'));
+			const postCount = postsSnapshot.size;
+			const usersCount = usersSnapshot.size;
+			setPostsCount(postCount);
+			setUsersCount(usersCount);
+	}
+	count()
+},[]);
 
 	return (
 		<div className="flex flex-col items-center justify-center pb-48 bg-[rgb(36,36,36)] dark:bg-white h-screen font-space space-y-4">
@@ -84,6 +104,16 @@ const Home = () => {
 				</div>
 		</div>
 			</div>
+		 <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-2">
+			<div className="flex flex-col-reverse">
+          		<dt className="text-base leading-7 text-black">Current posts</dt>
+          		<dd className="text-2xl font-bold leading-9 tracking-tight text-black">{postCount}</dd>
+        	</div>
+        	<div className="flex flex-col-reverse">
+          		<dt className="text-base leading-7 text-black">People using our forum</dt>
+          		<dd className="text-2xl font-bold leading-9 tracking-tight text-black">{usersCount}</dd>
+        	</div>
+		</dl>
 			<div className="w-full absolute -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70"></div>
 		</div>
 	);
