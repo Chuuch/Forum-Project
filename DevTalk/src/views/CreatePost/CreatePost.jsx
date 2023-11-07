@@ -14,7 +14,7 @@ const CreatePost = () => {
         e.preventDefault();
         await createPost(title, content)
         .then(toast.success('Post created successfully!'))
-        .then(navigate('/forum'))
+        .then(navigate('/forum'));
          } catch(e) {console.log(e.message);
       }
     }
