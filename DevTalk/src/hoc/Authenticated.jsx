@@ -2,6 +2,7 @@
 import { Navigate, useLocation } from "react-router-dom"
 import { auth } from "../config/firebase-config";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from 'react-hot-toast';
 
 // eslint-disable-next-line react/prop-types
 export default function Authenticated({ children }) {
@@ -9,16 +10,12 @@ export default function Authenticated({ children }) {
     const [user, loading, error] =  useAuthState(auth)
     if (loading) {
         return (
-          <div>
-            <p>Initialising User...</p>
-          </div>
+          toast.success('Initialising user..')       
         );
       }
       if (error) {
         return (
-          <div>
-            <p>Error: {error}</p>
-          </div>
+         toast.error('Something went wrong!')
         );
       }
     if (user) {
