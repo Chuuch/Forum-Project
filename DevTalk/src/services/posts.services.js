@@ -15,6 +15,7 @@ export const createPost = async (title, content) => {
       likedBy: '',
       repliedBy: '',
       createdAt: moment().format('lll'),
+      timestamp: Date.now(),
     });
   };
 
