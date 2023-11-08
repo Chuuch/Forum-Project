@@ -25,10 +25,12 @@ export const SinglePost = ({ post }) => {
               {/* {post.hashtags} */}
               </p>
           </div>
-          <div className='relative inline-flex items-center z-20'>
-            <Likes />
-            <Replies />
-            <BsFillTrash2Fill size={30} className="fill-[#F7AB0A] dark:fill-white cursor-pointer right-0 bottom-0 mr-2" />
+          <div className='relative inline-flex items-center space-x-20 justify-between z-20'>
+            <div className='inline-flex items-baseline'>
+              <Likes />
+              <Replies />
+            </div>
+            <BsFillTrash2Fill size={30} className="fill-[#F7AB0A] dark:fill-white cursor-pointer" />
           <div className="z-20">
             
           </div>
