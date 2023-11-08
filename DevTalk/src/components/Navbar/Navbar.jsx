@@ -146,7 +146,7 @@ const Navbar = () => {
 						<CgProfile className="w-7 h-7 mt-1 mr-2 text-[#F7AB0A] dark:text-[#001440]" />
 					</NavLink>
 				) : (
-					<NavLink to="/userprofile" className="inline-flex z-20 hover:scale-105">
+					<NavLink to="/userprofile" className="inline-flex z-20 hover:scale-105 mr-5">
 						<CgProfile className="w-7 h-7 mt-1 mr-2 text-[#F7AB0A] dark:text-[#001440]" />
 						<p className='mt-2 text-[#F7AB0A] dark:text-[#001440]'>{currentUser}</p>
 					</NavLink>
