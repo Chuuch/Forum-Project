@@ -3,6 +3,20 @@ import { ref, set } from 'firebase/database';
 import { auth, database } from '../config/firebase-config';
 import { toast } from 'react-hot-toast';
 
+export const getUserByID = (uid, setCurrentProfile) => {
+    try {
+      const userRef = database.ref(`/users/${uid}`);
+  
+      userRef.on('value', (snapshot) => {
+        const userData = snapshot.val();
+        setCurrentProfile(userData);
+      });
+  
+    } catch (err) {
+      toast.error(err, "error");
+    }
+  };
+
 export const registerUser = async (firstName, lastName, username, email, password) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
@@ -46,6 +60,7 @@ export const loginUser = async (email, password) => {
 
 export const logoutUser = async () => {
     try {
+        localStorage.removeItem('email')
         await signOut(auth);
         toast.success('Logout successful!')
         return true
