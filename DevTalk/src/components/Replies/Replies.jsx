@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { AiOutlineComment, AiOutlineClose } from 'react-icons/ai';
 import { replyPost } from '../../services/posts.services';
-// import { SingleReply } from '../../views/SingleReply/SingleReply';
+import { toast } from 'react-hot-toast'
+
 
 export const Replies = () => {
   const [showReplyForm, setShowReplyForm] = useState(false);
@@ -20,13 +21,13 @@ export const Replies = () => {
     if (reply.trim() !== '') {
       replyPost(reply);
       setReply('');
-      closeReplyForm();
+      closeReplyForm()
+      toast.success('Post created successfully!');
     }
   };
 
   return (
     <div className="relative bg-[rgb(30,30,30)] dark:bg-gray-800 p-4 rounded-lg w-[600px] dark:w-[600px] z-20">
-      {/* <SingleReply /> */}
       <div className="flex justify-between space-x-2 z-20">
         <div className={`z-20 flex space-x-2 ${showReplyForm ? 'hidden' : 'block'}`}>
           <button onClick={toggleReplyForm}>
