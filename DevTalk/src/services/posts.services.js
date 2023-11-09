@@ -1,67 +1,130 @@
-import { ref, push, get, set, } from 'firebase/database';
+import { ref, get, update, push, child } from 'firebase/database';
 import { auth, database } from '../config/firebase-config';
 import moment from 'moment-timezone';
 
 export const createPost = async (title, content) => {
-    const userSnapshot = await get(ref(database, `/users/${auth.currentUser.uid}`));
-    const username = userSnapshot.val().username;
+	const userSnapshot = await get(
+		ref(database, `/users/${auth.currentUser.uid}`)
+	);
+	const username = userSnapshot.val().username;
 
-    const newPostRef = push(ref(database, '/posts/'));
-    const newPostKey = newPostRef.key
-  
-    await set(newPostRef, {
-      title: title,
-      content: content,
-      author: username,
-      uid: auth.currentUser.uid,
-      postId: newPostKey,
-      likedBy: '',
-      repliedBy: '',
-      createdAt: moment().tz('Europe/Sofia').format('lll'),
-    });
-  };
+	const post = {
+		title,
+		content,
+		categoryId: '',
+		id: '',
+		author: username,
+		likedBy: '',
+		createdAt: moment().tz('Europe/Sofia').format('lll'),
+	};
 
-  export const likePost = async (postKey, likedBy) => {
-    const userSnapshot = await get(ref(database, `/users/${auth.currentUser.uid}`));
-    const username = userSnapshot.val().username;
+	const { key } = push(ref(database, 'posts'), post);
 
-    const likedPostRef = ref(database, '/posts/');
-    const likedPostSnapshot = await get(likedPostRef);
+	update(ref(database), {
+		[`posts/${key}/id`]: key,
+		[`users/${username}/posts/${key}`]: true,
+		// [`posts/${key}/${categoryId}`]: true,
+	});
+	return key;
+};
 
-    if (likedPostSnapshot.exists()) {
-      return;
-    }
+export const getUsername = async () => {
+	const userSnapshot = await get(
+		ref(database, `/users/${auth.currentUser.uid}`)
+	);
+	const username = userSnapshot.val().username;
+	return username;
+};
 
-    const newLikeRef = await push(ref(database, `/posts/${postKey}/${likedBy}/`));
+export const getAllPosts = async () => {
+	const snapshot = await get(ref(database, 'posts'));
 
-    await set(newLikeRef, {
-      uid: auth.currentUser.uid,
-      username: username,
-    })
-  }
+	if (!snapshot.exists()) {
+		return [];
+	}
 
-  export const replyPost = async (reply) => {
-    try {
-      const userSnapshot = await get(ref(database, `/users/${auth.currentUser.uid}`));
-      const username = userSnapshot.val().username;
-  
-      const newReplyRef = push(ref(database, '/replies'));
-      const newReplyKey = newReplyRef.key;
-  
-      const replyData = {
-        replyId: newReplyKey,
-        uid: auth.currentUser.uid,
-        username: username,
-        likedBy: {},
-        repliedBy: {},
-        reply: reply,
-        repliedAt: moment().tz('Europe/Sofia').format('lll'),
-      };
-  
-      // Use the newReplyRef to set the data
-      await set(newReplyRef, replyData);
-    } catch (error) {
-      console.error('Error replying to post:', error);
-    }
-  };
-  
+	return Object.keys(snapshot.val()).map((key) => ({
+		...snapshot.val()[key],
+		id: key,
+	}));
+};
+
+export const getPostById = async (postId) => {
+	const snapshot = await get(ref(database, `posts/${postId}`));
+
+	return snapshot.val();
+};
+
+export const getPostsByIds = async (ids) => {
+	const posts = await getAllPosts();
+
+	return posts.filter((p) => ids.includes(p.id));
+};
+
+export const deletePost = async (postId, username, categoryId) => {
+	return update(ref(database), {
+		[`posts/${postId}`]: null,
+		[`users/${username}/posts/${postId}`]: null,
+		[`category/${categoryId}/posts/${postId}`]: null,
+	});
+};
+
+export const editPost = async (postId, content) => {
+	return update(ref(database), {
+		[`posts/${postId}/content`]: content,
+		[`posts/${postId}/editedOn`]: moment().tz('Europe/Sofia').format('lll'),
+	});
+};
+
+export const likePost = async (postId, username, author, like = true) => {
+	const snapshot = await get(ref(database, `users/${author}/likesReceived`));
+	const likesReceived = snapshot.val() || 0;
+
+	return update(ref(database), {
+		[`posts/${postId}/likedBy/${username}`]: like || null,
+		[`users/${username}/likesGiven/${postId}`]: like || null,
+		[`users/${author}/likesReceived`]:
+			like === true ? likesReceived + 1 : likesReceived - 1,
+	});
+};
+
+export const replyPost = async (replyContent) => {
+	const username = getUsername();
+	// Add replyContent parameter
+	const reply = {
+		content: replyContent,
+		author: username,
+		uid: auth.currentUser.uid,
+		repliedAt: moment().tz('Europe/Sofia').format('lll'),
+	};
+
+	const { key } = push(ref(database, `posts/${key}/replies`), reply);
+
+	update(ref(database), {
+		[`posts/${key}/replies/${auth.currentUser.uid}`]: key,
+		[`users/${username}/replies/${key}/${key}`]: true,
+	});
+};
+
+export const getReplies = async (postId) => {
+	try {
+		const postRepliesRef = ref(database, `posts/${postId}/replies`);
+		const snapshot = await get(child(postRepliesRef, '/'));
+
+		if (snapshot.exists()) {
+			// Convert the snapshot to an array of replies
+			const replies = [];
+			snapshot.forEach((childSnapshot) => {
+				const reply = childSnapshot.val();
+				replies.push(reply);
+			});
+			return replies;
+		} else {
+			// No replies found
+			return [];
+		}
+	} catch (error) {
+		console.error('Error fetching replies:', error);
+		throw error;
+	}
+};
