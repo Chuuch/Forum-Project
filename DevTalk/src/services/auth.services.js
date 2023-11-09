@@ -24,6 +24,7 @@ export const registerUser = async (firstName, lastName, username, email, passwor
         const user = userCredential.user;
         set(ref(database, `users/${user?.uid}`), {
             uid: user?.uid, firstName, lastName, username, email, likedPosts: {}, isAdmin: false,
+            avatar: 'https://firebasestorage.googleapis.com/v0/b/devtalk-1d6f5.appspot.com/o/default-avatar.png?alt=media&token=0a7d2e0e-4a8c-4f9f-8d3c-5a7d1e5d5c8e',
             createdOn: Date.now(),
         });
         
