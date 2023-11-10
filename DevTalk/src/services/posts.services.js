@@ -77,12 +77,17 @@ export const editPost = async (postId, content) => {
 };
 
 
-export const likePost = async (postId, username) => {
-	const updateLikes = {};
-	updateLikes[`posts/${postId}/likedBy/${username}`] = null;
-	updateLikes[`users/${username}/likedPosts/${postId}`] = null;
+export const likePost = async (postId) => {
+	const username = await getUsername();
+	const like = {
+		author: username,
+	}
 
-	return update(ref(database), updateLikes);
+	const likesRef = ref(database, `posts/${postId}/likes`)
+	const { key } = await push(likesRef, like);
+	update(ref(database), {
+		[`users/${auth.currentUser.uid}/replies/${postId}/${key}`]: true,
+	});
 }
 
 export const dislikePost = (postId, username) => {
