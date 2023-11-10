@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { ref, set } from 'firebase/database';
+import { get, ref, set } from 'firebase/database';
 import { auth, database } from '../config/firebase-config';
 import { toast } from 'react-hot-toast';
 
@@ -71,3 +71,19 @@ export const logoutUser = async () => {
     }
 }
 
+export const allUsers = async () => {
+    try {
+        const usersSnapshot = await get(ref(database, 'users'));
+        const usersData = usersSnapshot.val();
+
+        if (usersData) {
+            const usersArray = Object.values(usersData);
+            return usersArray;
+        } else {
+            return [];
+        }
+    } catch (error) {
+        toast.error('Something went wrong. Please, try again.');
+        return false;
+    }
+};

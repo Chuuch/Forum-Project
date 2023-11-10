@@ -21,6 +21,8 @@ import Python from "../Categories/Python";
 import TypeScript from "../Categories/Typescript";
 import C from '../Categories/C';
 import Footer from "../../components/Footer/Footer";
+import UsersInfo from "../Users/UsersInfo";
+import AdminNavbar from "./AdminNavbar";
 
 // eslint-disable-next-line react/prop-types
 export default function AuthenticationViews({ userId }) {
@@ -51,31 +53,20 @@ export default function AuthenticationViews({ userId }) {
     return (
       <div>
         {isAdmin === true ? (
-          <div className="bg-[rgb(36,36,36)] z-0 dark:bg-white">
-          <BrowserRouter>
-              <Navbar />
-              <Routes>
-              <Route path="/" element={<Home />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/contact" element={<Contact />} />
-					<Route path="/trending" element={<Trending />} />
-					<Route path="/forum" element={<Authenticated><Forum /></Authenticated>} />
-					<Route path='/createpost' element={<Authenticated><CreatePost /></Authenticated>} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/register" element={<Register />} />
-					<Route path='/userprofile' element={<Authenticated><UserProfile /></Authenticated>} />
-					<Route path='*' element={<NotFound/>}/>
-					<Route path="/c" element={<Authenticated><C /></Authenticated>} />
-					<Route path="/csharp" element={<Authenticated><Csharp /></Authenticated>} />
-					<Route path="/java" element={<Authenticated><Java /></Authenticated>} />
-					<Route path="/javascript" element={<Authenticated><JavaScript /></Authenticated>} />
-					<Route path="/python" element={<Authenticated><Python /></Authenticated>} />
-					<Route path="/typescript" element={<Authenticated><TypeScript /></Authenticated>} />
-                </Routes>
-				<div>Logged as admin</div>
-              <Footer />
-          </BrowserRouter>
-      </div>
+          <div>
+			<BrowserRouter>
+			<AdminNavbar />
+			<Routes>
+			<Route path="/login" element={<Login />} />
+			</Routes>
+			</BrowserRouter>
+		<div className="w-full mt-12">
+                    <p className="text-xl pb-3 flex items-center">
+                        <i className="fas fa-list mr-3"></i> Reports
+                    </p>
+                    <UsersInfo />
+                </div>
+				</div>
         ) : isAdmin === false ? (
             <div className="bg-[rgb(36,36,36)] z-0 dark:bg-white">
 			<BrowserRouter>
