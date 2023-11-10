@@ -3,16 +3,27 @@ import { PropTypes } from 'prop-types';
 import { Likes } from '../../components/Likes/Likes';
 import { Replies } from '../../components/Replies/Replies';
 import { useEffect, useState } from 'react';
-import { getReplies } from '../../services/posts.services';
+import { getReplies, deletePost } from '../../services/posts.services';
+import { toast } from 'react-hot-toast';
 
 
-export const SinglePost = ({ post, handleReply, handleLike }) => {
+export const SinglePost = ({ post, handleReply }) => {
   const [replies, setReplies] = useState([]);
   const [showReplies, setShowReplies] = useState(false);
 
   const toggleReplies = () => {
     setShowReplies(!showReplies);
   };
+
+  const onDeleteClick = async () => {
+    try {
+      await deletePost(post.id, post.author)
+      await (toast.success('Post deleted!'))
+      .then(window.location.reload())
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
+  }
 
   useEffect(() => {
     const fetchReplies = async () => {
@@ -46,11 +57,12 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
         </div>
         <div className="flex flex-row items-center z-20">
           <div className="inline-flex items-center">
-            <Likes postId={post.id} author={post.author} initialLikes={post.likes} handleLike={handleLike} />
+            <Likes />
             <Replies post={post} handleReply={handleReply} />
             <BsFillTrash2Fill
               size={30}
               className="fill-[#F7AB0A] dark:fill-white cursor-pointer"
+              onClick={onDeleteClick}
             />
           </div>
         </div>
@@ -96,7 +108,6 @@ SinglePost.propTypes = {
     likes: PropTypes.number.isRequired,
   }).isRequired,
   handleReply: PropTypes.func.isRequired,
-  handleLike: PropTypes.func.isRequired,
 };
 
 export default SinglePost;
