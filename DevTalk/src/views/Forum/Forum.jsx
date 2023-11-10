@@ -1,21 +1,35 @@
 import { motion } from 'framer-motion';
 import { SinglePost } from '../SinglePost/SinglePost';
 import { useEffect, useState } from 'react';
-import { getAllPosts } from '../../services/posts.services';
+import { getAllPosts, getLikes, likePost } from '../../services/posts.services';
 import { replyPost, getUsername } from '../../services/posts.services';
 
 export const Forum = () => {
 	const [postLists, setPostsLists] = useState([]);
+	const [likeLists, setLikeLists] = useState([])
+
+	const handleLike = async (id) => {
+		await likePost(id, username);
+		const username = getUsername();
+		const newLike = {
+			likedBy: username,
+		}
+
+		const updatedLikes = likeLists.map((post) => {
+			if (post.id === id) {
+				return {
+					...post,
+					likes: [...post.likes, newLike],
+				};
+			}
+			return post;
+		})
+		setLikeLists(updatedLikes);
+	}
 
 	const handleReply = async (id, replyContent) => {
-
 		await replyPost(id, replyContent);
-
-
-
 		const username = getUsername();
-
-
 		const newReply = {
 			content: replyContent,
 			author: username,
@@ -43,6 +57,14 @@ export const Forum = () => {
 		fetchPosts();
 	}, []);
 
+	useEffect(() => {
+		const fetchLikes = async () => {
+            const likes = await getLikes();
+            setLikeLists(likes);
+        };
+        fetchLikes();
+	})
+
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start space-y-2">
 			<h1 className="fixed flex justify-start text-[#F7AB0A] dark:text-[#001440] z-10 text-4xl mt-10">
@@ -57,7 +79,7 @@ export const Forum = () => {
 			>
 				<div className="flex flex-col z-20 space-y-4 mt-32 pb-10">
 					{postLists.map((postId, index) => (
-						<SinglePost key={index} post={postId} handleReply={handleReply} />
+						<SinglePost key={index} post={postId} handleReply={handleReply} handleLike={handleLike} />
 					))}
 				</div>
 			</motion.div>
