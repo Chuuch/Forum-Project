@@ -88,21 +88,21 @@ export const likePost = async (postId, username, author, like = true) => {
 	});
 };
 
-export const replyPost = async (replyContent) => {
-	const username = getUsername();
-	// Add replyContent parameter
+export const replyPost = async (postId, replyContent) => {
+	const username = await getUsername();
 	const reply = {
 		content: replyContent,
 		author: username,
-		uid: auth.currentUser.uid,
 		repliedAt: moment().tz('Europe/Sofia').format('lll'),
 	};
 
-	const { key } = push(ref(database, `posts/${key}/replies`), reply);
+
+	const postRepliesRef = ref(database, `posts/${postId}/replies`);
+
+	const { key } = await push(postRepliesRef, reply);
 
 	update(ref(database), {
-		[`posts/${key}/replies/${auth.currentUser.uid}`]: key,
-		[`users/${username}/replies/${key}/${key}`]: true,
+		[`users/${auth.currentUser.uid}/replies/${postId}/${key}`]: true,
 	});
 };
 
