@@ -58,7 +58,7 @@ const Navbar = () => {
 					<path d="M10 9l-2 2l2 2" /> <path d="M14 9l2 2l-2 2" />{' '}
 				</svg>
 			</motion.div>
-			<div className="pl-28 flex flex-row">
+			<div className="pl-28 flex flex-row justify-center">
 				<motion.div
 					initial={{ x: -500, opacity: 0, scale: 0.5 }}
 					animate={{ x: 1, opacity: 1, scale: 1 }}

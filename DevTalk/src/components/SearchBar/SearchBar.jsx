@@ -15,7 +15,7 @@ const SearchBar = () => {
 	return (
 		<div className="flex flex-row justify-center items-center">
 			<div onClick={handleSearchIconClick}>
-				<BsSearch className='w-6 h-6 fill-[#F7AB0A] dark:fill-[#001440] hover:scale-125 cursor-pointer mt-1 mr-2'/>
+				<BsSearch className='w-6 h-6 fill-[#F7AB0A] dark:fill-[#001440] hover:scale-110 cursor-pointer mt-1 mr-2'/>
 			</div>
 			{showSearchBar && (
 				<div className="search-bar bg-[rgb(30,30,30)] dark:bg-[#001440] p-2">

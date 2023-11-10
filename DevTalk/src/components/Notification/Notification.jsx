@@ -11,7 +11,7 @@ const Notification = () => {
 	return (
 		<div className="flex flex-row justify-start items-start">
 			<div className="" onClick={handleNotificationClick}>
-				<BsFillBellFill className="w-6 h-6 fill-[#F7AB0A] dark:fill-[#001440] hover:scale-125 mt-1 mr-2 cursor-pointer" />
+				<BsFillBellFill className="w-6 h-6 fill-[#F7AB0A] dark:fill-[#001440] hover:scale-110 mt-1 mr-2 cursor-pointer" />
 			</div>
 			{showNotifications && (
 				<div className="absolute mt-10 z-50 rounded-sm">
