@@ -54,7 +54,7 @@ export const Likes = ({ postId, username }) => {
           className="cursor-pointer fill-[#F7AB0A] dark:fill-white"
         />
       )}
-      <span className="text-gray-400 dark:text-gray-300 pl-2">{likes}</span>
+      <span className="text-gray-400 dark:text-gray-300">{likes}</span>
     </div>
   );
 };
