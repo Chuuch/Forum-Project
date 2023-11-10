@@ -112,6 +112,11 @@ export const getLikes = async (postId) => {
 	}));
 };
 
+export const getLikesCount = async (postId) => {
+	const likes = await getLikes(postId);
+    return likes.length;
+}
+
 export const replyPost = async (postId, replyContent) => {
 	const username = await getUsername();
 	const reply = {
@@ -148,4 +153,9 @@ export const getReplies = async (postId) => {
 		console.error('Error fetching replies:', error);
 		throw error;
 	}
+};
+
+export const getRepliesCount = async (postId) => {
+    const replies = await getReplies(postId);
+    return replies.length;
 };
