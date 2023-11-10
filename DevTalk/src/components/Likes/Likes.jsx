@@ -4,7 +4,7 @@ import { likePost, dislikePost, getLikes } from '../../services/posts.services';
 import { toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 
-const Likes = ({ postId, username }) => {
+export const Likes = ({ postId, username }) => {
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
 
