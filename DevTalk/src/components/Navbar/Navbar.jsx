@@ -37,7 +37,7 @@ const Navbar = () => {
 	}, [user]);
 
 	return (
-		<header className="sticky top-0 dark:bg-white bg-[rgb(36,36,36)] h-20 flex flex-row items-center justify-between p-5 font-space z-20 ">
+		<header className="sticky top-0 dark:bg-white bg-[rgb(36,36,36)] h-20 flex flex-row items-center justify-between p-5 font-space z-30 ">
 			<motion.div
 				initial={{ x: -500, opacity: 0, scale: 0.5 }}
 				animate={{ x: 0, opacity: 1, scale: 1 }}
