@@ -1,6 +1,6 @@
 import { ref, uploadBytes } from 'firebase/storage';
 import { useEffect, useState } from 'react';
-import { auth, storage } from '../../config/firebase-config';
+import { auth } from '../../config/firebase-config.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export const UserProfile = () => {
