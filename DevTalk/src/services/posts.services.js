@@ -16,6 +16,7 @@ export const createPost = async (title, content) => {
 		author: username,
 		likedBy: '',
 		createdAt: moment().tz('Europe/Sofia').format('lll'),
+    timestamp: Date.now(),
 	};
 
 	const { key } = push(ref(database, 'posts'), post);
