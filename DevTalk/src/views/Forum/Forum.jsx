@@ -7,6 +7,7 @@ import { replyPost, getUsername } from '../../services/posts.services';
 export const Forum = () => {
 	const [postLists, setPostsLists] = useState([]);
 	const [likeLists, setLikeLists] = useState([])
+	const [repliesCount, setRepliesCount] = useState(0);
 
 	const handleLike = async (id) => {
 		await likePost(id, username);
@@ -47,6 +48,8 @@ export const Forum = () => {
 		});
 
 		setPostsLists(updatedPosts);
+		const updatedRepliesCount = repliesCount + 1;
+		setRepliesCount(updatedRepliesCount);
 	};
 
 	useEffect(() => {

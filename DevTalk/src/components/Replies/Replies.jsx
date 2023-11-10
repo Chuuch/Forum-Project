@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { replyPost } from '../../services/posts.services';
 import { AiOutlineComment, AiOutlineClose } from 'react-icons/ai';
 
-export const Replies = ({ post, handleReply }) => {
+export const Replies = ({ post, handleReply, repliesCount }) => {
 	const [showReplyForm, setShowReplyForm] = useState(false);
 	const [reply, setReply] = useState('');
 
@@ -40,29 +40,32 @@ export const Replies = ({ post, handleReply }) => {
 					className={`z-20 flex space-x-2 ${
 						showReplyForm ? 'hidden' : 'block'
 					}`}
-				>
+				>	
+					<div className='inline-flex space-x-2'>
 					<button onClick={toggleReplyForm}>
 						<AiOutlineComment
 							size={30}
 							className="cursor-pointer fill-[#F7AB0A] dark:fill-white"
 						/>
 					</button>
+					<span className='text-gray-400 dark:text-gray-300'>{repliesCount}</span>
+					</div>
 				</div>
 			</div>
-			<div className=" flex items-end">
+			<div className=" flex flex-row items-end">
 				<div className={`z-20 ${!showReplyForm ? 'hidden' : ' z-20'}`}></div>
 			</div>
 
 			{showReplyForm && (
-				<div className="absolute flex flex-col w-[600px] bg-[rgb(36,36,36)] dark:bg-slate-700 p-6 rounded-lg shadow-lg z-20">
-					<div className="flex justify-end pb-2">
+				<div className="relative flex flex-col w-[600px] bg-[rgb(36,36,36)] dark:bg-slate-700 p-6 rounded-lg shadow-lg z-20">
+					<div className="relative z-40 flex justify-end pb-2">
 						<AiOutlineClose
 							size={25}
 							onClick={closeReplyForm}
 							className="fill-[#F7AB0A] dark:fill-teal-200 cursor-pointer"
 						/>
 					</div>
-					<form className="z-20 flex flex-col">
+					<form className=" flex flex-col">
 						<textarea
 							placeholder="Add comment here..."
 							value={reply}
@@ -87,6 +90,7 @@ export const Replies = ({ post, handleReply }) => {
 Replies.propTypes = {
 	post: PropTypes.object.isRequired,
 	handleReply: PropTypes.func.isRequired,
+	repliesCount: PropTypes.number.isRequired,
 };
 
 export default Replies;
