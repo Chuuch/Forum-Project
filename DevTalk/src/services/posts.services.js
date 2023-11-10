@@ -49,7 +49,6 @@ export const getAllPosts = async () => {
 	}));
 };
 
-
 export const getPostById = async (postId) => {
 	const snapshot = await get(ref(database, `posts/${postId}`));
 
@@ -77,16 +76,23 @@ export const editPost = async (postId, content) => {
 	});
 };
 
-export const likePost = async (postId, username, author, like = true) => {
-	const snapshot = await get(ref(database, `users/${author}/likesReceived`))
-	const likesReceived = snapshot.val();
 
-	return update(ref(database), {
-		[`posts/${postId}/likedBy/${username}`]: like || null,
-		[`users/${username}/likesGiven/${postId}`]: like || null,
-		[`users/${author}/likesReceived`]: like ? likesReceived + 1: likesReceived -1,
-	})
+export const likePost = async (postId, username) => {
+	const updateLikes = {};
+	updateLikes[`posts/${postId}/likedBy/${username}`] = null;
+	updateLikes[`users/${username}/likedPosts/${postId}`] = null;
+
+	return update(ref(database), updateLikes);
 }
+
+export const dislikePost = (postId, username) => {
+	const updateLikes = {};
+    updateLikes[`posts/${postId}/likedBy/${username}`] = null;
+    updateLikes[`users/${username}/likedPosts/${postId}`] = null;
+
+    return update(ref(database), updateLikes);
+}
+
 
 export const getLikes = async (postId) => {
 	const snapshot = await get(ref(database, `posts/${postId}/likes`));
