@@ -1,6 +1,6 @@
 import { ref, uploadBytes } from 'firebase/storage';
 import { useEffect, useState } from 'react';
-import { auth, storage } from '../../config/firebase-config';
+import { auth, firebaseConfig } from '../../config/firebase-config';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export const UserProfile = () => {
@@ -25,7 +25,7 @@ export const UserProfile = () => {
             setErrorMessage('File format is incorrect');
             return;
         }
-        const imageRef = ref(storage, 'images/' + user.uid);
+        const imageRef = ref(firebaseConfig.storageBucket, 'images/' + user.uid);
         console.log(user.uid)
 
         uploadBytes(imageRef, uploadImage).then(() => {

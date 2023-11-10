@@ -18,6 +18,7 @@ export const createPost = async (title, content) => {
       likedBy: '',
       repliedBy: '',
       createdAt: moment().tz('Europe/Sofia').format('lll'),
+      timestamp: Date.now(),
     });
   };
 
