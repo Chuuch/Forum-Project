@@ -59,7 +59,7 @@ import { auth } from '../../config/firebase-config';
       </h3>
       <p className="text-gray-400 p-2">{post.createdAt}</p>
     </div>
-    <div className="mt-4">
+    <div className="mt-16">
       <p className="text-white dark:text-white flex pl-2 text-lg">{post.content}</p>
     </div>
     <div className="flex flex-col items-start relative">
