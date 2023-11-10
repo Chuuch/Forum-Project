@@ -11,6 +11,7 @@ import { auth } from '../../config/firebase-config';
 export const SinglePost = ({ post, handleReply, handleLike }) => {
   const [likes, setLikes] = useState([]);
   const [replies, setReplies] = useState([]);
+  const [repliesCount, setRepliesCount] = useState(0);
   const [showReplies, setShowReplies] = useState(false);
 
 
@@ -41,6 +42,7 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
       try {
         const fetchedReplies = await getReplies(post.id);
         setReplies(fetchedReplies);
+        setRepliesCount(fetchReplies.length);
       } catch (error) {
         console.error('Error fetching replies:', error);
       }
@@ -50,7 +52,7 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
   }, [post.id]);
 
   return (
-    <div className="bg-[rgb(30,30,30)] dark:bg-gray-800 p-4 rounded-lg shadow-md w-[800px] dark:w-[800px] flex flex-col">
+    <div className="bg-[rgb(30,30,30)] dark:bg-gray-800 p-4 rounded-lg shadow-md w-[800px] dark:w-[800px] flex flex-col relative">
   <div className="flex items-center justify-between">
     <h3 className="text-2xl font-semibold text-gray-400 dark:text-[#eee] p-2">
       {post.title}
@@ -60,30 +62,25 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
   <div className="mt-4">
     <p className="text-white dark:text-white flex pl-2 text-lg">{post.content}</p>
   </div>
-  <div className="flex flex-col items-start">
+  <div className="flex flex-col items-start relative">
     <div className="flex flex-col">
       <p className="text-gray-600 dark:text-gray-400 pl-2">
         Posted by {post.author}
       </p>
     </div>
-    <div className="flex flex-row items-center z-20">
-      <div className="inline-flex items-center">
+    <div className="flex flex-row items-center z-10">
+      <div className="inline-flex items-center z-10 relative">
         <Likes postId={post.id} handleLike={handleLike} userId={auth.currentUser.uid} likes={likes}/>
-        <Replies post={post} handleReply={handleReply} replies={replies}/>
-        <div className='mb-1'>
-        {/* <span className='text-gray-400 dark:text-gray-300 left-1'>{repliesCount}</span> */}
-        </div>
-        <div className='ml-2'>
+        <Replies post={post} handleReply={handleReply} replies={replies} repliesCount={repliesCount}/>
         <BsFillTrash2Fill
           size={30}
           className="fill-[#F7AB0A] dark:fill-white cursor-pointer"
           onClick={onDeleteClick}
         />
-        </div>
       </div>
     </div>
   </div>
-  <div className="flex flex-col items-baseline">
+  <div className="flex flex-col items-baseline relative">
     <button
       onClick={toggleReplies}
       className="text-[#F7AB0A] dark:text-gray-400 cursor-pointer flex pl-2"
@@ -91,17 +88,17 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
       {showReplies ? 'Hide replies' : 'View replies'}
     </button>
 
-    <div className="mt-4">
+    <div className="mt-4 relative">
       {showReplies &&
         replies.length > 0 &&
         replies.map((reply, index) => (
           <div
             key={index}
-            className="text-gray-400 dark:text-gray-300 pl-2 pb-4"
+            className="text-gray-400 dark:text-gray-300 pl-2 pb-4 relative"
           >
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start relative">
               <div className="text-xs text-gray-400">{reply.repliedAt}</div>
-              <div className="text-gray-400 dark:text-gray-300 text-base flex flex-row items-start">
+              <div className="text-gray-400 dark:text-gray-300 text-base flex flex-row items-start relative">
                 {reply.author}: {reply.content}
               </div>
             </div>
@@ -110,6 +107,7 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
     </div>
   </div>
 </div>
+
 
   );
 };
@@ -126,6 +124,7 @@ SinglePost.propTypes = {
   }).isRequired,
   handleReply: PropTypes.func.isRequired,
   handleLike: PropTypes.func.isRequired,
+  repliesCount: PropTypes.number.isRequired,
 };
 
 export default SinglePost;
