@@ -34,7 +34,7 @@ export const Replies = ({ post, handleReply }) => {
 	};
 
 	return (
-		<div className="relative bg-[rgb(30,30,30)] dark:bg-gray-800 p-4 rounded-lg z-40">
+		<div className="relative bg-[rgb(30,30,30)] dark:bg-gray-800 p-4 rounded-lg z-20">
 			<div className="flex space-x-2 z-20">
 				<div
 					className={`z-20 flex space-x-2 ${
@@ -54,7 +54,7 @@ export const Replies = ({ post, handleReply }) => {
 			</div>
 
 			{showReplyForm && (
-				<div className="absolute flex flex-col w-[600px] bg-[rgb(36,36,36)] dark:bg-slate-700 p-6 rounded-lg shadow-lg">
+				<div className="absolute flex flex-col w-[600px] bg-[rgb(36,36,36)] dark:bg-slate-700 p-6 rounded-lg shadow-lg z-20">
 					<div className="flex justify-end pb-2">
 						<AiOutlineClose
 							size={25}

@@ -16,7 +16,7 @@ export const createPost = async (title, content) => {
 		author: username,
 		likedBy: '',
 		createdAt: moment().tz('Europe/Sofia').format('lll'),
-    timestamp: Date.now(),
+		timestamp: Date.now(),
 	};
 
 	const { key } = push(ref(database, 'posts'), post);
@@ -24,7 +24,6 @@ export const createPost = async (title, content) => {
 	update(ref(database), {
 		[`posts/${key}/id`]: key,
 		[`users/${username}/posts/${key}`]: true,
-		// [`posts/${key}/${categoryId}`]: true,
 	});
 	return key;
 };
@@ -49,6 +48,7 @@ export const getAllPosts = async () => {
 		id: key,
 	}));
 };
+
 
 export const getPostById = async (postId) => {
 	const snapshot = await get(ref(database, `posts/${postId}`));
@@ -78,15 +78,27 @@ export const editPost = async (postId, content) => {
 };
 
 export const likePost = async (postId, username, author, like = true) => {
-	const snapshot = await get(ref(database, `users/${author}/likesReceived`));
-	const likesReceived = snapshot.val() || 0;
+	const snapshot = await get(ref(database, `users/${author}/likesReceived`))
+	const likesReceived = snapshot.val();
 
 	return update(ref(database), {
 		[`posts/${postId}/likedBy/${username}`]: like || null,
 		[`users/${username}/likesGiven/${postId}`]: like || null,
-		[`users/${author}/likesReceived`]:
-			like === true ? likesReceived + 1 : likesReceived - 1,
-	});
+		[`users/${author}/likesReceived`]: like ? likesReceived + 1: likesReceived -1,
+	})
+}
+
+export const getLikes = async (postId) => {
+	const snapshot = await get(ref(database, `posts/${postId}/likes`));
+
+	if (!snapshot.exists()) {
+		return [];
+	}
+
+	return Object.keys(snapshot.val()).map((key) => ({
+		...snapshot.val()[key],
+		id: key,
+	}));
 };
 
 export const replyPost = async (postId, replyContent) => {
@@ -96,7 +108,6 @@ export const replyPost = async (postId, replyContent) => {
 		author: username,
 		repliedAt: moment().tz('Europe/Sofia').format('lll'),
 	};
-
 
 	const postRepliesRef = ref(database, `posts/${postId}/replies`);
 
@@ -113,7 +124,6 @@ export const getReplies = async (postId) => {
 		const snapshot = await get(child(postRepliesRef, '/'));
 
 		if (snapshot.exists()) {
-			// Convert the snapshot to an array of replies
 			const replies = [];
 			snapshot.forEach((childSnapshot) => {
 				const reply = childSnapshot.val();
@@ -121,7 +131,6 @@ export const getReplies = async (postId) => {
 			});
 			return replies;
 		} else {
-			// No replies found
 			return [];
 		}
 	} catch (error) {
