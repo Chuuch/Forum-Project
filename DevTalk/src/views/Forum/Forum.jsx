@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { SinglePost } from '../SinglePost/SinglePost';
 import { useEffect, useState } from 'react';
-import { getAllPosts, getLikes, likePost } from '../../services/posts.services';
+import { getAllPosts, likePost } from '../../services/posts.services';
 import { replyPost, getUsername } from '../../services/posts.services';
 
 export const Forum = () => {
@@ -57,13 +57,6 @@ export const Forum = () => {
 		fetchPosts();
 	}, []);
 
-	useEffect(() => {
-		const fetchLikes = async () => {
-            const likes = await getLikes();
-            setLikeLists(likes);
-        };
-        fetchLikes();
-	})
 
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start space-y-2">

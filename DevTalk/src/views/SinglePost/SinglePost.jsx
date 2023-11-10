@@ -3,11 +3,13 @@ import { PropTypes } from 'prop-types';
 import { Likes } from '../../components/Likes/Likes';
 import { Replies } from '../../components/Replies/Replies';
 import { useEffect, useState } from 'react';
-import { getReplies, deletePost } from '../../services/posts.services';
+import { getLikes, getReplies, deletePost } from '../../services/posts.services';
 import { toast } from 'react-hot-toast';
+import { auth } from '../../config/firebase-config';
 
 
-export const SinglePost = ({ post, handleReply }) => {
+export const SinglePost = ({ post, handleReply, handleLike }) => {
+  const [likes, setLikes] = useState([]);
   const [replies, setReplies] = useState([]);
   const [showReplies, setShowReplies] = useState(false);
 
@@ -24,6 +26,14 @@ export const SinglePost = ({ post, handleReply }) => {
       console.error('Error deleting post:', error);
     }
   }
+
+  useEffect(() => {
+		const fetchLikes = async () => {
+            const fetchedLikes = await getLikes(post.id);
+            setLikes(fetchedLikes);
+        };
+        fetchLikes();
+	}, [post.id])
 
   useEffect(() => {
     const fetchReplies = async () => {
@@ -57,7 +67,7 @@ export const SinglePost = ({ post, handleReply }) => {
         </div>
         <div className="flex flex-row items-center z-20">
           <div className="inline-flex items-center">
-            <Likes />
+            <Likes postId={post.id} handleLike={handleLike} userId={auth.currentUser.uid} likes={likes}/>
             <Replies post={post} handleReply={handleReply} />
             <BsFillTrash2Fill
               size={30}
@@ -105,9 +115,10 @@ SinglePost.propTypes = {
     id: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
-    likes: PropTypes.number.isRequired,
+    likes: PropTypes.object.isRequired,
   }).isRequired,
   handleReply: PropTypes.func.isRequired,
+  handleLike: PropTypes.func.isRequired,
 };
 
 export default SinglePost;
