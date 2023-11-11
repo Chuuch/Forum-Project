@@ -1,4 +1,4 @@
-import { ref, get, update, push, remove, child } from 'firebase/database';
+import { ref, get, update, push, remove, child, onValue } from 'firebase/database';
 import { auth, database } from '../config/firebase-config';
 import moment from 'moment-timezone';
 
@@ -78,31 +78,26 @@ export const editPost = async (postId, content) => {
 };
 
 export const likePost = async (postId) => {
-	const username = await getUsername();
-	const like = {
-		author: username,
-	};
+    const username = await getUsername();
+    const like = {
+        author: username,
+    };
 
-	const likesRef = ref(database, `posts/${postId}/likes`);
-	const { key } = await push(likesRef, like);
+    const likesRef = ref(database, `posts/${postId}/likes`);
+    const { key } = await push(likesRef, like);
 
-	
+    const postSnapshot = await get(ref(database, `posts/${postId}`));
+    const authorId = postSnapshot.val().userID;
 
-	const postSnapshot = await get(ref(database, `posts/${postId}`));
-	const authorId = postSnapshot.val().userID;
+    const notification = {
+        type: 'like',
+        postId: postId,
+        author: username,
+        likedAt: moment().tz('Europe/Sofia').format('lll'),
+    };
 
-	const notification = {
-		type: 'like',
-		postId: postId,
-		author: username,
-		likedAt: moment().tz('Europe/Sofia').format('lll'),
-	};
-
-	update(ref(database), {
-		[`users/${auth.currentUser.uid}/likes/${postId}/${key}`]: true,
-		[`notifications/${authorId}/${key}`]: notification,
-	});
-	
+    await update(ref(database, `users/${auth.currentUser.uid}/likes/${postId}/${key}`), true);
+    await update(ref(database, `notifications/${authorId}/${key}`), notification);
 };
 
 export const dislikePost = (postId, username) => {
@@ -132,32 +127,30 @@ export const getLikesCount = async (postId) => {
 };
 
 export const replyPost = async (postId, replyContent) => {
-	const username = await getUsername();
-	const reply = {
-		content: replyContent,
-		author: username,
-		userID: auth.currentUser.uid,
-		repliedAt: moment().tz('Europe/Sofia').format('lll'),
-	};
+    const username = await getUsername();
+    const reply = {
+        content: replyContent,
+        author: username,
+        userID: auth.currentUser.uid,
+        repliedAt: moment().tz('Europe/Sofia').format('lll'),
+    };
 
-	const postRepliesRef = ref(database, `posts/${postId}/replies`);
-	const { key } = await push(postRepliesRef, reply);
+    const postRepliesRef = ref(database, `posts/${postId}/replies`);
+    const { key } = await push(postRepliesRef, reply);
 
-	const postSnapshot = await get(ref(database, `posts/${postId}`));
-	const authorId = postSnapshot.val().userID;
+    const postSnapshot = await get(ref(database, `posts/${postId}`));
+    const authorId = postSnapshot.val().userID;
 
-	const notification = {
-		type: 'reply',
-		postId: postId,
-		author: username,
-		replyContent: replyContent,
-		repliedAt: moment().tz('Europe/Sofia').format('lll'),
-	};
+    const notification = {
+        type: 'reply',
+        postId: postId,
+        author: username,
+        replyContent: replyContent,
+        repliedAt: moment().tz('Europe/Sofia').format('lll'),
+    };
 
-	update(ref(database), {
-		[`notifications/${authorId}/${key}`]: notification,
-		[`users/${auth.currentUser.uid}/replies/${postId}/${key}`]: true,
-	});
+    await update(ref(database, `notifications/${authorId}/${key}`), notification);
+    await update(ref(database, `users/${auth.currentUser.uid}/replies/${postId}/${key}`), true);
 };
 
 export const getReplies = async (postId) => {
@@ -185,6 +178,19 @@ export const getRepliesCount = async (postId) => {
 	const replies = await getReplies(postId);
 	return replies.length;
 };
+
+export const getNotifications = (userId, authorId) => {
+    const notificationsRef = ref(database, `notifications/${authorId}`);
+
+    return onValue(notificationsRef, (snapshot) => {
+        const notifications = [];
+        snapshot.forEach((childSnapshot) => {
+            notifications.push({ ...childSnapshot.val(), id: childSnapshot.key });
+        });
+        return notifications;
+    });
+};
+
 
 
 export const deleteReply = async (postId, replyId) => {
