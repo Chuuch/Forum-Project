@@ -29,12 +29,12 @@ export default function AuthenticationViews({ userId }) {
     const [isAdmin, setIsAdmin] = useState(null);
   
     useEffect(() => {
-      const checkIfUserIsAdmin = async () => {
+      if(userId !==undefined) {const checkIfUserIsAdmin = async () => {
         try {
           const usersSnapshot = await get(ref(database, 'users'));
           if (usersSnapshot.exists()) {
             const usersData = usersSnapshot.val();
-            if (usersData && usersData[userId].isAdmin === true) {
+            if (usersData && usersData[userId] !== undefined && usersData[userId].isAdmin === true) {
               setIsAdmin(true);
             } else {
               setIsAdmin(false);
@@ -48,6 +48,7 @@ export default function AuthenticationViews({ userId }) {
       };
   
       checkIfUserIsAdmin();
+	}
     }, [userId]);
   
     return (
@@ -76,31 +77,6 @@ export default function AuthenticationViews({ userId }) {
 			</BrowserRouter>
 		
 				</div>
-        ) : isAdmin === false ? (
-            <div className="bg-[rgb(36,36,36)] z-0 dark:bg-white">
-			<BrowserRouter>
-				<Navbar />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/contact" element={<Contact />} />
-					<Route path="/trending" element={<Authenticated><Trending /></Authenticated>} />
-					<Route path="/forum" element={<Authenticated><Forum /></Authenticated>} />
-					<Route path='/createpost' element={<Authenticated><CreatePost /></Authenticated>} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/register" element={<Register />} />
-					<Route path='/userprofile' element={<Authenticated><UserProfile /></Authenticated>} />
-					<Route path='*' element={<NotFound/>}/>
-					<Route path="/c" element={<Authenticated><C /></Authenticated>} />
-					<Route path="/csharp" element={<Authenticated><Csharp /></Authenticated>} />
-					<Route path="/java" element={<Authenticated><Java /></Authenticated>} />
-					<Route path="/javascript" element={<Authenticated><JavaScript /></Authenticated>} />
-					<Route path="/python" element={<Authenticated><Python /></Authenticated>} />
-					<Route path="/typescript" element={<Authenticated><TypeScript /></Authenticated>} />
-				</Routes>
-				<Footer />
-			</BrowserRouter>
-		</div>
         ) : (
             <div className="bg-[rgb(36,36,36)] z-0 dark:bg-white">
 			<BrowserRouter>
