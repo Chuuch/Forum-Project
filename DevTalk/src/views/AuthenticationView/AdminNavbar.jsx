@@ -1,9 +1,9 @@
-import { NavLink, } from 'react-router-dom';
+import { NavLink, useLocation, } from 'react-router-dom';
 // import { SocialIcon } from 'react-social-icons';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, database } from '../../config/firebase-config';
-// import Notification from '../../components/Notification/Notification';
-// import SearchBar from '../SearchBar/SearchBar';
+import Notification from '../../components/Notification/Notification';
+import SearchBar from '../../components/SearchBar/SearchBar';
 import DarkModeToggle from '../../components/DarkMode/DarkModeToggle';
 import { logoutUser } from '../../services/auth.services';
 import { motion } from 'framer-motion';
@@ -13,7 +13,7 @@ import { useEffect, useState } from'react';
 
 const AdminNavbar = () => {
 	const [user] = useAuthState(auth);
-	// const location = useLocation();
+	const location = useLocation();
 	const [currentUser, setCurrentUser] = useState(null);
 
 	const getCurrentUser = async () => {
@@ -58,13 +58,79 @@ const AdminNavbar = () => {
 					<path d="M10 9l-2 2l2 2" /> <path d="M14 9l2 2l-2 2" />{' '}
 				</svg>
 			</motion.div>
-			
+			<div className="pl-28 flex flex-row justify-center">
+				<motion.div
+					initial={{ x: -500, opacity: 0, scale: 0.5 }}
+					animate={{ x: 1, opacity: 1, scale: 1 }}
+					transition={{ duration: 1.5 }}
+				>
+					<NavLink
+						className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+							location.pathname === '/'
+								? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]'
+								: ''
+						}`}
+						to="/"
+					>
+						Home
+					</NavLink>
+					<NavLink
+						className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+							location.pathname === '/trending'
+								? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]'
+								: ''
+						}`}
+						to="/trending"
+					>
+						Trending
+					</NavLink>
+					<NavLink
+						className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+							location.pathname === '/forum'
+								? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]'
+								: ''
+						}`}
+						to="/forum"
+					>
+						Forum
+					</NavLink>
+				</motion.div>
+				<motion.div
+					initial={{ x: +500, opacity: 0, scale: 0.5 }}
+					animate={{ x: 1, opacity: 1, scale: 1 }}
+					transition={{ duration: 1.5 }}
+				>
+					<NavLink
+						className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+							location.pathname === '/createpost'
+								? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]'
+								: ''
+						}`}
+						to="/createpost"
+					>
+						Create Post
+					</NavLink>
+					<NavLink
+						className={`focus:bg-[#F7AB0A] focus:text-[rgb(36,36,36)] focus:outline-none focus:border-none focus-visible:bg-[#F7AB0A] dark:text-[#001440] dark:focus:bg-teal-200 w-32 h-10 rounded text-1xl cursor-pointer uppercase text-[#F7AB0A] items-center inline-flex justify-center top-0 hover:scale-110 ${
+							location.pathname === '/reports'
+								? 'bg-[#F7AB0A] text-[rgb(36,36,36)] dark:bg-teal-200 dark:text-[#001440]'
+								: ''
+						}`}
+						to="/reports"
+					>
+						Reports
+					</NavLink>
+					
+				</motion.div>
+			</div>
 			<motion.div
 				initial={{ x: 500, opacity: 0, scale: 0.5 }}
 				animate={{ x: 0, opacity: 1, scale: 1 }}
 				transition={{ duration: 1.5 }}
 				className="flex flex-row items-center space-x-2 z-10 relative"
 			>
+				<SearchBar />
+				<Notification />
 				<DarkModeToggle />
 				{!user ? (
 					<NavLink to="/userprofile" className="hidden">
