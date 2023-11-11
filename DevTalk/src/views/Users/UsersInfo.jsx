@@ -17,10 +17,20 @@ export default function UsersInfo () {
     }, []);
 
     return (
-        <div className="flex flex-col z-20 space-y-4 mt-32 pb-10">
+        <table className="min-w-full bg-white">
+            <thead className="bg-gray-800 text-white">
+                <tr>
+                    <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+                    <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
+                    <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Username</th>
+                    <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                </tr>
+            </thead>
+                <tbody className="text-gray-700 divide-y">
             {users.map((user) => (
                 <SingleUser key={user.uid} user={user} />
             ))}
-        </div>
+                </tbody>
+        </table>
     );
 }

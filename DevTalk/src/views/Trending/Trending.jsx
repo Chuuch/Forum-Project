@@ -5,25 +5,50 @@ import {   get, limitToLast,  orderByChild,  query,  ref } from 'firebase/databa
 import { database } from '../../config/firebase-config';
 
 const Trending = () => {
-	const [postLists, setPostsLists] = useState([]);
+	const [postListTime, setPostListTime] = useState([]);
+	const [sortedPostsReplies, setSortedPostsReplies] = useState([]);
 
 	useEffect(() => {
 		const getPosts = async () => {
 			try {
-				const postQuery=query(ref(database, 'posts'), orderByChild('timestamp'), limitToLast(10));
-				const postsSnapshot = await get(postQuery);
-				const postsData = [];
-				postsSnapshot.forEach((post) => {
-				postsData.unshift(post.val());
+				const postQueryTime=query(ref(database, 'posts'), orderByChild('timestamp'), limitToLast(10));
+				const postsSnapshotTime = await get(postQueryTime);
+				const postsDataTime = [];
+				postsSnapshotTime.forEach((post) => {
+				postsDataTime.unshift(post.val());
 				});
-				setPostsLists(postsData);
-				console.log(setPostsLists(postsData));
+				setPostListTime(postsDataTime);
 			} catch (error) {
 				console.log(error.message);
 			}
 		};
 		getPosts();
 	}, []);
+
+	useEffect(() => {
+        const fetchAndSortPosts = async () => {
+            try {
+                const postsSnapshot = await get(query(ref(database, 'posts')));
+
+                if (postsSnapshot.exists()) {
+                    const postsArray = Object.values(postsSnapshot.val());
+                    const sortedPosts = postsArray.sort((a, b) => {
+                        const repliesA = a.replies ? Object.keys(a.replies).length : 0;
+                        const repliesB = b.replies ? Object.keys(b.replies).length : 0;
+                        return repliesB - repliesA;
+                    });
+					const topTenPosts=sortedPosts.slice(0,10);
+                    setSortedPostsReplies(topTenPosts);
+                } else {
+                    console.log('No posts found.');
+                }
+            } catch (error) {
+                console.error('Error fetching and sorting posts:', error.message);
+            }
+        };
+
+        fetchAndSortPosts();
+    }, []);
 
 	return (
 		
@@ -43,7 +68,7 @@ const Trending = () => {
 					<h1 className='text-3xl flex justify-center text-[#F7AB0A] dark:text-[#001440]'>
 						Latest posts
 					</h1>
-					{postLists.map((post, index) => (
+					{postListTime.map((post, index) => (
 						<SinglePost key={index} post={post} />
 					))}
 				</motion.div>
@@ -57,9 +82,9 @@ const Trending = () => {
 					viewport={{ once: true }}
 				>
 					<h1 className='text-3xl flex justify-center text-[#F7AB0A] dark:text-[#001440]'>
-						Most liked posts
+						Most replied posts
 					</h1>
-					{postLists.map((post, index) => (
+					{sortedPostsReplies.map((post, index) => (
 						<SinglePost key={index} post={post} />
 					))}
 				</motion.div>
