@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { Likes } from '../../components/Likes/Likes';
 import { Replies } from '../../components/Replies/Replies';
 import { useEffect, useState } from 'react';
-import { getLikes, getReplies, deletePost } from '../../services/posts.services';
+import { getLikes, getReplies, deletePost, deleteReply } from '../../services/posts.services';
 import { toast } from 'react-hot-toast';
 import { auth } from '../../config/firebase-config';
 
@@ -27,6 +27,15 @@ import { auth } from '../../config/firebase-config';
       } catch (error) {
         console.error('Error deleting post:', error);
       }
+    }
+
+    const replyDelete = async (replyId) => {
+      await deleteReply(post.id, replyId);
+      toast.success('Reply deleted!')
+      const updatedReplies = await getReplies(post.id)
+      .then(window.location.reload());
+      setReplies(updatedReplies);
+      setRepliesCount(updatedReplies.length);
     }
 
     useEffect(() => {
@@ -99,7 +108,7 @@ import { auth } from '../../config/firebase-config';
               <div className="flex flex-col items-start relative">
                 <div className="text-xs text-gray-400">{reply.repliedAt}</div>
                 <div className="text-gray-400 dark:text-gray-300 text-base flex flex-row items-start relative">
-                  {reply.author}: {reply.content}
+                  {reply.author}: {reply.content} <BsFillTrash2Fill onClick={replyDelete} className='ml-2 mt-1 cursor-pointer'/>
                 </div>
               </div>
             </div>
