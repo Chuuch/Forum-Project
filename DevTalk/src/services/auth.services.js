@@ -1,33 +1,46 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { get, ref, set } from 'firebase/database';
-import { auth, database } from '../config/firebase-config';
 import { toast } from 'react-hot-toast';
+import { auth, database } from '../config/firebase-config';
 
 export const getUserByID = (uid, setCurrentProfile) => {
     try {
-      const userRef = database.ref(`/users/${uid}`);
-  
-      userRef.on('value', (snapshot) => {
-        const userData = snapshot.val();
-        setCurrentProfile(userData);
-      });
-  
+        const userRef = database.ref(`/users/${uid}`);
+
+        userRef.on('value', (snapshot) => {
+            const userData = snapshot.val();
+            setCurrentProfile(userData);
+        });
+
     } catch (err) {
-      toast.error(err, "error");
+        toast.error(err, "error");
     }
-  };
+};
+
+export const verifyUser = async (user) => {
+    try {
+        await sendEmailVerification(user);
+        toast.success('Verification email sent!')
+    } catch (error) {
+        toast.error('Something went wrong. Please, try again.')
+    }
+}
 
 export const registerUser = async (firstName, lastName, username, email, password) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
         // Signed up 
         const user = userCredential.user;
+        // Update user profile with displayName in firebase
+        const displayName = `${firstName} ${lastName}`;
+        await updateProfile(user, { displayName });
+        // Register user in database
         set(ref(database, `users/${user?.uid}`), {
             uid: user?.uid, firstName, lastName, username, email, likedPosts: {}, isAdmin: false,
-            avatar: 'https://firebasestorage.googleapis.com/v0/b/devtalk-1d6f5.appspot.com/o/default-avatar.png?alt=media&token=0a7d2e0e-4a8c-4f9f-8d3c-5a7d1e5d5c8e',
+            avatar: '',
             createdOn: Date.now(),
         });
-        
+        await verifyUser(user)
         return { user: user?.uid }
     } catch (error) {
         const errorMessage = error.message;
@@ -87,3 +100,16 @@ export const allUsers = async () => {
         return false;
     }
 };
+export const updateUserInDatabase = async (uid, firstName, lastName, email, avatar) => {
+    try {
+        const userRef = database.ref(`/users/${uid}`);
+        await updateProfile(auth.currentUser, { displayName: `${firstName} ${lastName}` });
+        await set(userRef, {
+            uid, firstName, lastName, email, avatar
+        });
+        return true
+    } catch (error) {
+        return false
+    }
+}
+
