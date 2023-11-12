@@ -86,7 +86,7 @@ const Forum = () => {
 
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start space-y-2">
-			<h1 className="fixed flex justify-start text-[#F7AB0A] dark:text-[#001440] z-10 text-4xl mt-10">
+			<h1 className="flex justify-start text-[#F7AB0A] dark:text-[#001440] z-10 text-4xl mt-10">
 				Forum
 			</h1>
 			<motion.div
