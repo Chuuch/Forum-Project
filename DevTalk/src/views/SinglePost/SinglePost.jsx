@@ -9,10 +9,10 @@ import { auth } from '../../config/firebase-config';
 import { EditPost } from '../../components/EditPost/EditPost';
 import { useNavigate } from 'react-router-dom';
 
-const SinglePost = ({ post, handleReply, handleLike }) => {
+export const SinglePost = ({ post, handleReply, handleLike }) => {
   const [likes, setLikes] = useState([]);
   const [replies, setReplies] = useState([]);
-  const [repliesCount, setRepliesCount] = useState(0); // Declare repliesCount state
+  const [repliesCount, setRepliesCount] = useState(0);
   const [showReplies, setShowReplies] = useState(false);
   const navigate = useNavigate();
 
