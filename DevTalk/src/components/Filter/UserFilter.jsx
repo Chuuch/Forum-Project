@@ -1,18 +1,18 @@
 
 import PropTypes from 'prop-types';
 
-const UserList = ({ users, filter, setFilter }) => {
+const UserFilter = ({ users, userFilter, setUserFilter }) => {
     return (
         <div>
             <label htmlFor="filter" className="block text-sm font-medium text-gray-700">
                 Filter by username:
             </label>
             <select
-                id="filter"
+                id="userFilter"
                 name="filter"
                 className="mt-1 p-2 border border-gray-300 rounded"
-                value={ filter }
-                onChange={ (e) => setFilter(e.target.value) }
+                value={ userFilter }
+                onChange={ (e) => setUserFilter(e.target.value) }
             >
                 <option value={ 'all' } className="mb-2">
                     { 'All' }
@@ -27,10 +27,10 @@ const UserList = ({ users, filter, setFilter }) => {
     );
 };
 
-UserList.propTypes = {
+UserFilter.propTypes = {
     users: PropTypes.array.isRequired,
-    filter: PropTypes.string.isRequired,
-    setFilter: PropTypes.func.isRequired
+    userFilter: PropTypes.string.isRequired,
+    setUserFilter: PropTypes.func.isRequired
 };
 
-export default UserList;
+export default UserFilter;

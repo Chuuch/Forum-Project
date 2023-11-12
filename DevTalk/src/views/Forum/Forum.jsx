@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import UserList from '../../components/Filter/UserFilter';
 import { allUsers } from '../../services/auth.services';
 import {
 	getAllPosts,
@@ -9,13 +8,16 @@ import {
 	replyPost,
 } from '../../services/posts.services';
 import { SinglePost } from '../SinglePost/SinglePost';
+import CategoryFilter from '../../components/Filter/CategotyFilter';
+import UserFilter from '../../components/Filter/UserFilter';
 
 const Forum = () => {
 	const [ postLists, setPostsLists ] = useState([]);
 	const [ likeLists, setLikeLists ] = useState([]);
 	const [ repliesCount, setRepliesCount ] = useState(0);
 	const [ usersList, setUsersList ] = useState([]);
-	const [ filter, setFilter ] = useState('');
+	const [ userFilter, setUserFilter ] = useState('');
+	const [ categoryFilter, setCategoryFilter ] = useState('');
 
 	const handleLike = async (id) => {
 		const username = getUsername();
@@ -61,18 +63,29 @@ const Forum = () => {
 	}, []);
 
 	useEffect(() => {
-		if (filter.length && filter !== 'all') {
-			const filteredPosts = postLists.filter((post) => post.userID === filter);
+		if (userFilter.length && userFilter !== 'all' && (!categoryFilter.length || categoryFilter === 'all')) {
+			const filteredPosts = postLists.filter((post) => post.userID === userFilter);
 			setPostsLists(filteredPosts);
 		}
-		if (filter === 'all') {
+		if (categoryFilter.length && categoryFilter !== 'all' && (!userFilter.length || userFilter === 'all')) {
+			const filteredPosts = postLists.filter((post) => post.category?.toLowerCase() === categoryFilter.toLowerCase());
+			setPostsLists(filteredPosts);
+		}
+		if (userFilter !== 'all' && categoryFilter !== 'all' && userFilter.length && categoryFilter.length) {
+			const filteredPosts = postLists.filter(
+				(post) => post.category?.toLowerCase() === categoryFilter.toLocaleLowerCase() && post.userID === userFilter
+			);
+			setPostsLists(filteredPosts);
+		}
+		if (userFilter === 'all' && categoryFilter === 'all') {
 			const fetchPosts = async () => {
 				const posts = await getAllPosts();
 				setPostsLists(posts);
 			};
 			fetchPosts();
 		}
-	}, [ filter, postLists ]);
+
+	}, [ userFilter, postLists, categoryFilter ]);
 
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start space-y-2">
@@ -87,8 +100,9 @@ const Forum = () => {
 				viewport={ { once: true } }
 			>
 				<div className="flex flex-col space-y-4 mt-32 pb-10 z-20">
-					<div className="flex items-center justify-between">
-						<UserList users={ usersList } filter={ filter } setFilter={ setFilter } />
+					<div className="flex items-center justify-center space-x-2">
+						<UserFilter users={ usersList } userFilter={ userFilter } setUserFilter={ setUserFilter } />
+						<CategoryFilter categoryFilter={ categoryFilter } setCategoryFilter={ setCategoryFilter } />
 					</div>
 					{ postLists.length ? (
 						postLists.map((post, index) => (
@@ -97,7 +111,7 @@ const Forum = () => {
 								post={ post }
 								handleReply={ handleReply }
 								handleLike={ handleLike }
-								filter={ filter }
+								userFilter={ userFilter }
 							/>
 						))
 					) : (
