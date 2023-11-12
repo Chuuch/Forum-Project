@@ -14,11 +14,11 @@ const UserList = ({ users, filter, setFilter }) => {
                 value={ filter }
                 onChange={ (e) => setFilter(e.target.value) }
             >
-                <option key={ 'all' } value={ 'all' } className="mb-2">
+                <option value={ 'all' } className="mb-2">
                     { 'All' }
                 </option>
                 { users.map(user => (
-                    <option key={ user.uid } value={ user.uid } className="mb-2">
+                    <option key={ user.createdOn } value={ user.uid } className="mb-2">
                         { user.username }
                     </option>
                 )) }
