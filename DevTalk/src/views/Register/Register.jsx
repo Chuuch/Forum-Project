@@ -14,7 +14,7 @@ const Register = () => {
 
 		const data = await registerUser(firstName, lastName, username, email, password/* , role: 'user' */)
 		if (data?.user) {
-			toast.success('Registration successful! PLease, verify your account via sent email!')
+			toast.success('Registration successful! Please, verify your account via sent email!')
 			navigate('/login')
 			reset()
 		} else if (data.error) {

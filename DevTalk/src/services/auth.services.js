@@ -100,12 +100,23 @@ export const allUsers = async () => {
         return false;
     }
 };
-export const updateUserInDatabase = async (uid, firstName, lastName, email, avatar) => {
+export const updateUserPhoto = async (uid, avatar) => {
     try {
         const userRef = database.ref(`/users/${uid}`);
-        await updateProfile(auth.currentUser, { displayName: `${firstName} ${lastName}` });
         await set(userRef, {
-            uid, firstName, lastName, email, avatar
+            uid, avatar
+        });
+        return true
+    } catch (error) {
+        return false
+    }
+}
+
+export const updateUserEmail = async (uid, email) => {
+    try {
+        const userRef = database.ref(`/users/${uid}`);
+        await set(userRef, {
+            uid, email
         });
         return true
     } catch (error) {
