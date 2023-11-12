@@ -21,7 +21,6 @@ export const EditPost = ({ post }) => {
       try {
         await editPost(post.id, title, content);
         toast.success('Post edited!');
-        window.location.reload();
       } catch (error) {
         console.error('Error editing post:', error);
         toast.error('You are not authorized to edit this post!');
