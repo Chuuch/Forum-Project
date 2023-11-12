@@ -119,7 +119,7 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
                   <div className="text-xs text-gray-400">{reply.repliedAt}</div>
                   <div className="text-gray-400 dark:text-gray-300 text-base flex flex-row items-start relative">
                     {reply.author}: {reply.content}{' '}
-                    <AiFillEdit />
+                    <AiFillEdit className='ml-2 mt-1 cursor-pointer'/>
                     <BsFillTrash2Fill onClick={() => onReplyDeleteClick(reply.id)} className="ml-2 mt-1 cursor-pointer" />
                   </div>
                 </div>
