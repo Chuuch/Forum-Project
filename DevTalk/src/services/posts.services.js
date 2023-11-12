@@ -1,6 +1,15 @@
-import { ref, get, update, push, remove, child, onValue } from 'firebase/database';
+import {
+	ref,
+	get,
+	update,
+	push,
+	remove,
+	child,
+	onValue,
+} from 'firebase/database';
 import { auth, database } from '../config/firebase-config';
 import moment from 'moment-timezone';
+import { toast } from 'react-hot-toast';
 
 export const createPost = async (title, content) => {
 	const userSnapshot = await get(
@@ -62,19 +71,47 @@ export const getPostsByIds = async (ids) => {
 	return posts.filter((p) => ids.includes(p.id));
 };
 
-export const deletePost = async (postId, username, categoryId) => {
-	return update(ref(database), {
-		[`posts/${postId}`]: null,
-		[`users/${username}/posts/${postId}`]: null,
-		[`category/${categoryId}/posts/${postId}`]: null,
-	});
+export const deletePost = async (postId, categoryId) => {
+	const postRef = ref(database, `posts/${postId}`);
+	try {
+		const postSnapshot = await get(postRef);
+		const post = postSnapshot.val();
+		const currentUserID = auth.currentUser.uid;
+		if (post && post.userID === currentUserID) {
+			return update(ref(database), {
+				[`posts/${postId}`]: null,
+				[`category/${categoryId}/posts/${postId}`]: null,
+			});
+		} else {
+			toast.error('You are not authorized to delete this post.');
+		}
+	} catch (error) {
+		console.error('Error getting post:', error);
+	}
 };
 
-export const editPost = async (postId, content) => {
-	return update(ref(database), {
-		[`posts/${postId}/content`]: content,
-		[`posts/${postId}/editedOn`]: moment().tz('Europe/Sofia').format('lll'),
-	});
+// export const editPost = async (postId, content) => {
+// 	return update(ref(database), {
+// 		[`posts/${postId}/content`]: content,
+// 		[`posts/${postId}/editedOn`]: moment().tz('Europe/Sofia').format('lll'),
+// 	});
+// };
+
+export const editPost = async (postId, title, content) => {
+	const postRef = ref(database, `posts/${postId}`);
+	const postSnapshot = await get(postRef);
+	const post = postSnapshot.val();
+	const currentUserID = auth.currentUser.uid;
+
+	if (post && post.userID === currentUserID) {
+		return update(postRef, {
+			title: title,
+			content: content,
+			editedOn: moment().tz('Europe/Sofia').format('lll'),
+		});
+	} else {
+		toast.error('You are not authorized to edit this post.');
+	}
 };
 
 export const likePost = async (postId) => {
@@ -85,8 +122,6 @@ export const likePost = async (postId) => {
 
 	const likesRef = ref(database, `posts/${postId}/likes`);
 	const { key } = await push(likesRef, like);
-
-	
 
 	const postSnapshot = await get(ref(database, `posts/${postId}`));
 	const authorId = postSnapshot.val().userID;
@@ -102,7 +137,6 @@ export const likePost = async (postId) => {
 		[`users/${auth.currentUser.uid}/likes/${postId}/${key}`]: true,
 		[`notifications/${authorId}/${key}`]: notification,
 	});
-	
 };
 
 export const dislikePost = (postId, username) => {
@@ -187,30 +221,29 @@ export const getRepliesCount = async (postId) => {
 };
 
 export const getNotifications = (userId, authorId) => {
-    const notificationsRef = ref(database, `notifications/${authorId}`);
+	const notificationsRef = ref(database, `notifications/${authorId}`);
 
-    return onValue(notificationsRef, (snapshot) => {
-        const notifications = [];
-        snapshot.forEach((childSnapshot) => {
-            notifications.push({ ...childSnapshot.val(), id: childSnapshot.key });
-        });
-        return notifications;
-    });
+	return onValue(notificationsRef, (snapshot) => {
+		const notifications = [];
+		snapshot.forEach((childSnapshot) => {
+			notifications.push({ ...childSnapshot.val(), id: childSnapshot.key });
+		});
+		return notifications;
+	});
 };
-
-
 
 export const deleteReply = async (postId, replyId) => {
 	const currentUser = auth.currentUser;
 
 	if (currentUser) {
-		const replySnapshot = await get(ref(database, `posts/${postId}/replies/${replyId}`)
+		const replySnapshot = await get(
+			ref(database, `posts/${postId}/replies/${replyId}`)
 		);
 		const replyData = replySnapshot.val();
 
 		if (replyData && replyData.userID === currentUser.uid) {
-            await remove(ref(database, `posts/${postId}/replies/${replyId}`));
-        }
+			await remove(ref(database, `posts/${postId}/replies/${replyId}`));
+		}
 	}
-        await remove(ref(database, `posts/${postId}/replies/${replyId}`));
+	await remove(ref(database, `posts/${postId}/replies/${replyId}`));
 };

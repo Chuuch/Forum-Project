@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { getLikes, getReplies, deletePost, deleteReply } from '../../services/posts.services';
 import { toast } from 'react-hot-toast';
 import { auth } from '../../config/firebase-config';
+import { EditPost } from '../../components/EditPost/EditPost';
 
 
   export const SinglePost = ({ post, handleReply, handleLike }) => {
@@ -19,15 +20,17 @@ import { auth } from '../../config/firebase-config';
       setShowReplies(!showReplies);
     };
 
+
     const onDeleteClick = async () => {
       try {
-        await deletePost(post.id, post.author)
-        await (toast.success('Post deleted!'))
-        .then(window.location.reload())
+        await deletePost(post.id, post.userID);
+        toast.success('Post deleted!');
+        window.location.reload();
       } catch (error) {
         console.error('Error deleting post:', error);
+        toast.error('You are not authorized to delete this post!');
       }
-    }
+    };
 
     const replyDelete = async (replyId) => {
       await deleteReply(post.id, replyId);
@@ -81,6 +84,7 @@ import { auth } from '../../config/firebase-config';
         <div className="inline-flex items-center z-10 relative">
           <Likes postId={post.id} handleLike={handleLike} userId={auth.currentUser.uid} likes={likes}/>
           <Replies post={post} handleReply={handleReply} replies={replies} repliesCount={repliesCount}/>
+          <EditPost post={post} />
           <BsFillTrash2Fill
             size={30}
             className="fill-[#F7AB0A] dark:fill-white cursor-pointer"
@@ -130,6 +134,7 @@ SinglePost.propTypes = {
     content: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
     likes: PropTypes.object.isRequired,
+    userID: PropTypes.string.isRequired,
   }).isRequired,
   handleReply: PropTypes.func.isRequired,
   handleLike: PropTypes.func.isRequired,

@@ -67,13 +67,13 @@ export const Forum = () => {
 				Forum
 			</h1>
 			<motion.div
-				className="flex flex-col space-y-4 mt-32 pb-10 z-20"
+				className="flex flex-col space-y-2 mt-32 pb-10 z-20"
 				initial={{ y: -300, opacity: 0 }}
 				transition={{ duration: 1.5 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true }}
 			>
-				<div className="flex flex-col z-20 space-y-4 mt-32 pb-10">
+				<div className="flex flex-col z-20 space-y-10 mt-32 pb-10">
 					{postLists.map((postId, index) => (
 						<SinglePost key={index} post={postId} handleReply={handleReply} handleLike={handleLike} />
 					))}
