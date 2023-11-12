@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
-import { SinglePost } from '../SinglePost/SinglePost';
 import { useEffect, useState } from 'react';
-import { getAllPosts, likePost } from '../../services/posts.services';
-import { replyPost, getUsername } from '../../services/posts.services';
 import UserList from '../../components/Filter/UserFilter';
 import { allUsers } from '../../services/auth.services';
+import { getAllPosts, getUsername, likePost, replyPost } from '../../services/posts.services';
+import { SinglePost } from '../SinglePost/SinglePost';
 
 export const Forum = () => {
 	const [ postLists, setPostsLists ] = useState([]);
@@ -98,17 +97,16 @@ export const Forum = () => {
 				viewport={ { once: true } }
 			>
 				<div className="flex flex-col z-20 space-y-4 mt-32 pb-10">
-					<UserList users={ usersList } filter={ filter } setFilter={ setFilter } />
-				</div>
-
-				<div className="flex flex-col z-20 space-y-4 mt-32 pb-10">
+					<div className="flex items-center justify-between">
+						<UserList users={ usersList } filter={ filter } setFilter={ setFilter } />
+					</div>
 					{ postLists.length ? postLists.map((postId, index) => (
 						<SinglePost key={ index } post={ postId } handleReply={ handleReply } handleLike={ handleLike } filter={ filter } />
 					)) : <p className="text-[#F7AB0A] dark:text-[#001440] text-2xl">No posts to show for this user</p> }
 				</div>
-			</motion.div>
+			</motion.div >
 			<div className="w-full fixed -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70 z-1"></div>
-		</div>
+		</div >
 	);
 };
 
