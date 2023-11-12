@@ -8,6 +8,7 @@ import { toast } from 'react-hot-toast';
 import { auth } from '../../config/firebase-config';
 import { EditPost } from '../../components/EditPost/EditPost';
 import { useNavigate } from 'react-router-dom';
+import { AiFillEdit } from 'react-icons/ai';
 
 export const SinglePost = ({ post, handleReply, handleLike }) => {
   const [likes, setLikes] = useState([]);
@@ -20,24 +21,27 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
     setShowReplies(!showReplies);
   };
 
+
+
   const onDeleteClick = async () => {
     try {
       await deletePost(post.id, post.userID);
       toast.success('Post deleted!');
-      window.location.reload();
     } catch (error) {
       console.error('Error deleting post:', error);
       toast.error('You are not authorized to delete this post!');
     }
   };
 
-  const replyDelete = async (replyId) => {
-    await deleteReply(post.id, replyId);
-    toast.success('Reply deleted!');
-    const updatedReplies = await getReplies(post.id);
-    setReplies(updatedReplies);
-    setRepliesCount(updatedReplies.length);
-  };
+  const onReplyDeleteClick = async (replyId) => {
+      try {
+        await deleteReply(post.id, replyId);
+        toast.success('Reply deleted!');
+      } catch (error) {
+        console.error('Error deleting reply:', error);
+        toast.error('You are not authorized to delete this reply!');
+      }
+    }
 
   useEffect(() => {
     const fetchLikes = async () => {
@@ -107,12 +111,13 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
           {showReplies &&
             replies.length > 0 &&
             replies.map((reply, index) => (
-              <div key={index} className="text-gray-400 dark:text-gray-300 pl-2 pb-4 relative">
+              <div key={index} onClick={() => console.log(reply)} className="text-gray-400 dark:text-gray-300 pl-2 pb-4 relative">
                 <div className="flex flex-col items-start relative">
                   <div className="text-xs text-gray-400">{reply.repliedAt}</div>
                   <div className="text-gray-400 dark:text-gray-300 text-base flex flex-row items-start relative">
                     {reply.author}: {reply.content}{' '}
-                    <BsFillTrash2Fill onClick={() => replyDelete(reply.id)} className="ml-2 mt-1 cursor-pointer" />
+                    <AiFillEdit />
+                    <BsFillTrash2Fill onClick={() => onReplyDeleteClick(reply.id)} className="ml-2 mt-1 cursor-pointer" />
                   </div>
                 </div>
               </div>
@@ -136,6 +141,15 @@ SinglePost.propTypes = {
   }).isRequired,
   handleReply: PropTypes.func.isRequired,
   handleLike: PropTypes.func.isRequired,
+  reply: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    repliedAt: PropTypes.string.isRequired,
+    likes: PropTypes.object.isRequired,
+    userID: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default SinglePost;
