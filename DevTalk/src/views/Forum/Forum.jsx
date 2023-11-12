@@ -13,6 +13,7 @@ import UserFilter from '../../components/Filter/UserFilter';
 
 const Forum = () => {
 	const [ postLists, setPostsLists ] = useState([]);
+	const [ filteredList, setFilteredList ] = useState([]);
 	const [ likeLists, setLikeLists ] = useState([]);
 	const [ repliesCount, setRepliesCount ] = useState(0);
 	const [ usersList, setUsersList ] = useState([]);
@@ -65,24 +66,20 @@ const Forum = () => {
 	useEffect(() => {
 		if (userFilter.length && userFilter !== 'all' && (!categoryFilter.length || categoryFilter === 'all')) {
 			const filteredPosts = postLists.filter((post) => post.userID === userFilter);
-			setPostsLists(filteredPosts);
+			setFilteredList(filteredPosts);
 		}
 		if (categoryFilter.length && categoryFilter !== 'all' && (!userFilter.length || userFilter === 'all')) {
 			const filteredPosts = postLists.filter((post) => post.category?.toLowerCase() === categoryFilter.toLowerCase());
-			setPostsLists(filteredPosts);
+			setFilteredList(filteredPosts);
 		}
 		if (userFilter !== 'all' && categoryFilter !== 'all' && userFilter.length && categoryFilter.length) {
 			const filteredPosts = postLists.filter(
 				(post) => post.category?.toLowerCase() === categoryFilter.toLocaleLowerCase() && post.userID === userFilter
 			);
-			setPostsLists(filteredPosts);
+			setFilteredList(filteredPosts);
 		}
 		if (userFilter === 'all' && categoryFilter === 'all') {
-			const fetchPosts = async () => {
-				const posts = await getAllPosts();
-				setPostsLists(posts);
-			};
-			fetchPosts();
+			setFilteredList([ ...postLists ]);
 		}
 
 	}, [ userFilter, postLists, categoryFilter ]);
@@ -104,7 +101,7 @@ const Forum = () => {
 						<UserFilter users={ usersList } userFilter={ userFilter } setUserFilter={ setUserFilter } />
 						<CategoryFilter categoryFilter={ categoryFilter } setCategoryFilter={ setCategoryFilter } />
 					</div>
-					{ postLists.length ? (
+					{ filteredList.length === 0 && postLists.length && !categoryFilter.length && !userFilter.length ? (
 						postLists.map((post, index) => (
 							<SinglePost
 								key={ index }
@@ -115,10 +112,20 @@ const Forum = () => {
 							/>
 						))
 					) : (
-						<p className="text-[#F7AB0A] dark:text-[#001440] text-2xl">
-							No posts to show for this user
-						</p>
-					) }
+						filteredList.length ? filteredList.map((post, index) => (
+							<SinglePost
+								key={ index }
+								post={ post }
+								handleReply={ handleReply }
+								handleLike={ handleLike }
+								userFilter={ userFilter }
+							/>
+						)) : (
+							<p className="text-[#F7AB0A] dark:text-[#001440] text-2xl">
+								No posts to show for this user
+							</p>
+						))
+					}
 				</div>
 			</motion.div>
 			<div className="w-full fixed -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70 z-1"></div>
