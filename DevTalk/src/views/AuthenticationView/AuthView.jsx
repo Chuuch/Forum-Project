@@ -23,6 +23,7 @@ import C from '../Categories/C';
 import Footer from "../../components/Footer/Footer";
 import AdminNavbar from "./AdminNavbar";
 import Reports from "../Reports/Reports";
+import SearchView from "../Search/SearchView";
 
 // eslint-disable-next-line react/prop-types
 export default function AuthenticationViews({ userId }) {
@@ -73,6 +74,7 @@ export default function AuthenticationViews({ userId }) {
 					<Route path="/python" element={<Authenticated><Python /></Authenticated>} />
 					<Route path="/typescript" element={<Authenticated><TypeScript /></Authenticated>} />
 					<Route path="/reports" element={<Authenticated><Reports /></Authenticated>} />
+					<Route path="search/:query" element={<SearchView/>} />
 			</Routes>
 			</BrowserRouter>
 		
@@ -86,7 +88,7 @@ export default function AuthenticationViews({ userId }) {
 					<Route path="/about" element={<About />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/trending" element={<Authenticated><Trending /></Authenticated>} />
-					<Route path="/forum" element={<Authenticated><Forum /></Authenticated>} />
+					<Route path="/forum" element={<Forum />} />
 					<Route path='/createpost' element={<Authenticated><CreatePost /></Authenticated>} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
@@ -98,6 +100,7 @@ export default function AuthenticationViews({ userId }) {
 					<Route path="/javascript" element={<Authenticated><JavaScript /></Authenticated>} />
 					<Route path="/python" element={<Authenticated><Python /></Authenticated>} />
 					<Route path="/typescript" element={<Authenticated><TypeScript /></Authenticated>} />
+					<Route path="search/:query" element={<SearchView/>} />
 				</Routes>
 				<Footer />
 			</BrowserRouter>

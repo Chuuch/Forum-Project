@@ -6,9 +6,11 @@ import { useEffect, useState } from 'react';
 import { getLikes, getReplies, deletePost, deleteReply } from '../../services/posts.services';
 import { toast } from 'react-hot-toast';
 import { auth } from '../../config/firebase-config';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
   export const SinglePost = ({ post, handleReply, handleLike }) => {
+    const [user]=useAuthState(auth);
     const [likes, setLikes] = useState([]);
     const [replies, setReplies] = useState([]);
     const [repliesCount, setRepliesCount] = useState(0);
@@ -79,7 +81,7 @@ import { auth } from '../../config/firebase-config';
       </div>
       <div className="flex flex-row items-center z-10">
         <div className="inline-flex items-center z-10 relative">
-          <Likes postId={post.id} handleLike={handleLike} userId={auth.currentUser.uid} likes={likes}/>
+          {user && <Likes postId={post.id} handleLike={handleLike} userId={auth.currentUser.uid} likes={likes}/>}
           <Replies post={post} handleReply={handleReply} replies={replies} repliesCount={repliesCount}/>
           <BsFillTrash2Fill
             size={30}
