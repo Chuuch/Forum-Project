@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import { auth, storage } from '../../config/firebase-config';
-import { updateUserInDatabase } from '../../services/auth.services';
+import { updateUserEmail, updateUserPhoto } from '../../services/auth.services';
 
 export const UserProfile = () => {
     const [ uploadImage, setUploadImage ] = useState(null);
@@ -97,17 +97,24 @@ export const UserProfile = () => {
             });
     };
 
-    const handleChangeProfile = async () => {
+    const handleSavePhoto = async () => {
         uploadFile()
-        if (email && email !== user?.email) {
-            await handleUpdateEmail()
-        }
+        await updateUserPhoto(user.uid, avatarURL)
+    }
+
+    const handleSavePassword = async () => {
         if (currentPassword && newPassword && confirmPassword && newPassword === confirmPassword) {
             const credential = EmailAuthProvider.credential(email, currentPassword);
             await reauthenticateWithCredential(user, credential);
             await handleUpdatePassword()
         }
-        await updateUserInDatabase()
+    }
+
+    const handleSaveEmail = async () => {
+        if (email && email !== user?.email) {
+            await handleUpdateEmail()
+            await updateUserEmail(user.uid, email)
+        }
     }
 
     return (
@@ -130,6 +137,14 @@ export const UserProfile = () => {
                 <div>
                     <div className="text-red-500">{ errorMessage }</div>
                 </div>
+                <button
+                    id="photo-change"
+                    className="dark:bg-teal-400 bg-[#F7AB0A] text-[rgb(30,30,30)] dark:text-[#001440] hover:scale-105 rounded px-4 py-1 mt-2 ml-0"
+                    onClick={ () => handleSavePhoto() }
+                >
+                    Save Photo
+                </button>
+
                 <div>
                     <div className="mb-2">
                         <label className="text-gray-400">Full Name</label>
@@ -152,6 +167,13 @@ export const UserProfile = () => {
                             onChange={ (e) => setEmail(e.target.value) }
                         />
                     </div>
+                    {/* <button
+                        id="email-change"
+                        className="dark:bg-teal-400 bg-[#F7AB0A] text-[rgb(30,30,30)] dark:text-[#001440] hover:scale-105 rounded px-4 py-1 mt-2 ml-0"
+                        onClick={ () => handleSaveEmail() }
+                    >
+                        Save Email
+                    </button> */}
                     <div className="mb-2">
                         <label className="text-gray-400">Current password</label>
                         <input
@@ -182,11 +204,11 @@ export const UserProfile = () => {
                         />
                     </div>
                     <button
-                        id="profile-change"
+                        id="password-change"
                         className="dark:bg-teal-400 bg-[#F7AB0A] text-[rgb(30,30,30)] dark:text-[#001440] hover:scale-105 rounded px-4 py-1 mt-2 ml-0"
-                        onClick={ () => handleChangeProfile() }
+                        onClick={ () => handleSavePassword() }
                     >
-                        Save Profile
+                        Save Password
                     </button>
                 </div>
             </div>
