@@ -1,12 +1,4 @@
-import {
-	ref,
-	get,
-	update,
-	push,
-	remove,
-	child,
-	onValue,
-} from 'firebase/database';
+import { ref, get, update, push, child, onValue } from 'firebase/database';
 import { auth, database } from '../config/firebase-config';
 import moment from 'moment-timezone';
 import { toast } from 'react-hot-toast';
@@ -69,7 +61,7 @@ export const getPostById = async (postId) => {
 export const getPostByCategory = async (postId, category) => {
 	const snapshot = await get(ref(database, `posts/${postId}/${category}`));
 	return snapshot.val();
-}
+};
 
 export const getPostsByIds = async (ids) => {
 	const posts = await getAllPosts();
@@ -190,6 +182,7 @@ export const replyPost = async (postId, replyContent) => {
 	update(ref(database), {
 		[`notifications/${authorId}/${key}`]: notification,
 		[`users/${auth.currentUser.uid}/replies/${postId}/${key}`]: true,
+		[`posts/${postId}/replies/${key}/id`]: key,
 	});
 };
 
@@ -232,17 +225,19 @@ export const getNotifications = (userId, authorId) => {
 };
 
 export const deleteReply = async (postId, replyId) => {
-	const currentUser = auth.currentUser;
-
-	if (currentUser) {
-		const replySnapshot = await get(
-			ref(database, `posts/${postId}/replies/${replyId}`)
-		);
-		const replyData = replySnapshot.val();
-
-		if (replyData && replyData.userID === currentUser.uid) {
-			await remove(ref(database, `posts/${postId}/replies/${replyId}`));
+	const replyRef = ref(database, `posts/${postId}/replies/${replyId}`);
+	try {
+		const replySnapshot = await get(replyRef);
+		const reply = replySnapshot.val();
+		const currentUserID = auth.currentUser.uid;
+		if (reply && reply.userID === currentUserID) {
+			return update(ref(database), {
+				[`posts/${postId}/replies/${replyId}`]: null,
+			});
+		} else {
+			console.log('You are not authorized to delete this post.');
 		}
+	} catch (error) {
+		console.error('Error getting post:', error);
 	}
-	await remove(ref(database, `posts/${postId}/replies/${replyId}`));
 };
