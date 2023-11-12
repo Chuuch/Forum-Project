@@ -122,6 +122,8 @@ export const likePost = async (postId) => {
 		postId: postId,
 		author: username,
 		likedAt: moment().tz('Europe/Sofia').format('lll'),
+		userID: auth.currentUser.uid,
+		authorId: authorId,
 	};
 
 	update(ref(database), {
@@ -177,6 +179,7 @@ export const replyPost = async (postId, replyContent) => {
 		author: username,
 		replyContent: replyContent,
 		repliedAt: moment().tz('Europe/Sofia').format('lll'),
+		authorId: authorId,
 	};
 
 	update(ref(database), {

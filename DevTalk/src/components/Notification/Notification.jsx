@@ -6,39 +6,44 @@ import { auth, database } from '../../config/firebase-config';
 const Notification = () => {
 	const [showNotifications, setShowNotifications] = useState(false);
 	const [notifications, setNotifications] = useState([]);
-	const [notificationCount, setNotificationCount] = useState(0);
-
-	const handleNotificationClick = () => {
-		setShowNotifications(!showNotifications);
-		setNotificationCount(0);
-	};
+	const [notificationCount, setNotificationCount] = useState('');
 
 	useEffect(() => {
 		const currentUser = auth.currentUser;
 
 		if (currentUser) {
 			const userId = currentUser.uid;
-			const notificationsRef = ref(database, `notifications/${userId}/`);
 
-			onValue(notificationsRef, (snapshot) => {
+			const notificationsRef = ref(database, `notifications/${userId}`);
+			const unsubscribe = onValue(notificationsRef, (snapshot) => {
 				if (snapshot.exists()) {
 					const data = snapshot.val();
 					const notificationArray = Object.values(data);
 					setNotifications(notificationArray);
 					setNotificationCount(notificationArray.length);
+				} else {
+					setNotifications([]);
+					setNotificationCount(0); // Assuming it's a number
 				}
 			});
 
 			return () => {
 				off(notificationsRef);
+				unsubscribe();
 			};
 		}
 	}, []);
 
 	return (
 		<div className="relative">
-			<div className="" onClick={handleNotificationClick}>
-				<BsFillBellFill className="w-6 h-6 fill-[#F7AB0A] dark:fill-[#001440] hover:scale-110 mt-1 mr-2 cursor-pointer" />
+			<div
+				className=""
+				onClick={() => setShowNotifications(!showNotifications)}
+			>
+				<BsFillBellFill
+					size={25}
+					className="mr-2 cursor-pointer hover:scale-110"
+				/>
 				{notificationCount > 0 && (
 					<div className="absolute top-0 right-0 bg-red-500 text-xs text-white rounded-full w-4 h-4 flex items-center justify-center">
 						{notificationCount}

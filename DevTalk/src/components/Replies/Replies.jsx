@@ -21,12 +21,7 @@ export const Replies = ({ post, handleReply, repliesCount }) => {
 				await replyPost(post.id, reply);
 				handleReply(post.id, reply);
 				setReply('');
-
-				// Collapse the reply form
 				closeReplyForm();
-
-				// Reload the page to see the updated replies
-				window.location.reload();
 			} catch (error) {
 				console.error('Failed to post the reply:', error);
 			}
