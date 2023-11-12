@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-hot-toast';
 import { BsFillTrash2Fill } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
+import { EditPost } from '../../components/EditPost/EditPost';
 import Likes from '../../components/Likes/Likes';
 import Replies from '../../components/Replies/Replies';
-import { deletePost, deleteReply, getLikes, getPostById, getReplies, getUsername, likePost, replyPost } from '../../services/posts.services';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../config/firebase-config';
+import { deletePost, deleteReply, getLikes, getPostById, getReplies, getUsername, likePost, replyPost } from '../../services/posts.services';
 
 export const DetailsPost = () => {
     const { postId } = useParams();
@@ -69,28 +70,30 @@ export const DetailsPost = () => {
 
     const onDeleteClick = async () => {
         try {
-            await deletePost(postId, post.author)
-            await (toast.success('Post deleted!'))
-                .then(window.location.reload())
+            await deletePost(post.id, post.userID);
+            toast.success('Post deleted!');
+            window.location.reload();
         } catch (error) {
             console.error('Error deleting post:', error);
+            toast.error('You are not authorized to delete this post!');
         }
-    }
+    };
 
     const replyDelete = async (replyId) => {
-        await deleteReply(postId, replyId);
-        toast.success('Reply deleted!')
-        const updatedReplies = await getReplies(postId)
-            .then(window.location.reload());
+        await deleteReply(post.id, replyId);
+        toast.success('Reply deleted!');
+        const updatedReplies = await getReplies(post.id);
         setReplies(updatedReplies);
         setRepliesCount(updatedReplies.length);
-    }
+    };
+
     useEffect(() => {
-        const fetchPostB = async () => {
+        const fetchPost = async () => {
             const fetchPostDetails = await getPostById(postId);
             setPost(fetchPostDetails);
         };
-        fetchPostB();
+
+        fetchPost();
     }, [ postId ])
 
     useEffect(() => {
@@ -106,19 +109,18 @@ export const DetailsPost = () => {
             try {
                 const fetchedReplies = await getReplies(postId);
                 setReplies(fetchedReplies);
-                setRepliesCount(fetchedReplies.length);
+                setRepliesCount(fetchedReplies.length); // Update repliesCount
             } catch (error) {
                 console.error('Error fetching replies:', error);
             }
         };
-
         fetchReplies();
     }, [ postId ]);
 
     return (
         <div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start space-y-2">
             <h1 className="fixed flex justify-start text-[#F7AB0A] dark:text-[#001440] z-10 text-4xl mt-10">
-                Forum
+                Post Details
             </h1>
             <motion.div
                 className="flex flex-col space-y-4 mt-32 pb-10 z-20"
@@ -149,6 +151,7 @@ export const DetailsPost = () => {
                                 <div className="inline-flex items-center z-10 relative">
                                     <Likes postId={ postId } handleLike={ handleLike } userId={ user.uid } likes={ likes } />
                                     <Replies post={ post } handleReply={ handleReply } replies={ replies } repliesCount={ repliesCount } />
+                                    <EditPost post={ post } />
                                     <BsFillTrash2Fill
                                         size={ 30 }
                                         className="fill-[#F7AB0A] dark:fill-white cursor-pointer"
