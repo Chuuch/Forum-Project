@@ -2,8 +2,6 @@
 import PropTypes from 'prop-types';
 
 const UserList = ({ users, filter, setFilter }) => {
-    console.log(users)
-
     return (
         <div>
             <label htmlFor="filter" className="block text-sm font-medium text-gray-700">
