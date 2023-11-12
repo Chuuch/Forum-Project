@@ -11,7 +11,7 @@ import { auth, database } from '../config/firebase-config';
 import moment from 'moment-timezone';
 import { toast } from 'react-hot-toast';
 
-export const createPost = async (title, content) => {
+export const createPost = async (title, content, category) => {
 	const userSnapshot = await get(
 		ref(database, `/users/${auth.currentUser.uid}`)
 	);
@@ -20,7 +20,7 @@ export const createPost = async (title, content) => {
 	const post = {
 		title,
 		content,
-		categoryId: '',
+		category: category,
 		id: '',
 		author: username,
 		userID: auth.currentUser.uid,
@@ -33,6 +33,7 @@ export const createPost = async (title, content) => {
 
 	update(ref(database), {
 		[`posts/${key}/id`]: key,
+		[`posts/${key}/${category}`]: category,
 		[`users/${username}/posts/${key}`]: true,
 	});
 	return key;
@@ -65,6 +66,11 @@ export const getPostById = async (postId) => {
 	return snapshot.val();
 };
 
+export const getPostByCategory = async (postId, category) => {
+	const snapshot = await get(ref(database, `posts/${postId}/${category}`));
+	return snapshot.val();
+}
+
 export const getPostsByIds = async (ids) => {
 	const posts = await getAllPosts();
 
@@ -89,13 +95,6 @@ export const deletePost = async (postId, categoryId) => {
 		console.error('Error getting post:', error);
 	}
 };
-
-// export const editPost = async (postId, content) => {
-// 	return update(ref(database), {
-// 		[`posts/${postId}/content`]: content,
-// 		[`posts/${postId}/editedOn`]: moment().tz('Europe/Sofia').format('lll'),
-// 	});
-// };
 
 export const editPost = async (postId, title, content) => {
 	const postRef = ref(database, `posts/${postId}`);
