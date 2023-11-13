@@ -78,6 +78,7 @@ export default function AuthenticationViews({ userId }) {
 							<Route path="/typescript" element={ <Authenticated><TypeScript /></Authenticated> } />
 							<Route path="/reports" element={ <Authenticated><Reports /></Authenticated> } />
 							<Route path="search/:query" element={<SearchView/>} />
+							<Route path="/about" element={ <About /> } />
 			</Routes>
 					</BrowserRouter>
 
