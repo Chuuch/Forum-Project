@@ -92,7 +92,7 @@ const Home = () => {
 						<NavLink to="/typescript">
 							<li className="p-4 flex flex-row justify-center items-center hover:text-[#F7AB0A] dark:hover:text-teal-200">
 								<img src="/icons/ts.png" alt="ts" className="w-8 h-8 p-1" />
-								Typescript
+								TypeScript
 							</li>
 						</NavLink>
 					</ul>
