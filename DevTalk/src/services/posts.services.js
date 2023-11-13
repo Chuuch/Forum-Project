@@ -113,7 +113,7 @@ export const likePost = async (postId) => {
 
 	const likesRef = ref(database, `posts/${postId}/likes`);
 	const { key } = await push(likesRef, like);
-
+	
 	const postSnapshot = await get(ref(database, `posts/${postId}`));
 	const authorId = postSnapshot.val().userID;
 
@@ -129,6 +129,7 @@ export const likePost = async (postId) => {
 	update(ref(database), {
 		[`users/${auth.currentUser.uid}/likes/${postId}/${key}`]: true,
 		[`notifications/${authorId}/${key}`]: notification,
+		[`posts/${postId}/likes/${key}/id`]: key,
 	});
 };
 
@@ -157,7 +158,7 @@ export const getLikesCount = async (postId) => {
 	const likes = await getLikes(postId);
 	return likes.length;
 };
-
+	
 export const replyPost = async (postId, replyContent) => {
 	const username = await getUsername();
 	const reply = {

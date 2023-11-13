@@ -34,8 +34,8 @@ const Home = () => {
 
 	return (
 		<div className="flex flex-col items-center justify-center pb-48 bg-[rgb(36,36,36)] dark:bg-white h-screen font-space space-y-4">
-			<h1 className="text-6xl font-semibold text-[#F7AB0A] p-20 mt-24 relative dark:text-[#001440] z-20">
-				<span className="mr-3">{text}</span>
+			<h1 className="text-6xl font-semibold text-[#F7AB0A] p-20 ml-14 mt-24 relative dark:text-[#001440] z-20">
+				<span>{text}</span>
 				<Cursor />
 			</h1>
 			<motion.div

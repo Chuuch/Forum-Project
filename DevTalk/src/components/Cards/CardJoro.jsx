@@ -5,7 +5,7 @@ const CardJoro = () => {
 		<article className="flex flex-col rounded-lg items-center space-y-7 justify-start flex-shrink-0 w-[500px] md:w-[450px] md:h-[600px] xl:[600px] bg-[rgb(30,30,30)] dark:bg-gray-800 p-10  cursor-pointer overflow-hidden">
 			<div className="px-0 md:px-10">
 				<img
-					src="logo2.png"
+					src="images/Georgi.jpg"
 					alt="logo2"
 					className="w-32 h-32 rounded-full object-cover object-center"
 				/>
