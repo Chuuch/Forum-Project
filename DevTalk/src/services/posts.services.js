@@ -16,7 +16,7 @@ export const createPost = async (title, content, category) => {
 		id: '',
 		author: username,
 		userID: auth.currentUser.uid,
-		likedBy: '',
+		likes: '',
 		createdAt: moment().tz('Europe/Sofia').format('lll'),
 		timestamp: Date.now(),
 	};
