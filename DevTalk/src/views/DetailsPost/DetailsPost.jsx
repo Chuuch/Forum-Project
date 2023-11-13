@@ -102,7 +102,7 @@ export const DetailsPost = () => {
             setLikes(fetchedLikes);
         };
         fetchLikes();
-    }, [ postId ])
+    }, [ postId, likes ])
 
     useEffect(() => {
         const fetchReplies = async () => {
@@ -115,7 +115,7 @@ export const DetailsPost = () => {
             }
         };
         fetchReplies();
-    }, [ postId ]);
+    }, [ postId, replies ]);
 
     return (
         <div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start space-y-2">
@@ -170,7 +170,7 @@ export const DetailsPost = () => {
                                 </button>
                             </div>
                             <div className="mt-4 relative">
-                                { showReplies &&
+                                {
                                     replies.length > 0 &&
                                     replies.map((reply, index) => (
                                         <div
