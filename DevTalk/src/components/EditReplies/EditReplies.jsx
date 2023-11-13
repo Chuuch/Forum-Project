@@ -32,7 +32,7 @@ export const EditReplies = ({post, reply }) => {
   return (
     <div className="relative">
       <AiFillEdit
-        className="relative cursor-pointer fill-[#F7AB0A] dark:fill-white mr-1 mt-1"
+        className="relative cursor-pointer fill-[#F7AB0A] dark:fill-white ml-2 mt-1"
         size={20}
         onClick={toggleEditForm}
       />
