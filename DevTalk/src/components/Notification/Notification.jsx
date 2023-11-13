@@ -32,7 +32,7 @@ const Notification = () => {
 				unsubscribe();
 			};
 		}
-	}, []);
+	}, [setNotifications, setNotificationCount]);
 
 	return (
 		<div className="relative">
