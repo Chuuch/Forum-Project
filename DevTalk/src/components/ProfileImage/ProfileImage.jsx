@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
-import { auth } from '../../config/firebase-config';
+import { PropTypes } from 'prop-types';
+import { CgProfile } from 'react-icons/cg'
 
-export const ProfileImage = () => {
+export const ProfileImage = ({userID}) => {
   const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
-    const userID = auth.currentUser.uid;
     const storage = getStorage();
     const storageRef = ref(storage, `images/${userID}`);
 
-    // Get the download URL of the image
     getDownloadURL(storageRef)
       .then((url) => {
         setImageUrl(url);
@@ -18,15 +17,19 @@ export const ProfileImage = () => {
       .catch((error) => {
         console.error('Error getting download URL:', error);
       });
-  }, []);
+  }, [userID]);
 
   return (
-    <div>
+    <div className='flex-shrink-0 w-8 h-8 ml-2 overflow-hidden rounded-full'>
       {imageUrl ? (
         <img src={imageUrl} alt="Firebase Storage Image" />
       ) : (
-        <p>Loading...</p>
+        <CgProfile className='w-8 h-8'/>
       )}
     </div>
   );
+};
+
+ProfileImage.propTypes = {
+  userID: PropTypes.string.isRequired,
 };

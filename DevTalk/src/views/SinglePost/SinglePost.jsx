@@ -10,10 +10,11 @@ import { EditPost } from '../../components/EditPost/EditPost';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { EditReplies } from '../../components/EditReplies/EditReplies';
+import { ProfileImage } from '../../components/ProfileImage/ProfileImage'
 
 
 export const SinglePost = ({ post, handleReply, handleLike }) => {
-  const [user]=useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [likes, setLikes] = useState([]);
   const [replies, setReplies] = useState([]);
   const [repliesCount, setRepliesCount] = useState(0);
@@ -80,6 +81,7 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
       </div>
       <div className="flex flex-col items-start relative">
         <div className="flex flex-col">
+        <ProfileImage userID={post.userID}/>
           <p className="text-gray-600 dark:text-gray-400 pl-2">Posted by {post.author}</p>
         </div>
         <div className="flex flex-row items-center z-10">
