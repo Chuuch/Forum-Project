@@ -119,7 +119,7 @@ export const UserProfile = () => {
 
     return (
         <div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center mt-7 z-30">
-            <div className="bg-gray-800 p-4 rounded-lg shadow-md w-96 h-auto z-20">
+            <div className="bg-gray-800 p-4 rounded-lg shadow-md w-[600px] space-y-2 h-auto z-20">
                 <div className="text-center">
                     <img
                         src={ previewImage ?? (avatarURL) }
@@ -145,7 +145,7 @@ export const UserProfile = () => {
                     Save Photo
                 </button>
 
-                <div>
+                <div className="space-y-4">
                     <div className="mb-2">
                         <label className="text-gray-400">Full Name</label>
                         <input
