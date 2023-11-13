@@ -6,7 +6,7 @@ import { auth, database } from '../../config/firebase-config';
 const Notification = () => {
 	const [showNotifications, setShowNotifications] = useState(false);
 	const [notifications, setNotifications] = useState([]);
-	const [notificationCount, setNotificationCount] = useState('');
+	const [notificationCount, setNotificationCount] = useState(0);
 
 	useEffect(() => {
 		const currentUser = auth.currentUser;
@@ -23,7 +23,7 @@ const Notification = () => {
 					setNotificationCount(notificationArray.length);
 				} else {
 					setNotifications([]);
-					setNotificationCount(0); // Assuming it's a number
+					setNotificationCount(0);
 				}
 			});
 
