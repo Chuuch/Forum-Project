@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { replyPost } from '../../services/posts.services';
 import { AiOutlineComment, AiOutlineClose } from 'react-icons/ai';
 
-export const Replies = ({ post, handleReply, repliesCount }) => {
+export const Replies = ({ post, repliesCount }) => {
 	const [showReplyForm, setShowReplyForm] = useState(false);
 	const [reply, setReply] = useState('');
 
@@ -16,10 +16,10 @@ export const Replies = ({ post, handleReply, repliesCount }) => {
 	};
 
 	const handleReplySubmit = async () => {
+		console.log('Houston');
 		if (reply.trim() !== '') {
 			try {
 				await replyPost(post.id, reply);
-				handleReply(post.id, reply);
 				setReply('');
 				closeReplyForm();
 			} catch (error) {
