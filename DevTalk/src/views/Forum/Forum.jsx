@@ -55,7 +55,7 @@ const Forum = () => {
 			setPostsLists(posts);
 		};
 		const fetchUsers = async () => {
-			const users = await allUsers(); // Assuming you have a function named 'allUsers'
+			const users = await allUsers();
 			setUsersList(users);
 		};
 
