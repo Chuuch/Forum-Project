@@ -244,3 +244,19 @@ export const deleteReply = async (postId, replyId) => {
 		console.error('Error getting post:', error);
 	}
 };
+
+export const editReply = async (postId, replyId, content) => {
+	const replyRef = ref(database, `posts/${postId}/replies/${replyId}`);
+	const replySnapshot = await get(replyRef);
+	const reply = replySnapshot.val();
+	const currentUserID = auth.currentUser.uid;
+
+	if (reply && reply.userID === currentUserID) {
+		return update(replyRef, {
+			content: content,
+			editedOn: moment().tz('Europe/Sofia').format('lll'),
+		});
+	} else {
+		console.error('You are not authorized to edit this post.');
+	}
+}

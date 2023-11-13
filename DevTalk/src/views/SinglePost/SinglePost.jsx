@@ -8,8 +8,8 @@ import { toast } from 'react-hot-toast';
 import { auth } from '../../config/firebase-config';
 import { EditPost } from '../../components/EditPost/EditPost';
 import { useNavigate } from 'react-router-dom';
-import { AiFillEdit } from 'react-icons/ai';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { EditReplies } from '../../components/EditReplies/EditReplies';
 
 
 export const SinglePost = ({ post, handleReply, handleLike }) => {
@@ -59,7 +59,7 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
       try {
         const fetchedReplies = await getReplies(post.id);
         setReplies(fetchedReplies);
-        setRepliesCount(fetchedReplies.length); // Update repliesCount
+        setRepliesCount(fetchedReplies.length);
       } catch (error) {
         console.error('Error fetching replies:', error);
       }
@@ -114,12 +114,12 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
           {showReplies &&
             replies.length > 0 &&
             replies.map((reply, index) => (
-              <div key={index} onClick={() => console.log(reply)} className="text-gray-400 dark:text-gray-300 pl-2 pb-4 relative">
+              <div key={index} className="text-gray-400 dark:text-gray-300 pl-2 pb-4 relative">
                 <div className="flex flex-col items-start relative">
                   <div className="text-xs text-gray-400">{reply.repliedAt}</div>
                   <div className="text-gray-400 dark:text-gray-300 text-base flex flex-row items-start relative">
                     {reply.author}: {reply.content}{' '}
-                    <AiFillEdit className='ml-2 mt-1 cursor-pointer'/>
+                    <EditReplies reply={reply} post={post}/>
                     <BsFillTrash2Fill onClick={() => onReplyDeleteClick(reply.id)} className="ml-2 mt-1 cursor-pointer" />
                   </div>
                 </div>
