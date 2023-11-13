@@ -28,10 +28,10 @@ const SearchBar = () => {
 						const dataArray = Object.values(postData);
 						const matches=[];
 						for(const post of dataArray){
-							//console.log("data: ", post.content)
-							if(post.content.toLowerCase().includes(queryVal.toLowerCase())
-							||post.title.toLowerCase().includes(queryVal.toLowerCase())
-							||post.author.toLowerCase().includes(queryVal.toLowerCase())){
+							console.log("data: ", post.content)
+							if(post.content && post.content.toLowerCase().includes(queryVal.toLowerCase())
+							||post.title && post.title.toLowerCase().includes(queryVal.toLowerCase())
+							||post.author && post.author.toLowerCase().includes(queryVal.toLowerCase())){
 								console.log(post);
                                 matches.push(post);
                             } 
