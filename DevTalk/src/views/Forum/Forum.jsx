@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { allUsers } from '../../services/auth.services';
 import {
 	getAllPosts,
@@ -10,6 +10,7 @@ import {
 import { SinglePost } from '../SinglePost/SinglePost';
 import CategoryFilter from '../../components/Filter/CategotyFilter';
 import UserFilter from '../../components/Filter/UserFilter';
+import Sort from '../../components/Sort/Sort';
 
 const Forum = () => {
 	const [ postLists, setPostsLists ] = useState([]);
@@ -17,8 +18,9 @@ const Forum = () => {
 	const [ likeLists, setLikeLists ] = useState([]);
 	const [ repliesCount, setRepliesCount ] = useState(0);
 	const [ usersList, setUsersList ] = useState([]);
-	const [ userFilter, setUserFilter ] = useState('');
-	const [ categoryFilter, setCategoryFilter ] = useState('');
+	const [ userFilter, setUserFilter ] = useState('all');
+	const [ categoryFilter, setCategoryFilter ] = useState('all');
+	const [ sort, setSort ] = useState('DESC');
 
 	const handleLike = async (id) => {
 		const username = getUsername();
@@ -52,7 +54,7 @@ const Forum = () => {
 	useEffect(() => {
 		const fetchPosts = async () => {
 			const posts = await getAllPosts();
-			setPostsLists(posts);
+			setPostsLists(sortPosts(posts));
 		};
 		const fetchUsers = async () => {
 			const users = await allUsers();
@@ -63,26 +65,45 @@ const Forum = () => {
 		fetchPosts();
 	}, []);
 
+	const handleSort = (sortBy) => {
+		setSort(sortBy);
+	};
+
+	const sortPosts = useCallback((posts) => {
+
+		return sort === 'DESC'
+			? posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+			: posts.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+	}, [ sort ]);
+
 	useEffect(() => {
-		if (userFilter.length && userFilter !== 'all' && (!categoryFilter.length || categoryFilter === 'all')) {
-			const filteredPosts = postLists.filter((post) => post.userID === userFilter);
-			setFilteredList(filteredPosts);
-		}
-		if (categoryFilter.length && categoryFilter !== 'all' && (!userFilter.length || userFilter === 'all')) {
-			const filteredPosts = postLists.filter((post) => post.category?.toLowerCase() === categoryFilter.toLowerCase());
-			setFilteredList(filteredPosts);
-		}
 		if (userFilter !== 'all' && categoryFilter !== 'all' && userFilter.length && categoryFilter.length) {
-			const filteredPosts = postLists.filter(
-				(post) => post.category?.toLowerCase() === categoryFilter.toLocaleLowerCase() && post.userID === userFilter
+			const filteredAndSortedPosts = sortPosts(
+				postLists
+					.filter((post) => post.userID === userFilter)
+					.filter(
+						(post) => post.category?.toLowerCase() === categoryFilter.toLowerCase()
+					)
 			);
-			setFilteredList(filteredPosts);
-		}
-		if (userFilter === 'all' && categoryFilter === 'all') {
-			setFilteredList([ ...postLists ]);
+			setFilteredList(filteredAndSortedPosts);
+		} else if (userFilter !== 'all' && userFilter.length && categoryFilter === 'all') {
+			const filteredAndSortedPosts = sortPosts(
+				postLists.filter((post) => post.userID === userFilter)
+			);
+			setFilteredList(filteredAndSortedPosts);
+		} else if (categoryFilter !== 'all' && categoryFilter.length && userFilter === 'all') {
+			const filteredAndSortedPosts = sortPosts(
+				postLists.filter(
+					(post) => post.category?.toLowerCase() === categoryFilter.toLowerCase()
+				)
+			);
+			setFilteredList(filteredAndSortedPosts);
+		} else if (categoryFilter === 'all' && userFilter === 'all' && sort === 'ASC' || sort === 'DESC') {
+			const filteredAndSortedPosts = sortPosts(postLists);
+			setFilteredList(filteredAndSortedPosts);
 		}
 
-	}, [ userFilter, postLists, categoryFilter ]);
+	}, [ userFilter, postLists, categoryFilter, sortPosts, sort ]);
 
 	return (
 		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start space-y-2">
@@ -100,6 +121,7 @@ const Forum = () => {
 					<div className="flex items-center justify-center space-x-2">
 						<UserFilter users={ usersList } userFilter={ userFilter } setUserFilter={ setUserFilter } />
 						<CategoryFilter categoryFilter={ categoryFilter } setCategoryFilter={ setCategoryFilter } />
+						<Sort sort={ sort } setSort={ handleSort } />
 					</div>
 					{ filteredList.length === 0 && postLists.length && !categoryFilter.length && !userFilter.length ? (
 						postLists.map((post, index) => (
