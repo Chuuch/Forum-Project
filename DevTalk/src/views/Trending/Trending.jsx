@@ -53,7 +53,7 @@ const Trending = () => {
 
 	return (
 		
-		<div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start space-y-2 z-20">
+		<div className="bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-start space-y-2 z-20">
 			<h1 className="flex justify-start text-[#F7AB0A] dark:text-[#001440] z-20 text-4xl mt-10 ">
 				Trending
 			</h1>
