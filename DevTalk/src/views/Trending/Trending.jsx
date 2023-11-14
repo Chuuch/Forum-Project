@@ -3,7 +3,6 @@ import { SinglePost } from '../SinglePost/SinglePost';
 import { useState, useEffect } from 'react';
 import {   get, limitToLast,  orderByChild,  query,  ref } from 'firebase/database';
 import { database } from '../../config/firebase-config'
-import Footer from '../../components/Footer/Footer'
 
 const Trending = () => {
 	const [postListTime, setPostListTime] = useState([]);
@@ -92,7 +91,6 @@ const Trending = () => {
 			</div>
 			</div>
 			<div className="w-full fixed -skew-y-12 h-[500px] top-[30%] left-0 bg-[#F7AB0A]/10 dark:bg-teal-600/70"></div>
-			<Footer />
 		</div>
 	);
 };

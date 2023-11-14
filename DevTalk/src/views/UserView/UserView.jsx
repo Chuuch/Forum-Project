@@ -30,7 +30,7 @@ export default function UserView () {
 							<Route path="/" element={ <Home /> } />
 							<Route path="/about" element={ <About /> } />
 							<Route path="/contact" element={ <Contact /> } />
-							<Route path="/trending" element={ <Authenticated><Trending /></Authenticated> } />
+							<Route path="/trending" element={ <Trending /> } />
 							<Route path="/forum" element={ <Forum /> } />
 							<Route path="/forum/:postId" element={ <Authenticated><DetailsPost /></Authenticated> } />
 							<Route path='/createpost' element={ <Authenticated><CreatePost /></Authenticated> } />
