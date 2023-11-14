@@ -75,7 +75,9 @@ export const deletePost = async (postId, categoryId) => {
 		const postSnapshot = await get(postRef);
 		const post = postSnapshot.val();
 		const currentUserID = auth.currentUser.uid;
-		if (post && post.userID === currentUserID) {
+		const isAdmin = true
+
+		if (post && (post.userID === currentUserID || isAdmin)) {
 			return update(ref(database), {
 				[`posts/${postId}`]: null,
 				[`category/${categoryId}/posts/${postId}`]: null,
@@ -253,19 +255,22 @@ export const getNotifications = (userId, authorId) => {
 
 export const deleteReply = async (postId, replyId) => {
 	const replyRef = ref(database, `posts/${postId}/replies/${replyId}`);
+
 	try {
 		const replySnapshot = await get(replyRef);
 		const reply = replySnapshot.val();
 		const currentUserID = auth.currentUser.uid;
-		if (reply && reply.userID === currentUserID) {
+		const isAdmin = true;
+
+		if (reply && (reply.userID === currentUserID || isAdmin)) {
 			return update(ref(database), {
 				[`posts/${postId}/replies/${replyId}`]: null,
 			});
 		} else {
-			console.log('You are not authorized to delete this post.');
+			console.log('You are not authorized to delete this reply.');
 		}
 	} catch (error) {
-		console.error('Error getting post:', error);
+		console.error('Error deleting reply:', error);
 	}
 };
 
