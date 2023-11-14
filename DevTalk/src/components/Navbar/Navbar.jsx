@@ -1,5 +1,4 @@
 import { NavLink, useLocation, } from 'react-router-dom';
-// import { SocialIcon } from 'react-social-icons';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, database } from '../../config/firebase-config';
 import Notification from '../Notification/Notification';
