@@ -113,7 +113,7 @@ export const likePost = async (postId) => {
 
 	const likesRef = ref(database, `posts/${postId}/likes`);
 	const { key } = await push(likesRef, like);
-	
+
 	const postSnapshot = await get(ref(database, `posts/${postId}`));
 	const authorId = postSnapshot.val().userID;
 
@@ -133,12 +133,35 @@ export const likePost = async (postId) => {
 	});
 };
 
-export const dislikePost = (postId, username) => {
-	const updateLikes = {};
-	updateLikes[`posts/${postId}/likedBy/${username}`] = null;
-	updateLikes[`users/${username}/likedPosts/${postId}`] = null;
+export const dislikePost = async (postId) => {
+	const username = await getUsername();
 
-	return update(ref(database), updateLikes);
+	const likesRef = ref(database, `posts/${postId}/likes`);
+	const likedSnapshot = await get(likesRef);
+
+	const likeKey = Object.keys(likedSnapshot.val()).find(
+		(key) => likedSnapshot.val()[key].author === username
+	);
+
+	if (likeKey) {
+		const updateLikes = {};
+		updateLikes[`posts/${postId}/likes/${likeKey}`] = null;
+
+		updateLikes[`users/${auth.currentUser.uid}/likes/${postId}/${likeKey}`] =
+			null;
+
+		const postSnapshot = await get(ref(database, `posts/${postId}`));
+		const authorId = postSnapshot.val().userID;
+		const notificationRef = ref(
+			database,
+			`notifications/${authorId}/${likeKey}`
+		);
+		if ((await get(notificationRef)).exists()) {
+			updateLikes[`notifications/${authorId}/${likeKey}`] = null;
+		}
+
+		return update(ref(database), updateLikes);
+	}
 };
 
 export const getLikes = async (postId) => {
@@ -158,7 +181,7 @@ export const getLikesCount = async (postId) => {
 	const likes = await getLikes(postId);
 	return likes.length;
 };
-	
+
 export const replyPost = async (postId, replyContent) => {
 	const username = await getUsername();
 	const reply = {
@@ -260,4 +283,4 @@ export const editReply = async (postId, replyId, content) => {
 	} else {
 		console.error('You are not authorized to edit this post.');
 	}
-}
+};
