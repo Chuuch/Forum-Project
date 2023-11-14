@@ -71,7 +71,7 @@ export const SinglePost = ({ post, handleReply, handleLike }) => {
   return (
     <div className="bg-[rgb(30,30,30)] dark:bg-gray-800 p-4 rounded-lg shadow-md w-[800px] dark:w-[800px] flex flex-col relative">
       <div className="flex items-center justify-between">
-        <h3 className="text-2xl font-semibold text-gray-400 dark:text-[#eee] p-2">
+        <h3 className="text-2xl font-semibold dark:text-gray-400 text-[#F7AB0A] p-2">
           { post.title }
         </h3>
         <p className="text-gray-400 p-2">{ post.createdAt }</p>

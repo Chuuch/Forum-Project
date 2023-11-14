@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 const CategoryFilter = ({ categoryFilter, setCategoryFilter }) => {
     return (
         <div>
-            <label htmlFor="filter" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="filter" className="block text-sm font-medium text-gray-400 dark:text-gray-700">
                 Filter by category:
             </label>
             <select
                 id="categoryFilter"
                 name="filter"
-                className="mt-1 p-2 border border-gray-300 rounded"
+                className="mt-1 p-2 border border-gray-300 rounded bg-[rgb(30,30,30)] text-gray-400 dark:bg-white dark:text-black"
                 value={ categoryFilter }
                 onChange={ (e) => setCategoryFilter(e.target.value) }
             >
