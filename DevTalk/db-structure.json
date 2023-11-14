@@ -1,0 +1,972 @@
+{
+  "notifications": {
+    "-NjCY6cJSNCgmJcrT036": {
+      "likes": {
+        "-NjC_0yAYDhMMcozJ7oK": {
+          "id": true
+        },
+        "-NjC_EYsJboTgcJPPHPY": {
+          "id": true
+        }
+      }
+    },
+    "59ZtJik24mWELnagxYT2DD4gPno1": {
+      "-Nj2cnXIwkMzE0efvjr1": {
+        "author": "georgi",
+        "likedAt": "Nov 12, 2023 3:05 PM",
+        "postId": "-Nj2_EeJnJ8-EXvky6m5",
+        "type": "like"
+      },
+      "-Nj4bASprb9zr3qXadCr": {
+        "author": "danski",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 13, 2023 12:17 AM",
+        "postId": "-Nj30LuwFzDMqPO9hIA4",
+        "type": "like",
+        "userID": "V4qDwahc1PN7vZ1cktIUS6Ayilv1"
+      },
+      "-Nj6Y5a0KBvpLAZhcq77": {
+        "author": "danski",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 13, 2023 9:19 AM",
+        "postId": "-Nj30LuwFzDMqPO9hIA4",
+        "type": "like",
+        "userID": "V4qDwahc1PN7vZ1cktIUS6Ayilv1"
+      },
+      "-Nj8F_eDHrO326YOz_h8": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 13, 2023 5:17 PM",
+        "postId": "-Nj3-kZ74i6GB5c7UXu6",
+        "type": "like",
+        "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+      },
+      "-Nj9LFxjnIU61imFSsEZ": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj9L49SFdbF5V8l0VaW",
+        "repliedAt": "Nov 13, 2023 10:21 PM",
+        "replyContent": "New Comment test",
+        "type": "reply"
+      },
+      "-Nj9LFzn40zmEFKzmgMl": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj9L49SFdbF5V8l0VaW",
+        "repliedAt": "Nov 13, 2023 10:21 PM",
+        "replyContent": "New Comment test",
+        "type": "reply"
+      },
+      "-Nj9LOGRoVrqCKBab3O-": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj9L49SFdbF5V8l0VaW",
+        "repliedAt": "Nov 13, 2023 10:22 PM",
+        "replyContent": "Test 2 ",
+        "type": "reply"
+      },
+      "-Nj9LOIaiJEVtShWM7ZO": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj9L49SFdbF5V8l0VaW",
+        "repliedAt": "Nov 13, 2023 10:22 PM",
+        "replyContent": "Test 2 ",
+        "type": "reply"
+      },
+      "-Nj9M717zItDEfXIhHdN": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj3-kZ74i6GB5c7UXu6",
+        "repliedAt": "Nov 13, 2023 10:25 PM",
+        "replyContent": "Test",
+        "type": "reply"
+      },
+      "-Nj9M737kL8t3OuVGH1P": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj3-kZ74i6GB5c7UXu6",
+        "repliedAt": "Nov 13, 2023 10:25 PM",
+        "replyContent": "Test",
+        "type": "reply"
+      },
+      "-Nj9SVyNxvsGYo92jG0e": {
+        "author": "danski",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 13, 2023 10:53 PM",
+        "postId": "-Nj9L49SFdbF5V8l0VaW",
+        "type": "like",
+        "userID": "V4qDwahc1PN7vZ1cktIUS6Ayilv1"
+      },
+      "-NjC9bHVXZzwAVSgNKp5": {
+        "author": "danski",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 14, 2023 11:29 AM",
+        "postId": "-Nj9u6oWgjnKZeKcRKM6",
+        "type": "like",
+        "userID": "V4qDwahc1PN7vZ1cktIUS6Ayilv1"
+      },
+      "-NjCCGHsT4g09jQ8KY2h": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 14, 2023 11:41 AM",
+        "postId": "-NjCCEfvNnzV0Ua2JJtq",
+        "type": "like",
+        "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+      },
+      "-NjCCK8H3qozGJoKKTrk": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-NjCCEfvNnzV0Ua2JJtq",
+        "repliedAt": "Nov 14, 2023 11:41 AM",
+        "replyContent": "Virtual Dom Tree test",
+        "type": "reply"
+      },
+      "-NjCCpF1LL7_j62J1P5Z": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj9L49SFdbF5V8l0VaW",
+        "repliedAt": "Nov 14, 2023 11:43 AM",
+        "replyContent": "test for comment",
+        "type": "reply"
+      },
+      "-NjCFVi4x5D_Sox3FhDU": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 14, 2023 11:55 AM",
+        "postId": "-Nj3-kZ74i6GB5c7UXu6",
+        "type": "like",
+        "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+      },
+      "-NjCFWP9ClrMugRvqDva": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 14, 2023 11:55 AM",
+        "postId": "-Nj3-kakWDczAv9-hFDt",
+        "type": "like",
+        "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+      },
+      "-NjCFWgpYQIVr2MLC76U": {
+        "author": "danski",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj9L49SFdbF5V8l0VaW",
+        "repliedAt": "Nov 14, 2023 11:55 AM",
+        "replyContent": "Jorkata e nai-golemiq",
+        "type": "reply"
+      },
+      "-NjCF_UYj7EutJ_ckQiE": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj3-kakWDczAv9-hFDt",
+        "repliedAt": "Nov 14, 2023 11:55 AM",
+        "replyContent": "Test authentication",
+        "type": "reply"
+      },
+      "-NjCFj5P_38BP3tCdGy7": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 14, 2023 11:56 AM",
+        "postId": "-Nj9L49SFdbF5V8l0VaW",
+        "type": "like",
+        "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+      },
+      "-NjCFx8pAxVy4rZVs9py": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 14, 2023 11:57 AM",
+        "postId": "-Nj30LuwFzDMqPO9hIA4",
+        "type": "like",
+        "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+      },
+      "-NjCITEp0VYP2ZPx4XJ9": {
+        "author": "danski",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-Nj3-kZ74i6GB5c7UXu6",
+        "repliedAt": "Nov 14, 2023 12:08 PM",
+        "replyContent": "sadsad",
+        "type": "reply"
+      },
+      "-NjCsFm4XTCiOocMDZau": {
+        "author": "dimitrov1990",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-NjCqaM6oyBR_RDaRHdi",
+        "repliedAt": "Nov 14, 2023 2:49 PM",
+        "replyContent": "Unfortunately, no. Welcome to interpreted languages which do no compilation.\n\nYou COULD try using typescript, which is a javascript superset which compiles down to vanilla javascript. It’s a typed language, so it should have caught that error, but it is an extra layer on top of your javascript.",
+        "type": "reply"
+      },
+      "-NjCsSZSRrDG00QSgYPe": {
+        "author": "dimitrov1990",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-NjCqaM6oyBR_RDaRHdi",
+        "repliedAt": "Nov 14, 2023 2:50 PM",
+        "replyContent": "If you use a linter like ESlint or Standard JS, it should at the very least give you a clue.",
+        "type": "reply"
+      },
+      "-NjCteh4xZmvK583_h8C": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-NjCqaM6oyBR_RDaRHdi",
+        "repliedAt": "Nov 14, 2023 2:55 PM",
+        "replyContent": "Thank you! I should try eslint",
+        "type": "reply"
+      },
+      "-NjD3sDk01KhR2rkBZp2": {
+        "author": "danski",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 14, 2023 3:44 PM",
+        "postId": "-NjCqaM6oyBR_RDaRHdi",
+        "type": "like",
+        "userID": "V4qDwahc1PN7vZ1cktIUS6Ayilv1"
+      },
+      "-NjD3srE7MoDRLakD77h": {
+        "author": "danski",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 14, 2023 3:44 PM",
+        "postId": "-NjCy4Skl5VvTSfm934n",
+        "type": "like",
+        "userID": "V4qDwahc1PN7vZ1cktIUS6Ayilv1"
+      },
+      "-NjD5bsHg_GXPLWnxces": {
+        "author": "dimitrov1990",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-NjD5KKHrTrWPOSQQkiX",
+        "repliedAt": "Nov 14, 2023 3:52 PM",
+        "replyContent": "PyCharm all the way! Its features and integrations are unbeatable",
+        "type": "reply"
+      },
+      "-NjD5mPtEpiyFBbpBL7-": {
+        "author": "dimitrov1990",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-NjD4sSaBQfVC3be3Pt8",
+        "repliedAt": "Nov 14, 2023 3:52 PM",
+        "replyContent": "Stack Overflow is a lifesaver! Python community there is so helpful and responsive",
+        "type": "reply"
+      },
+      "-NjD5y0I6WinfkJzstjV": {
+        "author": "dimitrov1990",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "postId": "-NjD4d8YdGFKbA3SAZl_",
+        "repliedAt": "Nov 14, 2023 3:53 PM",
+        "replyContent": "Pattern matching makes code more readable. Finally!",
+        "type": "reply"
+      },
+      "-NjDD9NJIfL_rgtzwo53": {
+        "author": "georgi",
+        "authorId": "59ZtJik24mWELnagxYT2DD4gPno1",
+        "likedAt": "Nov 14, 2023 4:25 PM",
+        "postId": "-NjCqaM6oyBR_RDaRHdi",
+        "type": "like",
+        "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+      }
+    },
+    "V4qDwahc1PN7vZ1cktIUS6Ayilv1": {
+      "-NjEba9JDn7YeNTX5Xcl": {
+        "author": "danski",
+        "authorId": "V4qDwahc1PN7vZ1cktIUS6Ayilv1",
+        "likedAt": "Nov 14, 2023 10:55 PM",
+        "postId": "-NjD49ZYy8mX5ArU_Lj1",
+        "type": "like",
+        "userID": "V4qDwahc1PN7vZ1cktIUS6Ayilv1"
+      }
+    },
+    "d69WapOVprWCSK2nsxY4aC8J5vl2": {
+      "-Nj21mE7kzwnqPkSMgzM": {
+        "author": "stoychev",
+        "likedAt": "Nov 12, 2023 12:19 PM",
+        "postId": "-Nj21jzie5xL7zLxkFFO",
+        "type": "like"
+      }
+    },
+    "loh3BdG18YSs1w6ZcSEDysRHvkp1": {
+      "-NjD7CElY-dzWUBlRIb2": {
+        "author": "dimitrov1990",
+        "authorId": "loh3BdG18YSs1w6ZcSEDysRHvkp1",
+        "postId": "-NjD78RNbcSuhObC6YQO",
+        "repliedAt": "Nov 14, 2023 3:58 PM",
+        "replyContent": "Arrow functions are a game-changer! I also love destructuring for cleaner code",
+        "type": "reply"
+      },
+      "-NjD7lPFJMPthsDqDvqr": {
+        "author": "dimitrov1990",
+        "authorId": "loh3BdG18YSs1w6ZcSEDysRHvkp1",
+        "postId": "-NjD7VAahqYYmGOco4jE",
+        "repliedAt": "Nov 14, 2023 4:01 PM",
+        "replyContent": "I prefer Vanilla JS for modern projects. No need for jQuery bloat",
+        "type": "reply"
+      },
+      "-NjD9VbmRmbQcGFMdCax": {
+        "author": "dimitrov1990",
+        "authorId": "loh3BdG18YSs1w6ZcSEDysRHvkp1",
+        "postId": "-NjD8fHFZm_gyiQFXT8l",
+        "repliedAt": "Nov 14, 2023 4:09 PM",
+        "replyContent": "TypeScript caught me by surprise! The type safety is a game-changer",
+        "type": "reply"
+      },
+      "-NjDBFdmwxzNQl0ahrgm": {
+        "author": "georgi",
+        "authorId": "loh3BdG18YSs1w6ZcSEDysRHvkp1",
+        "postId": "-NjD8fHFZm_gyiQFXT8l",
+        "repliedAt": "Nov 14, 2023 4:16 PM",
+        "replyContent": "Still sticking to plain JavaScript. TypeScript feels like an extra layer of complexity",
+        "type": "reply"
+      },
+      "-NjDCnwPtXOUKTIvArJc": {
+        "author": "georgi",
+        "authorId": "loh3BdG18YSs1w6ZcSEDysRHvkp1",
+        "postId": "-NjD7VAahqYYmGOco4jE",
+        "repliedAt": "Nov 14, 2023 4:23 PM",
+        "replyContent": "I still use jQuery for legacy projects. It's quick and gets the job done",
+        "type": "reply"
+      },
+      "-NjEEaBWgIgPaNubOraw": {
+        "author": "Zheko",
+        "authorId": "loh3BdG18YSs1w6ZcSEDysRHvkp1",
+        "postId": "-NjD8fHFZm_gyiQFXT8l",
+        "repliedAt": "Nov 14, 2023 9:10 PM",
+        "replyContent": "No, not yet.",
+        "type": "reply"
+      }
+    }
+  },
+  "posts": {
+    "-NjCqaM6oyBR_RDaRHdi": {
+      "JavaScript": "JavaScript",
+      "author": "georgi",
+      "category": "JavaScript",
+      "content": "I enter a global:\nlet glFlag = true;\nIn a function I make a typing error\nlFlag = false;\nThe code does not run correctly because of this typo.\n\nWith VS Pro, ctrl-b attempts to build, but will stop if there is a typo. Is there a similar way to find typos before using F5 to run the html?",
+      "createdAt": "Nov 14, 2023 2:42 PM",
+      "editedOn": "Nov 14, 2023 2:42 PM",
+      "id": "-NjCqaM6oyBR_RDaRHdi",
+      "likes": {
+        "-NjD3sDk01KhR2rkBZp2": {
+          "author": "danski",
+          "id": "-NjD3sDk01KhR2rkBZp2"
+        },
+        "-NjDD9NJIfL_rgtzwo53": {
+          "author": "georgi",
+          "id": "-NjDD9NJIfL_rgtzwo53"
+        }
+      },
+      "replies": {
+        "-NjCsFm4XTCiOocMDZau": {
+          "author": "dimitrov1990",
+          "content": "Unfortunately, no. Welcome to interpreted languages which do no compilation.\n\nYou COULD try using typescript, which is a javascript superset which compiles down to vanilla javascript. It’s a typed language, so it should have caught that error, but it is an extra layer on top of your javascript.",
+          "id": "-NjCsFm4XTCiOocMDZau",
+          "repliedAt": "Nov 14, 2023 2:49 PM",
+          "userID": "loh3BdG18YSs1w6ZcSEDysRHvkp1"
+        },
+        "-NjCsSZSRrDG00QSgYPe": {
+          "author": "dimitrov1990",
+          "content": "If you use a linter like ESlint or Standard JS, it should at the very least give you a clue.",
+          "id": "-NjCsSZSRrDG00QSgYPe",
+          "repliedAt": "Nov 14, 2023 2:50 PM",
+          "userID": "loh3BdG18YSs1w6ZcSEDysRHvkp1"
+        },
+        "-NjCteh4xZmvK583_h8C": {
+          "author": "georgi",
+          "content": "Thank you! I should try eslint",
+          "id": "-NjCteh4xZmvK583_h8C",
+          "repliedAt": "Nov 14, 2023 2:55 PM",
+          "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+        }
+      },
+      "timestamp": 1699965724129,
+      "title": "Is there a way to check for typos in JavaScript?",
+      "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+    },
+    "-NjCy4Skl5VvTSfm934n": {
+      "Java": "Java",
+      "author": "georgi",
+      "category": "Java",
+      "content": "I want to develop a Java web application, which framework should I use?",
+      "createdAt": "Nov 14, 2023 3:14 PM",
+      "id": "-NjCy4Skl5VvTSfm934n",
+      "likes": {
+        "-NjD3srE7MoDRLakD77h": {
+          "author": "danski",
+          "id": "-NjD3srE7MoDRLakD77h"
+        }
+      },
+      "timestamp": 1699967686578,
+      "title": "Java - web app",
+      "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+    },
+    "-NjD49ZYy8mX5ArU_Lj1": {
+      "TypeScript": "TypeScript",
+      "author": "danski",
+      "category": "TypeScript",
+      "content": "Can anyone here explain to me the how TypeScript works or provide me with some documentation?\n\nThanks in advance",
+      "createdAt": "Nov 14, 2023 3:45 PM",
+      "id": "-NjD49ZYy8mX5ArU_Lj1",
+      "likes": {
+        "-NjDFnqGakzHddq3JlrO": {
+          "author": "georgi",
+          "id": "-NjDFnqGakzHddq3JlrO"
+        },
+        "-NjEba9JDn7YeNTX5Xcl": {
+          "author": "danski",
+          "id": "-NjEba9JDn7YeNTX5Xcl"
+        }
+      },
+      "timestamp": 1699969542321,
+      "title": "How does TypeScript help?",
+      "userID": "V4qDwahc1PN7vZ1cktIUS6Ayilv1"
+    },
+    "-NjD5KKHrTrWPOSQQkiX": {
+      "Python": "Python",
+      "author": "georgi",
+      "category": "Python",
+      "content": "IDEs play a crucial role in Python development. What's your preferred Python IDE, and why",
+      "createdAt": "Nov 14, 2023 3:50 PM",
+      "id": "-NjD5KKHrTrWPOSQQkiX",
+      "likes": "",
+      "replies": {
+        "-NjD5bsHg_GXPLWnxces": {
+          "author": "dimitrov1990",
+          "content": "PyCharm all the way! Its features and integrations are unbeatable",
+          "id": "-NjD5bsHg_GXPLWnxces",
+          "repliedAt": "Nov 14, 2023 3:52 PM",
+          "userID": "loh3BdG18YSs1w6ZcSEDysRHvkp1"
+        }
+      },
+      "timestamp": 1699969848680,
+      "title": "Python IDE",
+      "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+    },
+    "-NjD7VAahqYYmGOco4jE": {
+      "JavaScript": "JavaScript",
+      "author": "dimitrov1990",
+      "category": "JavaScript",
+      "content": "Vanilla JS for modern projects. No need for jQuery bloat",
+      "createdAt": "Nov 14, 2023 4:00 PM",
+      "id": "-NjD7VAahqYYmGOco4jE",
+      "likes": "",
+      "replies": {
+        "-NjD7lPFJMPthsDqDvqr": {
+          "author": "dimitrov1990",
+          "content": "I prefer Vanilla JS for modern projects. No need for jQuery bloat",
+          "id": "-NjD7lPFJMPthsDqDvqr",
+          "repliedAt": "Nov 14, 2023 4:01 PM",
+          "userID": "loh3BdG18YSs1w6ZcSEDysRHvkp1"
+        },
+        "-NjDCnwPtXOUKTIvArJc": {
+          "author": "georgi",
+          "content": "I still use jQuery for legacy projects. It's quick and gets the job done",
+          "id": "-NjDCnwPtXOUKTIvArJc",
+          "repliedAt": "Nov 14, 2023 4:23 PM",
+          "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+        }
+      },
+      "timestamp": 1699970417405,
+      "title": "Vanilla JS vs. jQuery - the eternal debate! Which one do you prefer, and in what situations?",
+      "userID": "loh3BdG18YSs1w6ZcSEDysRHvkp1"
+    },
+    "-NjD8fHFZm_gyiQFXT8l": {
+      "JavaScript": "JavaScript",
+      "author": "dimitrov1990",
+      "category": "JavaScript",
+      "content": "TypeScript is gaining popularity in the JavaScript world. Are you using TypeScript in your projects? Share your thoughts",
+      "createdAt": "Nov 14, 2023 4:05 PM",
+      "id": "-NjD8fHFZm_gyiQFXT8l",
+      "replies": {
+        "-NjD9VbmRmbQcGFMdCax": {
+          "author": "dimitrov1990",
+          "content": "TypeScript caught me by surprise! The type safety is a game-changer",
+          "id": "-NjD9VbmRmbQcGFMdCax",
+          "repliedAt": "Nov 14, 2023 4:09 PM",
+          "userID": "loh3BdG18YSs1w6ZcSEDysRHvkp1"
+        },
+        "-NjDBFdmwxzNQl0ahrgm": {
+          "author": "georgi",
+          "content": "Still sticking to plain JavaScript. TypeScript feels like an extra layer of complexity",
+          "id": "-NjDBFdmwxzNQl0ahrgm",
+          "repliedAt": "Nov 14, 2023 4:16 PM",
+          "userID": "59ZtJik24mWELnagxYT2DD4gPno1"
+        }
+      },
+      "timestamp": 1699970725030,
+      "title": "TypeScript in JS",
+      "userID": "loh3BdG18YSs1w6ZcSEDysRHvkp1"
+    }
+  },
+  "users": {
+    "3P2KGPlcAsRMYdwDCwXQSxTNI5E3": {
+      "createdOn": 1699390644078,
+      "email": "NAS@gmail.com",
+      "firstName": "Nasko",
+      "isAdmin": false,
+      "isBlocked": false,
+      "lastName": "Sirakov",
+      "uid": "3P2KGPlcAsRMYdwDCwXQSxTNI5E3",
+      "username": "NAS"
+    },
+    "59ZtJik24mWELnagxYT2DD4gPno1": {
+      "avatar": "",
+      "createdOn": 1699791181857,
+      "email": "stoychev86@yahoo.com",
+      "firstName": "Georgi",
+      "isAdmin": true,
+      "isBlocked": false,
+      "lastName": "Georgiev",
+      "likes": {
+        "-Nj2DEBL6orAYDMhdW_g": {
+          "-Nj2sKHL4HOUfC6Cwbz6": true
+        },
+        "-Nj2_EeJnJ8-EXvky6m5": {
+          "-Nj2cnXIwkMzE0efvjr1": true
+        },
+        "-Nj2uafUgyTx9Vl9OEdi": {
+          "-Nj8FZmzxSNO9Fq74gsK": true,
+          "-Nj8G9yHGKbo1JwOksAo": true,
+          "-Nj8Us9vEiPgkODPffZe": true,
+          "-Nj8UsbLSzhAT75udvpm": true
+        },
+        "-Nj3-kZ74i6GB5c7UXu6": {
+          "-Nj8F_eDHrO326YOz_h8": true,
+          "-NjCFVi4x5D_Sox3FhDU": true
+        },
+        "-Nj3-kakWDczAv9-hFDt": {
+          "-NjCFWP9ClrMugRvqDva": true
+        },
+        "-Nj30LuwFzDMqPO9hIA4": {
+          "-NjCFx8pAxVy4rZVs9py": true
+        },
+        "-Nj464s780Osh289mKkZ": {
+          "-Nj6Xzd7svnAOi08_GC6": true,
+          "-Nj8Fc7ytkv_a52kaNNG": true
+        },
+        "-Nj4bGbJid0Mk-aPxKfM": {
+          "-Nj6Xz1OWFgUgMg1LOEE": true,
+          "-Nj6Y2EKmKBgJd_r3Wwr": true,
+          "-Nj8FcfWPh7CXx0oqBLN": true
+        },
+        "-Nj4ftKEe2SPUcmNfDdK": {
+          "-Nj6XyMzf_vCJjMSMauv": true
+        },
+        "-Nj7EKzfCJJPZCalM0bF": {
+          "-Nj8FdAGCxQMi2KPc1Y_": true
+        },
+        "-Nj9L49SFdbF5V8l0VaW": {
+          "-NjCFj5P_38BP3tCdGy7": true
+        },
+        "-NjCCEfvNnzV0Ua2JJtq": {
+          "-NjCCGHsT4g09jQ8KY2h": true
+        },
+        "-NjCFqfTqtvz5WfJMOAs": {
+          "-NjCGEz9BkC5qxRLHX-g": true
+        },
+        "-NjCJOhHHlMZ60WaJRdN": {
+          "-NjCJkTGodYkMmcaH6t4": true
+        },
+        "-NjCY6cJSNCgmJcrT036": {
+          "-NjCpv23LjCrGfDR5ZxA": true
+        },
+        "-NjCqaM6oyBR_RDaRHdi": {
+          "-NjDD9NJIfL_rgtzwo53": true
+        },
+        "-NjD49ZYy8mX5ArU_Lj1": {
+          "-NjDFnqGakzHddq3JlrO": true
+        }
+      },
+      "replies": {
+        "-Nj2uafUgyTx9Vl9OEdi": {
+          "-Nj8KUMZMPpa-v_u38Dd": true,
+          "-Nj8KUO_ZS5ZWLzKHqeM": true,
+          "-Nj8LuWp_0R_xLoOV19A": true,
+          "-Nj8LuYqNmIKTkmVFA8A": true,
+          "-Nj8OZjEbR5CuYMDaipT": true,
+          "-Nj8OZlWyI3faIeNh09v": true,
+          "-Nj8PDbEZFP6xqZm1NAB": true,
+          "-Nj8PDdHDPUpUV5-gBd_": true,
+          "-Nj8S2gmdPrFSpip-wbP": true,
+          "-Nj8S2ixIIbHhJRvNVHH": true,
+          "-Nj8T-3b3NPmWQo036_j": true,
+          "-Nj8T-5arZzGlRoCWxCm": true,
+          "-Nj8TJUcLoasnOlsXhi_": true,
+          "-Nj8TJWaAHi8nVqqzbO4": true,
+          "-Nj8Ts6NR_dkt3J6IPFA": true,
+          "-Nj8Ts8W8VZ27jVAZKe9": true,
+          "-Nj8U0PaWpVfvFzr5Sym": true,
+          "-Nj8U0Rg2UYT-feYrjTr": true,
+          "-Nj8USfHHPnzGOIGCfo4": true,
+          "-Nj8UShIQECXR9Zr9C8r": true,
+          "-Nj8UUS4zanuG7Be3Ff7": true,
+          "-Nj8UUTycClJsAH4JNmf": true,
+          "-Nj8Uu8188KD4W1i4pqj": true,
+          "-Nj8UuAM7C2r21xBEbOJ": true,
+          "-Nj8VE6WwSohe_W-UHiG": true,
+          "-Nj8VE91tmWpGZqqVW_G": true,
+          "-Nj8Z-3xEiawSg0Gxj9E": true,
+          "-Nj8Z-5uGkJ58D57XVhX": true,
+          "-Nj8a4JRxmCYd2zlJjh3": true,
+          "-Nj8a4LhCIRz-grhODCH": true,
+          "-Nj8aLtU7XHlfae86VCt": true,
+          "-Nj8aLvXuuUMnznBvP2Y": true,
+          "-Nj8cBCdRKpylP42PjeK": true,
+          "-Nj8cBEyEyWDUhtl51Kt": true
+        },
+        "-Nj3-kZ74i6GB5c7UXu6": {
+          "-Nj9M717zItDEfXIhHdN": true,
+          "-Nj9M737kL8t3OuVGH1P": true
+        },
+        "-Nj3-kakWDczAv9-hFDt": {
+          "-NjCF_UYj7EutJ_ckQiE": true
+        },
+        "-Nj4ftKEe2SPUcmNfDdK": {
+          "-Nj6YTGRfwg9sMHgtJvS": true,
+          "-Nj6YTIOHjefYBInQDii": true,
+          "-Nj6YeIguI03qsmzR74_": true,
+          "-Nj6YeKdlGnISX1ulwY_": true
+        },
+        "-Nj9L49SFdbF5V8l0VaW": {
+          "-Nj9LFxjnIU61imFSsEZ": true,
+          "-Nj9LFzn40zmEFKzmgMl": true,
+          "-Nj9LOGRoVrqCKBab3O-": true,
+          "-Nj9LOIaiJEVtShWM7ZO": true,
+          "-NjCCpF1LL7_j62J1P5Z": true
+        },
+        "-NjCCEfvNnzV0Ua2JJtq": {
+          "-NjCCK8H3qozGJoKKTrk": true
+        },
+        "-NjCFqfTqtvz5WfJMOAs": {
+          "-NjCGBUHJXBhws6EeVwj": true
+        },
+        "-NjCqaM6oyBR_RDaRHdi": {
+          "-NjCteh4xZmvK583_h8C": true
+        },
+        "-NjD7VAahqYYmGOco4jE": {
+          "-NjDCnwPtXOUKTIvArJc": true
+        },
+        "-NjD8fHFZm_gyiQFXT8l": {
+          "-NjDBFdmwxzNQl0ahrgm": true
+        }
+      },
+      "uid": "59ZtJik24mWELnagxYT2DD4gPno1",
+      "username": "georgi"
+    },
+    "AqC25F6E4QWsF6xfApRXByI5gpj2": {
+      "avatar": "",
+      "createdOn": 1699781619015,
+      "email": "zheko.stanchev@gmail.com",
+      "firstName": "Zheko",
+      "isAdmin": true,
+      "isBlocked": false,
+      "lastName": "Stanchev",
+      "replies": {
+        "-NjD8fHFZm_gyiQFXT8l": {
+          "-NjEEaBWgIgPaNubOraw": true
+        }
+      },
+      "uid": "AqC25F6E4QWsF6xfApRXByI5gpj2",
+      "username": "Zheko"
+    },
+    "B5bbzOZ3NxaXPiGsEYfXtWBaXV02": {
+      "createdOn": 1699219435423,
+      "email": "bozhigol@gmail.com",
+      "firstName": "Valeri",
+      "isAdmin": false,
+      "isBlocked": false,
+      "lastName": "Bozhinov",
+      "uid": "B5bbzOZ3NxaXPiGsEYfXtWBaXV02",
+      "username": "bozhigol"
+    },
+    "I6jOXuVzTMR3lMaWfJkf2v5BhHx2": {
+      "createdOn": 1699300918248,
+      "email": "zheko@zheko.com",
+      "firstName": "Zheko",
+      "isAdmin": true,
+      "isBlocked": false,
+      "lastName": "Stanchev",
+      "uid": "I6jOXuVzTMR3lMaWfJkf2v5BhHx2",
+      "username": "ZHEKO"
+    },
+    "IJiAKmgqi0fXFsNBnGdSsb5u9s92": {
+      "avatar": "",
+      "createdOn": 1699729828479,
+      "email": "zh.stanchev@abv.bg",
+      "firstName": "Zheko",
+      "isAdmin": false,
+      "isBlocked": false,
+      "lastName": "Stanchev",
+      "uid": "IJiAKmgqi0fXFsNBnGdSsb5u9s92",
+      "username": "Zheko"
+    },
+    "Tqs4f9CiqCaPuVWsZG8HdFhBNcY2": {
+      "createdOn": 1699481190041,
+      "email": "stefko@gmail.com",
+      "firstName": "Stefan",
+      "isAdmin": false,
+      "isBlocked": false,
+      "lastName": "Iliev",
+      "uid": "Tqs4f9CiqCaPuVWsZG8HdFhBNcY2",
+      "username": "Stefko"
+    },
+    "V4qDwahc1PN7vZ1cktIUS6Ayilv1": {
+      "avatar": "",
+      "createdOn": 1699789538921,
+      "email": "daniel.chuchulev96@gmail.com",
+      "firstName": "Daniel",
+      "isAdmin": true,
+      "isBlocked": false,
+      "lastName": "Chuchulev",
+      "likes": {
+        "-Nj2Z7SKK1VPkXtLu4Ou": {
+          "-Nj2Z8Hl3XnmzAtWhxca": true
+        },
+        "-Nj2uafUgyTx9Vl9OEdi": {
+          "-Nj4Y3tcSNmO5PvDtfWb": true,
+          "-Nj4eYGw0BkI8PKsY-8C": true,
+          "-Nj6YKYh4q53fLFySamG": true
+        },
+        "-Nj30LuwFzDMqPO9hIA4": {
+          "-Nj4bASprb9zr3qXadCr": true,
+          "-Nj6Y5a0KBvpLAZhcq77": true
+        },
+        "-Nj464s780Osh289mKkZ": {
+          "-Nj4Y74WHktEnltyBbag": true,
+          "-Nj4_XZIaJje8hwdSJ8j": true
+        },
+        "-Nj465gj0PzBa-UTM6IC": {
+          "-Nj49pAwdO7mXKJMA1KB": true
+        },
+        "-Nj4bGbJid0Mk-aPxKfM": {
+          "-Nj4bIA1Mc2U7j5YCwCg": true,
+          "-Nj4fRVCX2m6uL4ATtbY": true,
+          "-Nj4fq-JNME-0NOCHWQT": true
+        },
+        "-Nj4ftKEe2SPUcmNfDdK": {
+          "-Nj4fu9DUk_tGl3sppKO": true,
+          "-Nj6Y1N_guMKrd2ePpWH": true,
+          "-Nj6Y38NiHT_RN527uW2": true,
+          "-Nj6ZgYnxc-PvgYT8L42": true,
+          "-Nj6pVma4E883vrYfjaM": true,
+          "-Nj75uzcgj_Xn1akl7Ho": true,
+          "-Nj76Kld0ezANSyAo47Y": true,
+          "-Nj76V65u2eQ-oqqviON": true,
+          "-Nj76WeqbulSqW5BXIo-": true,
+          "-Nj76Wiz_3atgG9h8smD": true,
+          "-Nj76WnSWnA7ZwEk9z6W": true,
+          "-Nj76WrvUWOczlYJu19X": true,
+          "-Nj76Ww6AWKr0hzq7R7V": true
+        },
+        "-Nj7EKzfCJJPZCalM0bF": {
+          "-Nj7EQcBno2j3Gc30n7f": true,
+          "-Nj7Fp9HvDlkO0QB0XK5": true
+        },
+        "-Nj96KcgUguHfI6j9wuZ": {
+          "-Nj96O6aLbREBHQPxhrc": true,
+          "-Nj96o4Kgh2fCdU8GtxS": true,
+          "-Nj96qxPxqzuu_A0UC4m": true
+        },
+        "-Nj9BubFCSx1Sy6Asl4I": {
+          "-Nj9GDnSvV5b34JAJPSr": true,
+          "-Nj9H97XRxiCLQGdO_fL": true,
+          "-Nj9_yRtS8mf0iOb4jxB": true
+        },
+        "-Nj9L49SFdbF5V8l0VaW": {
+          "-Nj9SVyNxvsGYo92jG0e": true
+        },
+        "-Nj9u6oWgjnKZeKcRKM6": {
+          "-NjC9bHVXZzwAVSgNKp5": true
+        },
+        "-NjCFqfTqtvz5WfJMOAs": {
+          "-NjCFuYeDUOFvnIBt4_N": true
+        },
+        "-NjCY6cJSNCgmJcrT036": {
+          "-NjC_ZXj5T9jSFgmNSwx": true
+        },
+        "-NjCqaM6oyBR_RDaRHdi": {
+          "-NjD3sDk01KhR2rkBZp2": true
+        },
+        "-NjCy4Skl5VvTSfm934n": {
+          "-NjD3srE7MoDRLakD77h": true
+        },
+        "-NjD49ZYy8mX5ArU_Lj1": {
+          "-NjEba9JDn7YeNTX5Xcl": true
+        }
+      },
+      "replies": {
+        "-Nj2uafUgyTx9Vl9OEdi": {
+          "-Nj3LfTr-2WcRa9veGQp": true,
+          "-Nj4bbqPx3jsv2UeIFPb": true,
+          "-Nj4bbsWiuxf9kHN4P1u": true,
+          "-Nj4bhlxOeNKDTWuKgZA": true,
+          "-Nj4bho2xgAo4wh8F06q": true,
+          "-Nj4f-K3oDazp05JD8nO": true,
+          "-Nj4f-MBX2J5sK4xeLl6": true
+        },
+        "-Nj3-kZ74i6GB5c7UXu6": {
+          "-NjCITEp0VYP2ZPx4XJ9": true
+        },
+        "-Nj3N6m1zFkJmoakZy5X": {
+          "-Nj3NEX3RyteCPmM-WWt": true,
+          "-Nj3Z_YBXpEF0NmuDjbX": true
+        },
+        "-Nj3q17e11l4MGTm-zNM": {
+          "-Nj3q2dPGOUV5sYDY4rm": true,
+          "-Nj3rAminiKlwSruRpUu": true
+        },
+        "-Nj464s780Osh289mKkZ": {
+          "-Nj4F8C40LouLkELsip9": true,
+          "-Nj4_UPDbhPVgo80xgHD": true,
+          "-Nj4_euLP-j6dOtXJExQ": true,
+          "-Nj4awhA8nz6xDeTKm5r": true,
+          "-Nj4awjEO1H3y3sMKP1K": true,
+          "-Nj4eu0yPFrtzHi-a5Vo": true,
+          "-Nj4eu3-2r8CmUTYuF13": true,
+          "-Nj4hK6Rm522LRs6sx5H": true,
+          "-Nj4hK8Y3xLSZlIMjEG1": true
+        },
+        "-Nj465gj0PzBa-UTM6IC": {
+          "-Nj467gT3HY4oiYsmIQy": true
+        },
+        "-Nj4bGbJid0Mk-aPxKfM": {
+          "-Nj4efbcDYAG6bPrtOQ1": true,
+          "-Nj4efdmAVK5Y5P-FAYR": true,
+          "-Nj4f2pWwsO4uY-4qAqu": true,
+          "-Nj4f2r_e-4St5ld7y--": true,
+          "-Nj4fE-rT4ANIWN56CaC": true,
+          "-Nj4fE1uFtN7uVKBa2Sd": true
+        },
+        "-Nj4ftKEe2SPUcmNfDdK": {
+          "-Nj4fwAj2wu1DhGSvTV8": true,
+          "-Nj4fwCjVlCwcKgWZ-Zf": true,
+          "-Nj6Yil-l0n5N5Ei_hw3": true,
+          "-Nj6Yin4cDfXv6wBDBet": true,
+          "-Nj6i9He3exQiW3l0aWg": true,
+          "-Nj6i9JkOZXGJhuCsbeP": true,
+          "-Nj6pP9reodQF3UQHAa4": true,
+          "-Nj6pPBukb6IEC7U59DX": true
+        },
+        "-Nj7EKzfCJJPZCalM0bF": {
+          "-Nj8o78Svj_ocOdk1LUM": true,
+          "-Nj8o7AeQ1ZX7OILGxs3": true
+        },
+        "-Nj9BubFCSx1Sy6Asl4I": {
+          "-Nj9CDCusDyaIyWR9ZsY": true,
+          "-Nj9CDEH4RPt33TSKltr": true
+        },
+        "-Nj9L49SFdbF5V8l0VaW": {
+          "-NjCFWgpYQIVr2MLC76U": true
+        },
+        "-Nj9TgaK7Uj6o3eGxm5f": {
+          "-Nj9TqGYb3NhdgHmmH2w": true,
+          "-Nj9TqIZvLQrZP4cNm51": true,
+          "-Nj9VXTGZV4MNHrkAKD_": true,
+          "-Nj9VXVOUiqcv_hex_4m": true,
+          "-Nj9WYbgmc_BNW8CqKHd": true,
+          "-Nj9WYdxeTLNV8HlVhcO": true,
+          "-Nj9WpCSdXawFh46W7cq": true,
+          "-Nj9WpFMeOC_nCHUGU2x": true,
+          "-Nj9XSk9ZtWZ5aH6rMBd": true,
+          "-Nj9XrU68QlyEx843dnF": true,
+          "-Nj9fuT1xUaJzcik7nCN": true,
+          "-NjBxiNLaJbTv0xjxO7T": true
+        },
+        "-NjCFqfTqtvz5WfJMOAs": {
+          "-NjCG5MWx2GhF28rqJuX": true
+        },
+        "-NjCJOhHHlMZ60WaJRdN": {
+          "-NjCP7SyQExTpnyXqMy5": true
+        },
+        "-NjD49ZYy8mX5ArU_Lj1": {
+          "-NjEBnkQT3G3_dwGANai": true
+        }
+      },
+      "uid": "V4qDwahc1PN7vZ1cktIUS6Ayilv1",
+      "username": "danski"
+    },
+    "d69WapOVprWCSK2nsxY4aC8J5vl2": {
+      "avatar": "",
+      "createdOn": 1699730385182,
+      "email": "stoychev86@yahoo.com",
+      "firstName": "Georgi",
+      "isAdmin": false,
+      "isBlocked": false,
+      "lastName": "Stoychev",
+      "likes": {
+        "-NiuIXJzG26jKQUj2BpA": {
+          "-Nj20_Da1Y_Yjf-pCnUq": true
+        },
+        "-NiuIcjXmShpMXKSPRUZ": {
+          "-Nj20SQNrR3gPmefc85V": true
+        },
+        "-NiuJ6J_OB-1RI0cdk-O": {
+          "-Nj20TNqajM1sKGy_CyX": true,
+          "-Nj20YFrABh2lqF_MLHq": true
+        },
+        "-NiumsF0CU_9Tgpfc0Ns": {
+          "-Nj20V_IqGJQ0V-vm2q5": true
+        },
+        "-NixULJpb-6UZhNO8Zpy": {
+          "-Nj20UaC3XdeiLShRjwO": true
+        },
+        "-Nj21jzie5xL7zLxkFFO": {
+          "-Nj21mE7kzwnqPkSMgzM": true
+        },
+        "-Nj2DEBL6orAYDMhdW_g": {
+          "-Nj2NFnb1E-zyiF4SwBX": true
+        }
+      },
+      "replies": {
+        "-Nj2DEBL6orAYDMhdW_g": {
+          "-Nj2DT1bN33gRlkNKlu0": true
+        }
+      },
+      "uid": "d69WapOVprWCSK2nsxY4aC8J5vl2",
+      "username": "stoychev"
+    },
+    "lHHQLCNgBdNt2QuD8EtPSDj5eVN2": {
+      "createdOn": 1699282013759,
+      "email": "dankata@gmail.com",
+      "firstName": "Dankata",
+      "isAdmin": false,
+      "isBlocked": false,
+      "lastName": "Kodi",
+      "uid": "lHHQLCNgBdNt2QuD8EtPSDj5eVN2",
+      "username": "dankataKodi"
+    },
+    "loh3BdG18YSs1w6ZcSEDysRHvkp1": {
+      "avatar": "",
+      "createdOn": 1699965909879,
+      "email": "cs.goldbet@gmail.com",
+      "firstName": "Dimityr",
+      "isAdmin": false,
+      "lastName": "Dimitrov",
+      "likes": {
+        "-NjCY6cJSNCgmJcrT036": {
+          "-NjD6b48piCIoVU7XjsG": true
+        }
+      },
+      "replies": {
+        "-NjCY6cJSNCgmJcrT036": {
+          "-NjCt6XnflU1RfXnP_wk": true,
+          "-NjD6Y3gSSnBqVhQ4GSX": true
+        },
+        "-NjCqaM6oyBR_RDaRHdi": {
+          "-NjCsFm4XTCiOocMDZau": true,
+          "-NjCsSZSRrDG00QSgYPe": true
+        },
+        "-NjD4d8YdGFKbA3SAZl_": {
+          "-NjD5y0I6WinfkJzstjV": true
+        },
+        "-NjD4sSaBQfVC3be3Pt8": {
+          "-NjD5mPtEpiyFBbpBL7-": true
+        },
+        "-NjD5KKHrTrWPOSQQkiX": {
+          "-NjD5bsHg_GXPLWnxces": true
+        },
+        "-NjD78RNbcSuhObC6YQO": {
+          "-NjD7CElY-dzWUBlRIb2": true
+        },
+        "-NjD7VAahqYYmGOco4jE": {
+          "-NjD7lPFJMPthsDqDvqr": true
+        },
+        "-NjD8fHFZm_gyiQFXT8l": {
+          "-NjD9VbmRmbQcGFMdCax": true
+        }
+      },
+      "uid": "loh3BdG18YSs1w6ZcSEDysRHvkp1",
+      "username": "dimitrov1990"
+    }
+  }
+}
