@@ -120,7 +120,7 @@ export const UserProfile = () => {
     return (
         <div className="h-screen bg-[rgb(36,36,36)] dark:bg-white flex flex-col items-center justify-center mt-7 z-30">
             <div className="bg-gray-800 p-4 rounded-lg shadow-md w-[600px] space-y-2 h-auto z-20">
-                <div className="text-center">
+                <div className="text-center text-gray-400">
                     <img
                         src={ previewImage ?? (avatarURL) }
                         alt="User Avatar"
